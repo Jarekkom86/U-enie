@@ -1,0 +1,32 @@
+# Moje programy deň 2
+name = "Peter"
+age = 25
+occupation = "student"
+
+
+print(f" {name} is {age} years old {occupation}")
+
+print(r"\"citujem .....\"")
+
+s1 = "Eagle"
+s2 = "Eagleá"
+
+print(len(s1))
+print(len(s2))
+
+msq = "and old falcon in sky"
+
+print(msq[8:14])
+print(msq[18:21])
+
+nums = "1, 5, 6, 8, 2, 3, 1, 9"
+k =nums.split(",",)
+print(k)
+
+k = (",")
+
+k =nums.join(":")
+
+print(k)
+
+sentence = "Jaroslav Koman 38 rokov"
