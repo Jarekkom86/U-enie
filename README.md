@@ -1,2 +1,0 @@
-# U-enie
-Môj python
