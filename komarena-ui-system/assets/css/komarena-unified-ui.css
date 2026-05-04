@@ -62,13 +62,24 @@ body.admin-bar header.site-header { top: 32px; }
 }
 
 .site-content,
-.content-area { padding-top: 8px; }
+.content-area { padding-top: 2px; }
 
-.main-navigation ul { display: flex; align-items: center; gap: 8px; }
+.site-header .header--row-inner,
+.site-header .nv-top-header,
+.site-header .nv-middle-header {
+  min-height: 42px;
+}
+
+.site-header .header--row-inner {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.main-navigation ul { display: flex; align-items: center; gap: 6px; }
 .main-navigation a {
   font-weight: 600;
   color: var(--ka-text);
-  padding: 9px 13px;
+  padding: 7px 11px;
   border-radius: 10px;
 }
 .main-navigation a:hover,
@@ -90,7 +101,7 @@ body.admin-bar header.site-header { top: 32px; }
 .site-header .woocommerce-product-search,
 .site-header .aws-container,
 .site-header .dgwt-wcas-search-wrapp {
-  min-height: 50px;
+  min-height: 46px;
   max-width: 420px;
   border: 1px solid var(--ka-border) !important;
   border-radius: 14px !important;
@@ -111,10 +122,10 @@ body.admin-bar header.site-header { top: 32px; }
 .site-header .woocommerce-product-search .search-field,
 .site-header .aws-search-field,
 .site-header .dgwt-wcas-search-input {
-  min-height: 50px;
+  min-height: 46px;
   border: 0 !important;
   background: #fff !important;
-  padding: 0 14px !important;
+  padding: 0 12px !important;
   font-size: 14px;
   color: var(--ka-text);
 }
@@ -122,7 +133,7 @@ body.admin-bar header.site-header { top: 32px; }
 .site-header .woocommerce-product-search select,
 .site-header .aws-search-form select,
 .site-header .dgwt-wcas-search-wrapp select {
-  min-height: 50px;
+  min-height: 46px;
   border: 0 !important;
   border-left: 1px solid var(--ka-border) !important;
   background: #f8fbfc !important;
@@ -134,8 +145,8 @@ body.admin-bar header.site-header { top: 32px; }
 .site-header .woocommerce-product-search button,
 .site-header .aws-search-btn,
 .site-header .dgwt-wcas-search-submit {
-  min-height: 50px;
-  min-width: 52px;
+  min-height: 46px;
+  min-width: 48px;
   border: 0 !important;
   background: var(--ka-primary) !important;
   color: #fff !important;
@@ -144,17 +155,34 @@ body.admin-bar header.site-header { top: 32px; }
   position: relative;
 }
 
-/* white icon: text, svg, pseudo */
+/* white icon: text, svg, path, pseudo */
 .site-header .search-submit,
 .site-header .woocommerce-product-search button,
 .site-header .aws-search-btn,
 .site-header .dgwt-wcas-search-submit,
 .site-header .aws-search-btn *,
+.site-header .aws-search-btn svg,
+.site-header .aws-search-btn svg path,
+.site-header .aws-search-btn_icon,
 .site-header .dgwt-wcas-search-submit *,
 .site-header .dgwt-wcas-search-submit svg,
-.site-header .aws-search-btn svg {
+.site-header .search-submit svg,
+.site-header button[type="submit"] svg {
   fill: #fff !important;
   color: #fff !important;
+  stroke: #fff !important;
+}
+
+.site-header .aws-search-btn::before,
+.site-header .aws-search-btn::after,
+.site-header .search-submit::before,
+.site-header .search-submit::after,
+.site-header .woocommerce-product-search button::before,
+.site-header .woocommerce-product-search button::after,
+.site-header button[type="submit"]::before,
+.site-header button[type="submit"]::after {
+  color: #fff !important;
+  fill: #fff !important;
   stroke: #fff !important;
 }
 
@@ -370,4 +398,15 @@ footer.site-footer a { color: var(--ka-primary); }
 .woocommerce-checkout .woocommerce ul.products,
 .woocommerce-account .woocommerce ul.products {
   display: block !important;
+}
+
+.home .site-content,
+.home .content-area,
+.home .entry-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.home .entry-content > :first-child {
+  margin-top: 0 !important;
 }
