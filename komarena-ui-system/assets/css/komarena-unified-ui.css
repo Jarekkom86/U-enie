@@ -140,6 +140,7 @@ body.admin-bar header.site-header { top: 32px; }
   background: var(--ka-primary) !important;
   color: #fff !important;
   border-radius: 0 14px 14px 0 !important;
+  box-shadow: none !important;
   position: relative;
 }
 
@@ -352,4 +353,21 @@ footer.site-footer a { color: var(--ka-primary); }
   .tax-product_cat .woocommerce ul.products,
   .tax-product_tag .woocommerce ul.products,
   .search-results.woocommerce-page ul.products { grid-template-columns: 1fr; }
+}
+
+
+/* Neve/Woo wrappers strengthening */
+.nv-page-title,
+.woocommerce-page .nv-page-title { margin-bottom: 10px; }
+.woocommerce-page .nv-content-wrap,
+.woocommerce-page .nv-single-page-wrap,
+.woocommerce-page .container {
+  max-width: 1320px;
+}
+
+/* Keep transaction pages untouched from grid overrides */
+.woocommerce-cart .woocommerce ul.products,
+.woocommerce-checkout .woocommerce ul.products,
+.woocommerce-account .woocommerce ul.products {
+  display: block !important;
 }

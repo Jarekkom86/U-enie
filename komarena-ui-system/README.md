@@ -22,3 +22,5 @@ WordPress plugin that unifies frontend design across homepage, header, search, m
 - Covers native WooCommerce + AWS + DGWT/FiboSearch header search selectors.
 - JavaScript file is present for future use and is intentionally **not enqueued** in v1.0.0.
 - Status: **ready for test installation in WordPress**, not automatic production merge.
+
+- Neve/WooCommerce strengthened selectors are included for safer theme override behavior.

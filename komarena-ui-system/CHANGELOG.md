@@ -10,3 +10,5 @@
 - Switched footer to light technical palette (#F7FCFC + teal accents).
 - Kept plugin safe: no DB updates, no admin styling, no JS enqueue, no checkout/payment/shipping/order logic changes.
 - Release marked ready for **test installation**, not automatic production merge.
+
+- Added additional Neve wrapper hardening and transaction-page guardrails for grid rules.
