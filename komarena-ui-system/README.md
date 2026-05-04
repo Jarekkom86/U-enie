@@ -15,10 +15,10 @@ WordPress plugin that unifies frontend design across homepage, header, search, m
 - Does not change admin UI.
 - Does not change database.
 - Does not call external services.
+- Does not modify checkout/payment/shipping/order logic.
 - Disabling plugin immediately disables design changes.
 
 ## Notes
-- Assign menu class `cta` to important items (Home Assistant / Produkty / Servis).
-- Keep checkout/payment/shipping logic untouched.
-
+- Covers native WooCommerce + AWS + DGWT/FiboSearch header search selectors.
 - JavaScript file is present for future use and is intentionally **not enqueued** in v1.0.0.
+- Status: **ready for test installation in WordPress**, not automatic production merge.
