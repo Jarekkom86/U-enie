@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.1 - 2026-05-04
+- Reduced header top-row visual height for a tighter modern look.
+- Reduced main menu spacing and link padding.
+- Reduced spacing between sticky header/menu and homepage hero section.
+- Kept header search compact (about 46px) and refined paddings.
+- Enforced white search icon rendering on teal submit buttons for AWS/Woo/native selectors, including svg/path/icon wrappers and pseudo-elements.
+- No PHP logic changes except version bump; no DB/admin/checkout/payment/shipping/order changes.
+
 ## 1.0.0 - 2026-05-04
 - Initial release of KomArena UI System plugin.
 - Hardened frontend-only visual system for Neve/WooCommerce contexts.

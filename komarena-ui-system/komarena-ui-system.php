@@ -3,7 +3,7 @@
  * Plugin Name: KomArena UI System
  * Plugin URI: https://komarena.sk/
  * Description: Unified frontend visual system for KomArena.sk (header, sidebar, WooCommerce listings, product pages, and responsive polish).
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: KomArena.sk + Assistant
  * License: GPL-2.0-or-later
  * Text Domain: komarena-ui-system
@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
 }
 
 final class KomArena_Ui_System {
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.1';
     const HANDLE_STYLE = 'komarena-ui-system-style';
 
     public static function init() {
