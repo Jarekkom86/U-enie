@@ -1,1 +1,316 @@
-<!-- Dashboard UI for safely running Gmail Cleaner dry runs and reviewed live label-only commands will be built here. -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <style>
+      body {
+        margin: 0;
+        padding: 18px;
+        font-family: Arial, sans-serif;
+        background: #f6f8fb;
+        color: #1f2937;
+      }
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+      .card {
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 16px;
+        margin-bottom: 14px;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+      }
+      h1 {
+        margin: 0 0 6px;
+        font-size: 22px;
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 16px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      select,
+      input,
+      textarea {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 5px;
+        padding: 9px;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        font-family: inherit;
+      }
+      textarea {
+        min-height: 150px;
+        font-family: Consolas, monospace;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .check-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .check-row input {
+        width: auto;
+      }
+      button {
+        margin: 8px 8px 0 0;
+        padding: 10px 13px;
+        border: 0;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #0f766e;
+        color: white;
+        font-weight: 700;
+      }
+      button.secondary {
+        background: #334155;
+      }
+      button.warn {
+        background: #b45309;
+      }
+      button.danger {
+        background: #991b1b;
+      }
+      pre {
+        overflow: auto;
+        background: #0f172a;
+        color: #e2e8f0;
+        border-radius: 12px;
+        padding: 14px;
+        min-height: 160px;
+        white-space: pre-wrap;
+      }
+      .status {
+        font-family: Consolas, monospace;
+        font-size: 13px;
+        background: #ecfeff;
+        border: 1px solid #a5f3fc;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      .muted {
+        color: #64748b;
+        font-size: 13px;
+      }
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: #dcfce7;
+        color: #166534;
+        font-size: 12px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <span class="badge">SAFE MODE</span>
+        <h1>Gmail Cleaner Control Center</h1>
+        <p class="muted">
+          Defaultne beží dry-run. Live režim iba pridáva štítky a vyžaduje presný potvrdzovací text.
+          Mazanie nie je podporované.
+        </p>
+        <div id="status" class="status">Načítavam stav...</div>
+      </div>
+
+      <div class="card">
+        <h2>Spustiť pravidlo</h2>
+        <div class="row">
+          <div>
+            <label for="ruleId">Pravidlo</label>
+            <select id="ruleId"></select>
+          </div>
+          <div>
+            <label for="batchSize">Veľkosť dávky</label>
+            <input id="batchSize" type="number" min="1" max="50" value="25">
+          </div>
+        </div>
+
+        <div class="check-row">
+          <input id="dryRun" type="checkbox" checked>
+          <span>Dry-run: iba nájsť a logovať, nič nemeniť</span>
+        </div>
+        <div class="check-row">
+          <input id="archive" type="checkbox">
+          <span>Archivovať iba pri pravidlách, ktoré to výslovne povoľujú</span>
+        </div>
+
+        <label for="confirmText">Live potvrdenie</label>
+        <input id="confirmText" placeholder="I UNDERSTAND - NO DELETE - LABEL ONLY">
+
+        <button onclick="runDryRun()">Run Dry Run</button>
+        <button class="warn" onclick="runLive()">Run Live Label Only</button>
+        <button class="secondary" onclick="loadLastLog()">Load Last Log</button>
+        <button class="danger" onclick="resetState()">Reset State</button>
+      </div>
+
+      <div class="card">
+        <h2>JSON command režim</h2>
+        <p class="muted">Sem môžeš vložiť príkaz pripravený cez ChatGPT.</p>
+        <textarea id="jsonCommand"></textarea>
+        <button onclick="runJsonCommand()">Run JSON Command</button>
+      </div>
+
+      <div class="card">
+        <h2>Výstup</h2>
+        <pre id="output">Čakám na akciu...</pre>
+      </div>
+    </div>
+
+    <script>
+      var bootstrap = null;
+
+      function setOutput(value) {
+        document.getElementById('output').textContent = JSON.stringify(value, null, 2);
+      }
+
+      function setStatus(text) {
+        document.getElementById('status').textContent = text;
+      }
+
+      function loadBootstrap() {
+        setStatus('Načítavam konfiguráciu a posledný stav...');
+        google.script.run
+          .withSuccessHandler(function(data) {
+            bootstrap = data;
+            fillRules(data && data.config ? data.config.rules : {});
+            var state = data && data.state ? data.state : {};
+            var last = data && data.lastRun ? data.lastRun : {};
+            setStatus(
+              'Rules: ' + Object.keys(data.config.rules).length +
+              ' | Last rule: ' + (state.lastRuleId || '-') +
+              ' | Last run: ' + (last.runId || '-')
+            );
+            setOutput(data);
+            setDefaultJson();
+          })
+          .withFailureHandler(function(error) {
+            setStatus('Chyba pri načítaní dashboardu.');
+            setOutput({ success: false, error: String(error) });
+          })
+          .getDashboardBootstrap();
+      }
+
+      function fillRules(rules) {
+        var select = document.getElementById('ruleId');
+        select.innerHTML = '';
+        Object.keys(rules).forEach(function(ruleId) {
+          var option = document.createElement('option');
+          option.value = ruleId;
+          option.textContent = ruleId + ' → ' + rules[ruleId].label;
+          select.appendChild(option);
+        });
+      }
+
+      function buildCommand(forceDryRun) {
+        return {
+          ruleId: document.getElementById('ruleId').value,
+          dryRun: forceDryRun === true ? true : document.getElementById('dryRun').checked,
+          batchSize: Number(document.getElementById('batchSize').value || 25),
+          archive: document.getElementById('archive').checked,
+          confirmText: document.getElementById('confirmText').value || ''
+        };
+      }
+
+      function runDryRun() {
+        setStatus('Spúšťam dry-run...');
+        google.script.run
+          .withSuccessHandler(function(result) {
+            setStatus('Dry-run dokončený.');
+            setOutput(result);
+          })
+          .withFailureHandler(function(error) {
+            setStatus('Dry-run zlyhal.');
+            setOutput({ success: false, error: String(error) });
+          })
+          .runDashboardCommand(buildCommand(true));
+      }
+
+      function runLive() {
+        var command = buildCommand(false);
+        command.dryRun = false;
+        setStatus('Spúšťam live label-only režim...');
+        google.script.run
+          .withSuccessHandler(function(result) {
+            setStatus('Live beh dokončený.');
+            setOutput(result);
+          })
+          .withFailureHandler(function(error) {
+            setStatus('Live beh zlyhal.');
+            setOutput({ success: false, error: String(error) });
+          })
+          .runDashboardCommand(command);
+      }
+
+      function runJsonCommand() {
+        setStatus('Spúšťam JSON command...');
+        google.script.run
+          .withSuccessHandler(function(result) {
+            setStatus('JSON command dokončený.');
+            setOutput(result);
+          })
+          .withFailureHandler(function(error) {
+            setStatus('JSON command zlyhal.');
+            setOutput({ success: false, error: String(error) });
+          })
+          .runDashboardJsonCommand(document.getElementById('jsonCommand').value);
+      }
+
+      function loadLastLog() {
+        setStatus('Načítavam posledný log...');
+        google.script.run
+          .withSuccessHandler(function(result) {
+            setStatus('Posledný log načítaný.');
+            setOutput(result);
+          })
+          .withFailureHandler(function(error) {
+            setStatus('Načítanie logu zlyhalo.');
+            setOutput({ success: false, error: String(error) });
+          })
+          .showLastLog();
+      }
+
+      function resetState() {
+        setStatus('Resetujem stav...');
+        google.script.run
+          .withSuccessHandler(function(result) {
+            setStatus('Stav resetovaný.');
+            setOutput(result);
+          })
+          .withFailureHandler(function(error) {
+            setStatus('Reset zlyhal.');
+            setOutput({ success: false, error: String(error) });
+          })
+          .resetState();
+      }
+
+      function setDefaultJson() {
+        document.getElementById('jsonCommand').value = JSON.stringify({
+          action: 'runRule',
+          ruleId: 'faktury_admin',
+          dryRun: true,
+          batchSize: 25,
+          archive: false
+        }, null, 2);
+      }
+
+      loadBootstrap();
+    </script>
+  </body>
+</html>
