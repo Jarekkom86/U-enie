@@ -15,7 +15,7 @@ function getDefaultConfig() {
     batchSizeDefault: 25,
     maxRuntimeSeconds: 240,
     allowArchiveDefault: false,
-    liveConfirmationText: 'I UNDERSTAND - NO DELETE - LABEL ONLY',
+    liveConfirmationText: 'I UNDERSTAND - LABEL ONLY',
     labels: [
       '00_DNES_URGENT',
       '01_ZAKAZNICI_OBJEDNAVKY',
