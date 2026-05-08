@@ -22,7 +22,7 @@ Projekt je navrhnutý preto, aby sa Gmail triedil natívne v Google účte, nie 
 Povinný live confirmation text:
 
 ```text
-I UNDERSTAND - NO DELETE - LABEL ONLY
+I UNDERSTAND - LABEL ONLY
 ```
 
 ## Súbory
@@ -209,7 +209,7 @@ Live label-only príkaz:
   "dryRun": false,
   "batchSize": 25,
   "archive": false,
-  "confirmText": "I UNDERSTAND - NO DELETE - LABEL ONLY"
+  "confirmText": "I UNDERSTAND - LABEL ONLY"
 }
 ```
 
@@ -274,7 +274,7 @@ Skontroluj Apps Script autorizácie pre Google Sheets. Funkcia `appendLogRow()` 
 Skontroluj, či je `dryRun: false` a či `confirmText` presne sedí:
 
 ```text
-I UNDERSTAND - NO DELETE - LABEL ONLY
+I UNDERSTAND - LABEL ONLY
 ```
 
 ### Archivácia sa nespustila
