@@ -1,5 +1,25 @@
 # Priklady
 
+## KomArena operating system
+
+Tento repozitár používa pracovné štandardy pre Codex agentov a obsahový
+systém KomArena.sk. Produkčný web sa nemení priamo; zmeny majú ísť cez
+pracovnú vetvu a Pull Request.
+
+Hlavné dokumenty:
+
+- [AGENTS.md](AGENTS.md)
+- [docs/komarena-strategy.md](docs/komarena-strategy.md)
+- [docs/product-standard.md](docs/product-standard.md)
+- [docs/content-standard.md](docs/content-standard.md)
+- [docs/category-architecture.md](docs/category-architecture.md)
+- [docs/seo-internal-linking.md](docs/seo-internal-linking.md)
+- [docs/product-blog-project-system.md](docs/product-blog-project-system.md)
+- [docs/social-content-standard.md](docs/social-content-standard.md)
+- [docs/templates/product-output-template.md](docs/templates/product-output-template.md)
+- [docs/templates/article-template.md](docs/templates/article-template.md)
+- [docs/templates/social-package-template.md](docs/templates/social-package-template.md)
+- [docs/templates/csv-product-rules.md](docs/templates/csv-product-rules.md)
 
 ## calculate sum
 
