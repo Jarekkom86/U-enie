@@ -1,0 +1,177 @@
+name: KomArena validation
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate repository safety and syntax
+    runs-on: ubuntu-latest
+    env:
+      CHANGED_FILES: /tmp/komarena-changed-files.txt
+
+    steps:
+      - name: Checkout repository without credentials
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Resolve changed files for PR or branch push
+        id: changed-files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            base_sha="${{ github.event.pull_request.base.sha }}"
+            head_sha="${{ github.event.pull_request.head.sha }}"
+            echo "Comparing pull request changes: ${base_sha}..${head_sha}"
+          else
+            base_sha="${{ github.event.before }}"
+            head_sha="${{ github.sha }}"
+            if [[ "${base_sha}" =~ ^0+$ ]]; then
+              base_sha="$(git rev-list --max-parents=0 "${head_sha}" | tail -n 1)"
+              echo "Push has no usable before SHA; using first commit ${base_sha} as base."
+            else
+              echo "Comparing branch push changes: ${base_sha}..${head_sha}"
+            fi
+          fi
+
+          git diff --name-only "${base_sha}" "${head_sha}" | tee "${CHANGED_FILES}"
+
+          if [[ ! -s "${CHANGED_FILES}" ]]; then
+            echo "No changed files detected for this event."
+          fi
+
+      - name: Report changed files
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Changed files:"
+          if [[ -s "${CHANGED_FILES}" ]]; then
+            sed 's/^/- /' "${CHANGED_FILES}"
+          else
+            echo "- none"
+          fi
+
+      - name: Check PHP availability and syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if ! command -v php >/dev/null 2>&1; then
+            echo "ERROR: PHP is required for syntax validation, but the php command is not available on this runner." >&2
+            echo "Install PHP on the runner or use an image that includes PHP before running this workflow." >&2
+            exit 1
+          fi
+
+          echo "PHP version: $(php -r 'echo PHP_VERSION;')"
+
+          mapfile -d '' php_files < <(find . -path ./.git -prune -o -type f -name '*.php' -print0)
+          if (( ${#php_files[@]} == 0 )); then
+            echo "No PHP files found."
+            exit 0
+          fi
+
+          for file in "${php_files[@]}"; do
+            echo "Linting PHP syntax: ${file#./}"
+            php -l "$file"
+          done
+
+      - name: Check Node.js availability and JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if ! command -v node >/dev/null 2>&1; then
+            echo "ERROR: Node.js is required for JavaScript syntax validation, but the node command is not available on this runner." >&2
+            echo "Install Node.js on the runner or use an image that includes Node.js before running this workflow." >&2
+            exit 1
+          fi
+
+          echo "Node.js version: $(node --version)"
+
+          mapfile -d '' js_files < <(find . -path ./.git -prune -o -type f -name '*.js' -print0)
+          if (( ${#js_files[@]} == 0 )); then
+            echo "No JavaScript files found."
+            exit 0
+          fi
+
+          for file in "${js_files[@]}"; do
+            echo "Checking JavaScript syntax: ${file#./}"
+            node --check "$file"
+          done
+
+      - name: List Markdown files and lint AGENTS plus docs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Markdown files found in repository:"
+          mapfile -d '' markdown_files < <(find . -path ./.git -prune -o -type f -name '*.md' -print0)
+          if (( ${#markdown_files[@]} == 0 )); then
+            echo "- none"
+          else
+            printf '%s\0' "${markdown_files[@]}" | sort -z | xargs -0 -n 1 printf -- '- %s\n'
+          fi
+
+          if ! command -v npx >/dev/null 2>&1; then
+            echo "ERROR: npx is required to run markdownlint-cli2, but npx is not available on this runner." >&2
+            exit 1
+          fi
+
+          echo "Running markdownlint-cli2 for AGENTS.md and docs/**/*.md."
+          echo "README.md is intentionally not linted in this workflow because it may contain older Markdown issues."
+          npx --yes markdownlint-cli2 "AGENTS.md" "docs/**/*.md"
+
+      - name: Warn about sensitive file path changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ ! -s "${CHANGED_FILES}" ]]; then
+            echo "No changed files to scan for sensitive path names."
+            exit 0
+          fi
+
+          sensitive_pattern='checkout|payments?|gateway|orders?|database|migration|shipping|tax|secret|token|key|certificate|cert|pem'
+          matches="$(grep -Ei "${sensitive_pattern}" "${CHANGED_FILES}" || true)"
+
+          if [[ -n "${matches}" ]]; then
+            echo "::warning title=Sensitive path name detected::Review these changes carefully because their paths contain checkout/payment/order/database/shipping/tax/secret/token/key/certificate-related terms."
+            echo "Potentially sensitive changed paths:"
+            printf '%s\n' "${matches}" | sed 's/^/- /'
+          else
+            echo "No changed file paths matched the sensitive path warning list."
+          fi
+
+      - name: Report runtime file changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ ! -s "${CHANGED_FILES}" ]]; then
+            echo "No changed files to classify."
+            exit 0
+          fi
+
+          runtime_pattern='\.(php|css|js|html|json)$'
+          runtime_changes="$(grep -Ei "${runtime_pattern}" "${CHANGED_FILES}" || true)"
+
+          if [[ -n "${runtime_changes}" ]]; then
+            echo "Runtime-related files changed (.php, .css, .js, .html, .json):"
+            printf '%s\n' "${runtime_changes}" | sed 's/^/- /'
+            echo "This is informational only and does not block the workflow."
+          else
+            echo "No runtime-related files changed (.php, .css, .js, .html, .json)."
+          fi
