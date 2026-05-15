@@ -6,11 +6,15 @@
 
 ## Aktualna faza
 
-Autopilot OS v3 core sa pripravuje v samostatnej vetve `autopilot-os-v3-core` ako bezpecny dokumentacny PR.
+Autopilot OS v3 core je mergnuty v main. Aktualny sprint doplna prakticky Sprint Runner, scorecard, owner decision register a GitHub PR a issue sablony.
 
 ## Posledny sprint
 
-Create KomArena Autopilot OS v3 core.
+Create KomArena Autopilot OS v3 core bol zlouceny do main.
+
+## Aktualny sprint
+
+Create KomArena Autopilot Sprint Runner.
 
 ## Co je povolene autonomne
 
@@ -26,8 +30,8 @@ Autopilot este nema priamy pristup k analytike, Search Console, WooCommerce repo
 
 ## Co caka na majitela
 
-Skontrolovat a mergnut tento PR, ak rozsah sedi.
+Skontrolovat a mergnut Sprint Runner PR, ak prejdu kontroly a rozsah sedi.
 
 ## Odporucany dalsi sprint
 
-Create KomArena Autopilot Sprint Runner.
+Create ESP32 ESPHome starter product cluster draft.
