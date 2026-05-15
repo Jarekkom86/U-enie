@@ -73,10 +73,10 @@ Projekt ma byt navrhnuty iba ako nizkonapatovy priklad. Neobsahuje pracu s 230 V
 
 Technicke tvrdenia musia byt v dalsom produktovom sprinte overene z oficialnych zdrojov:
 
-- ESPHome ESP32 platform documentation: https://esphome.io/components/esp32/
-- ESPHome getting started documentation: https://esphome.io/guides/getting_started_hassio/
-- Home Assistant ESPHome integration: https://www.home-assistant.io/integrations/esphome/
-- Espressif ESP32-DevKitC documentation: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html
+- [ESPHome ESP32 platform documentation](https://esphome.io/components/esp32/).
+- [ESPHome getting started documentation](https://esphome.io/guides/getting_started_hassio/).
+- [Home Assistant ESPHome integration](https://www.home-assistant.io/integrations/esphome/).
+- [Espressif ESP32-DevKitC documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html).
 
 Otvoreny bod: kompatibilitu s Home Assistant / ESPHome / ESPBuild je potrebne overit podla konkretnej konfiguracie.
 
