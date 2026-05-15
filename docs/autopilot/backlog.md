@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD060 -->
+
 # Autopilot Backlog
 
 | ID | Nazov | Typ | Obchodny dopad | Riziko | Vetva | Vystup | Uroven | Stav |
