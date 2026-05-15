@@ -2531,3 +2531,21 @@ with open('users2.json', 'w') as f:
 
 
 
+
+## Vyhľadanie nepoužívaných aplikácií (Windows)
+
+```bash
+python unused_apps_cleaner.py --days 180
+```
+
+Voliteľné odinštalovanie s potvrdením pre každú aplikáciu:
+
+```bash
+python unused_apps_cleaner.py --days 180 --delete
+```
+
+Testovací režim (nič sa nespúšťa, iba sa vypíšu odinštalačné príkazy):
+
+```bash
+python unused_apps_cleaner.py --days 180 --delete --dry-run
+```
