@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD060 -->
+
 # Charter KomArena Autopilot OS v3
 
 ## Poslanie
