@@ -6,15 +6,15 @@
 
 ## Aktualna faza
 
-Autopilot OS v3 core a Sprint Runner su mergnute v main. Aktualny sprint pripravuje prvy obchodny LEVEL 2 draft: ESP32 ESPHome starter product cluster.
+Autopilot OS v3 core, Sprint Runner a ESP32 ESPHome starter product cluster su mergnute v main. Aktualny sprint pripravuje LEVEL 2 produktovy zdrojovy dokument pre ESP32 DevKit.
 
 ## Posledny sprint
 
-Create KomArena Autopilot Sprint Runner bol zlouceny do main.
+Create ESP32 ESPHome starter product cluster draft bol zlouceny do main.
 
 ## Aktualny sprint
 
-Create ESP32 ESPHome starter product cluster draft.
+Create ESP32 DevKit source document.
 
 ## Co je povolene autonomne
 
@@ -26,12 +26,12 @@ Priame zmeny do main, produkcne nasadenie, checkout, platby, objednavky, databaz
 
 ## Otvorene rizika
 
-Autopilot este nema priamy pristup k analytike, Search Console, WooCommerce reportom ani staging checkout testom. Produktove udaje v ESP32 ESPHome starter clustri su draft a vyzaduju overenie konkretneho modelu, skladu, cien a obsahu balenia.
+Autopilot este nema priamy pristup k analytike, Search Console, WooCommerce reportom ani staging checkout testom. ESP32 produktovy dokument je draft a vyzaduje overenie konkretneho modelu, parametrov, skladu, ceny, EAN, SKU, fotografii a obsahu balenia.
 
 ## Co caka na majitela
 
-Skontrolovat a mergnut ESP32 ESPHome starter product cluster PR, ak rozsah sedi. Tento sprint neimportuje CSV a nepublikuje produkty.
+Skontrolovat a mergnut ESP32 DevKit source document PR, ak rozsah sedi. Tento sprint neimportuje CSV a nepublikuje produkt.
 
 ## Odporucany dalsi sprint
 
-Create ESP32 DevKit source document.
+Create ESP32 DevKit WooCommerce CSV draft az po overeni konkretneho modelu, alebo ako bezpecnejsia nahrada Create DHT22 sensor source document.
