@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD060 -->
+
 # Schvalovacie brany
 
 ## LEVEL 1 uplna autonomia
