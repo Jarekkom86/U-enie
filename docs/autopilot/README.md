@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD060 -->
+
 # KomArena Autopilot OS v3
 
 Tento priecinok je jadro systemu pre bezpecny autonomny rozvoj KomArena.sk. Autopilot pracuje cez samostatne vetvy, Pull Requesty, backlog, QA, dizajn, SEO a stavovy subor.
