@@ -3,7 +3,7 @@
 WordPress plugin that unifies frontend design across homepage, header, search, menu, WooCommerce listing/category/product pages, sidebar widgets and footer for KomArena.sk.
 
 ## Version
-1.0.1
+1.0.2
 
 ## Install
 1. Upload `komarena-ui-system` folder as ZIP in **WordPress Admin → Plugins → Add New → Upload Plugin**.
@@ -11,7 +11,10 @@ WordPress plugin that unifies frontend design across homepage, header, search, m
 3. Clear cache/CDN.
 
 ## What it does
-- Enqueues one frontend CSS file via `wp_enqueue_scripts`.
+- Enqueues frontend CSS files via `wp_enqueue_scripts`.
+- Adds `komarena-unified-ui.css` as the base visual system.
+- Adds `komarena-web-polish.css` as the 1.0.2 frontend polish layer.
+- Improves homepage rhythm, product cards, category/shop listings, product detail readability, CTA consistency and focus states.
 - Does not change admin UI.
 - Does not change database.
 - Does not call external services.
@@ -20,7 +23,6 @@ WordPress plugin that unifies frontend design across homepage, header, search, m
 
 ## Notes
 - Covers native WooCommerce + AWS + DGWT/FiboSearch header search selectors.
-- JavaScript file is present for future use and is intentionally **not enqueued** in v1.0.1.
+- JavaScript file is present for future use and is intentionally **not enqueued** in v1.0.2.
 - Status: **ready for test installation in WordPress**, not automatic production merge.
-
-- Neve/WooCommerce strengthened selectors are included for safer theme override behavior.
+- Transaction pages such as checkout, cart and account stay guarded from aggressive layout restyling.
