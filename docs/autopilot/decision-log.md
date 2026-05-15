@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD060 -->
+
 # Decision Log
 
 | Datum | Rozhodnutie | Dovod | Dopad | Kto rozhoduje | Stav |
