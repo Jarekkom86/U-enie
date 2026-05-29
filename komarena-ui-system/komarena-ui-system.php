@@ -3,7 +3,7 @@
  * Plugin Name: KomArena UI System
  * Plugin URI: https://komarena.sk/
  * Description: Unified frontend visual system for KomArena.sk (header, sidebar, WooCommerce listings, product pages, and responsive polish).
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: KomArena.sk + Assistant
  * License: GPL-2.0-or-later
  * Text Domain: komarena-ui-system
@@ -14,12 +14,14 @@ if (!defined('ABSPATH')) {
 }
 
 final class KomArena_Ui_System {
-    const VERSION = '1.0.2';
+    const VERSION = '1.0.3';
     const HANDLE_STYLE = 'komarena-ui-system-style';
     const HANDLE_POLISH_STYLE = 'komarena-ui-system-polish-style';
+    const ESP_ESPHOME_SHORTCODE = 'komarena_esp_esphome_page';
 
     public static function init() {
         add_action('wp_enqueue_scripts', array(__CLASS__, 'enqueue_assets'));
+        add_action('init', array(__CLASS__, 'register_shortcodes'));
     }
 
     public static function enqueue_assets() {
@@ -40,6 +42,26 @@ final class KomArena_Ui_System {
         if (file_exists($polish_css_file)) {
             wp_enqueue_style(self::HANDLE_POLISH_STYLE, $polish_css_url, array(self::HANDLE_STYLE), $polish_version, 'all');
         }
+    }
+
+    public static function register_shortcodes() {
+        add_shortcode(self::ESP_ESPHOME_SHORTCODE, array(__CLASS__, 'render_esp_esphome_page'));
+    }
+
+    public static function render_esp_esphome_page() {
+        $template_file = plugin_dir_path(__FILE__) . 'templates/esp-esphome-page.html';
+
+        if (!file_exists($template_file)) {
+            return '';
+        }
+
+        $template = file_get_contents($template_file);
+
+        if ($template === false) {
+            return '';
+        }
+
+        return $template;
     }
 }
 

@@ -1,0 +1,255 @@
+<article class="ka-esp-page" id="komarena-esp-esphome">
+  <section class="ka-esp-section ka-esp-hero" aria-labelledby="ka-esp-hero-title">
+    <div class="ka-esp-hero__content">
+      <p class="ka-esp-eyebrow">KomArena Build Lab</p>
+      <h1 id="ka-esp-hero-title">ESP &amp; ESPHome: vlastné smart home senzory, relé a doplnky pre Home Assistant</h1>
+      <p class="ka-esp-lead">ESPHome pomáha vytvárať vlastné zariadenia pre Home Assistant bez klasického programovania. S ESP32 doskou, vhodným senzorom, stabilným napájaním a opatrnou konfiguráciou môžete pripraviť meranie teploty, vlhkosti, monitoring technickej miestnosti alebo jednoduché nízkonapäťové automatizácie.</p>
+      <div class="ka-esp-actions" aria-label="Hlavné akcie">
+        <a class="ka-esp-button ka-esp-button--primary" href="/?s=ESP32&amp;post_type=product">Pozrieť ESP produkty</a>
+        <a class="ka-esp-button ka-esp-button--secondary" href="#ako-zacat-s-esphome">Ako začať s ESPHome</a>
+      </div>
+    </div>
+    <div class="ka-esp-diagram" aria-label="Technický tok Home Assistant, ESPHome, ESP32 a pripojené moduly">
+      <div class="ka-esp-diagram__node ka-esp-diagram__node--main">Home Assistant</div>
+      <div class="ka-esp-diagram__arrow" aria-hidden="true">&rarr;</div>
+      <div class="ka-esp-diagram__node">ESPHome</div>
+      <div class="ka-esp-diagram__arrow" aria-hidden="true">&rarr;</div>
+      <div class="ka-esp-diagram__node">ESP32</div>
+      <div class="ka-esp-diagram__branches" aria-label="Možné pripojené časti">
+        <span>senzory</span>
+        <span>relé</span>
+        <span>displeje</span>
+        <span>meranie</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="ka-esp-section" aria-labelledby="preco-esphome">
+    <div class="ka-esp-section__head">
+      <p class="ka-esp-eyebrow">Prečo ESPHome</p>
+      <h2 id="preco-esphome">Prečo zvoliť ESPHome a ESP32</h2>
+      <p>ESPHome dáva zmysel vtedy, keď chcete vlastný smart home prvok, rozumiete základom nízkonapäťového zapojenia a nechcete byť odkázaní iba na hotové zariadenia.</p>
+    </div>
+    <div class="ka-esp-grid ka-esp-grid--four">
+      <article class="ka-esp-card">
+        <h3>Lokálna integrácia s Home Assistantom</h3>
+        <p>Zariadenie je možné pripraviť tak, aby komunikovalo s Home Assistantom v lokálnej sieti. Dostupnosť funkcií závisí od konkrétnej konfigurácie ESPHome.</p>
+      </article>
+      <article class="ka-esp-card">
+        <h3>Vlastné senzory a moduly</h3>
+        <p>ESP32 sa často používa pri meraní teploty, vlhkosti, stavu kontaktu, pohybu alebo pri nízkonapäťovej signalizácii.</p>
+      </article>
+      <article class="ka-esp-card">
+        <h3>Flexibilita pre projekty</h3>
+        <p>Jedna vývojová doska môže slúžiť ako základ pre rôzne prototypy. Pred trvalým použitím treba overiť napájanie, krytovanie a zapojenie.</p>
+      </article>
+      <article class="ka-esp-card">
+        <h3>Výborný pomer cena / možnosti</h3>
+        <p>Pri správne zvolenej zostave získate praktický základ na učenie aj malé projekty bez toho, aby ste kupovali hotové riešenie na každý scenár.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="ka-esp-section ka-esp-split" id="ako-zacat-s-esphome" aria-labelledby="ako-zacat-title">
+    <div>
+      <p class="ka-esp-eyebrow">Prvý projekt</p>
+      <h2 id="ako-zacat-title">Ako začať s ESPHome</h2>
+      <ol class="ka-esp-steps">
+        <li>Vybrať ESP32 dosku podľa dostupnosti, pinov a napájania konkrétneho modelu.</li>
+        <li>Pridať jednoduchý senzor alebo modul, napríklad teplotu, vlhkosť alebo stav kontaktu.</li>
+        <li>Pripraviť stabilné nízkonapäťové napájanie a overiť polaritu pred zapnutím.</li>
+        <li>Nakonfigurovať ESPHome cez YAML podľa dokumentácie a konkrétneho komponentu.</li>
+        <li>Pridať zariadenie do Home Assistantu a otestovať ho najprv na stole.</li>
+      </ol>
+    </div>
+    <aside class="ka-esp-note" aria-label="KomArena odporúčanie">
+      <h3>KomArena odporúčanie</h3>
+      <p>Nemusíte začínať komplikovaným rozvádzačom ani prácou so sieťovým napätím. Na prvý bezpečný projekt stačí ESP32 doska, jednoduchý senzor, USB napájanie a Home Assistant. KomArena má sortiment budovať tak, aby ste vedeli kúpiť kompatibilné moduly bez chaosu, ale konkrétnu kompatibilitu treba vždy overiť podľa modulu, firmvéru a zapojenia.</p>
+    </aside>
+  </section>
+
+  <section class="ka-esp-section" aria-labelledby="skladba-systemu">
+    <div class="ka-esp-section__head">
+      <p class="ka-esp-eyebrow">Odporúčaná zostava</p>
+      <h2 id="skladba-systemu">Odporúčaná skladba ESPHome systému</h2>
+      <p>Produktové bloky sú zostavené ako praktický nákupný kontext. Nejde o potvrdenie kompatibility každého konkrétneho kusu bez overenia parametrov.</p>
+    </div>
+    <div class="ka-esp-grid ka-esp-grid--four">
+      <article class="ka-esp-product">
+        <h3>ESP32 vývojová doska</h3>
+        <p>Základ projektu pre senzor, displej alebo jednoduchú automatizáciu.</p>
+        <p class="ka-esp-compat">Kompatibilita: vhodné pre ESPHome projekty podľa konkrétnej dosky a konfigurácie.</p>
+        <a class="ka-esp-button ka-esp-button--small" href="/?s=ESP32&amp;post_type=product">Pozrieť produkty</a>
+      </article>
+      <article class="ka-esp-product">
+        <h3>DHT22 alebo BME280 senzor</h3>
+        <p>Meranie teploty a vlhkosti v miestnosti, dielni alebo technickom priestore.</p>
+        <p class="ka-esp-compat">Kompatibilita: závisí od konkrétneho senzora, napájania a ESPHome komponentu.</p>
+        <a class="ka-esp-button ka-esp-button--small" href="/?s=DHT22%20BME280&amp;post_type=product">Pozrieť produkty</a>
+      </article>
+      <article class="ka-esp-product">
+        <h3>Relé modul</h3>
+        <p>Nízkonapäťové ovládanie alebo príprava pre odborne navrhnuté spínanie záťaže.</p>
+        <p class="ka-esp-compat">Kompatibilita: treba overiť logiku vstupu, napájanie, dimenzovanie a bezpečné zapojenie.</p>
+        <a class="ka-esp-button ka-esp-button--small" href="/?s=rel%C3%A9&amp;post_type=product">Pozrieť produkty</a>
+      </article>
+      <article class="ka-esp-product">
+        <h3>Napájací modul / USB napájanie</h3>
+        <p>Stabilné napájanie je základ spoľahlivého ESP projektu.</p>
+        <p class="ka-esp-compat">Kompatibilita: závisí od dosky, prúdovej rezervy, konektora a reálneho zaťaženia.</p>
+        <a class="ka-esp-button ka-esp-button--small" href="/?s=USB%20nap%C3%A1janie&amp;post_type=product">Pozrieť produkty</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="ka-esp-section" aria-labelledby="esp32-parametre">
+    <div class="ka-esp-section__head">
+      <p class="ka-esp-eyebrow">Technický prehľad</p>
+      <h2 id="esp32-parametre">ESP32 - technické parametre</h2>
+      <p>Uvádzame iba všeobecný bezpečný rámec. Presné hodnoty treba vždy skontrolovať podľa konkrétnej dosky, modulu alebo dokumentácie výrobcu.</p>
+    </div>
+    <div class="ka-esp-table-wrap">
+      <table class="ka-esp-table">
+        <tbody>
+          <tr>
+            <th>Typ platformy</th>
+            <td>Mikrokontrolérová vývojová doska.</td>
+          </tr>
+          <tr>
+            <th>Bezdrôtová konektivita</th>
+            <td>Wi-Fi, Bluetooth podľa konkrétneho modulu.</td>
+          </tr>
+          <tr>
+            <th>Napájanie</th>
+            <td>Zvyčajne 5 V cez USB alebo 3,3 V logika podľa konkrétnej dosky.</td>
+          </tr>
+          <tr>
+            <th>Využitie</th>
+            <td>Senzory, relé, meranie, displeje, automatizácie a prototypovanie.</td>
+          </tr>
+          <tr>
+            <th>Integrácia</th>
+            <td>ESPHome, Home Assistant podľa konfigurácie a podpory komponentov.</td>
+          </tr>
+          <tr>
+            <th>Programovanie</th>
+            <td>ESPHome YAML, Arduino IDE, PlatformIO podľa použitia.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ka-esp-section" aria-labelledby="esphome-prax">
+    <div class="ka-esp-section__head">
+      <p class="ka-esp-eyebrow">Použitie v praxi</p>
+      <h2 id="esphome-prax">ESPHome v praxi</h2>
+    </div>
+    <div class="ka-esp-grid ka-esp-grid--four">
+      <article class="ka-esp-card">
+        <h3>Meranie teploty a vlhkosti</h3>
+        <p>Jednoduchý senzorický uzol pre izbu, dielňu, serverový kút alebo technickú miestnosť.</p>
+      </article>
+      <article class="ka-esp-card">
+        <h3>Ovládanie relé a svetiel</h3>
+        <p>Relé treba navrhovať opatrne. Pri 230 V patrí návrh a zapojenie kvalifikovanej osobe.</p>
+      </article>
+      <article class="ka-esp-card">
+        <h3>Monitoring technickej miestnosti</h3>
+        <p>Teplota, vlhkosť, únik vody alebo stav dverí môžu byť základom praktických upozornení v Home Assistante.</p>
+      </article>
+      <article class="ka-esp-card">
+        <h3>Vlastné smart home doplnky</h3>
+        <p>ESPHome je vhodné pre zákazníkov, ktorí chcú vlastné tlačidlá, displeje, indikáciu alebo špecifické meranie.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="ka-esp-section ka-esp-safety" aria-labelledby="bezpecnost">
+    <h2 id="bezpecnost">Bezpečnostné odporúčania</h2>
+    <ul>
+      <li>Pri práci s 230 V musí zapojenie robiť kvalifikovaná osoba.</li>
+      <li>Relé moduly musia byť správne dimenzované pre konkrétnu záťaž.</li>
+      <li>ESP dosky treba napájať stabilným zdrojom a pred zapnutím overiť polaritu.</li>
+      <li>Nepoužívajte neizolované moduly voľne pri sieťovom napätí.</li>
+      <li>Pri prototypovaní používajte krabičky, poistky, bezpečné svorky a mechanicky spoľahlivé uloženie.</li>
+      <li>KomArena má odporúčať bezpečné riešenia, nie riskantné zapojenia.</li>
+    </ul>
+  </section>
+
+  <section class="ka-esp-section" aria-labelledby="pre-koho">
+    <div class="ka-esp-section__head">
+      <p class="ka-esp-eyebrow">Vhodné použitie</p>
+      <h2 id="pre-koho">Pre koho je ESPHome vhodné</h2>
+    </div>
+    <div class="ka-esp-grid ka-esp-grid--four">
+      <article class="ka-esp-card">
+        <h3>Používatelia Home Assistantu</h3>
+        <p>Pre ľudí, ktorí chcú rozšíriť smart domácnosť o vlastné meranie alebo lokálnu automatizáciu.</p>
+      </article>
+      <article class="ka-esp-card">
+        <h3>Vlastné senzory</h3>
+        <p>Pre zákazníkov, ktorí potrebujú merať niečo konkrétne, čo hotové zariadenie nerieši ideálne.</p>
+      </article>
+      <article class="ka-esp-card">
+        <h3>Technicky zvedaví zákazníci</h3>
+        <p>Pre tých, ktorí sa chcú naučiť základy ESPHome, senzorov a bezpečného nízkonapäťového prototypovania.</p>
+      </article>
+      <article class="ka-esp-card">
+        <h3>Servisné a projektové riešenia</h3>
+        <p>Pre KomArena Build Lab, návody a overené modelové zostavy s jasnými limitmi použitia.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="ka-esp-section ka-esp-fair-choice" aria-labelledby="hotove-zariadenie">
+    <p class="ka-esp-eyebrow">Férové odporúčanie</p>
+    <h2 id="hotove-zariadenie">Kedy radšej zvoliť hotové zariadenie</h2>
+    <p>ESPHome nie je vždy najjednoduchšia cesta. Ak zákazník nechce nič nastavovať, nechce riešiť napájanie, krabičku, aktualizácie alebo bezpečnosť zapojenia, môže byť lepšie hotové Zigbee, Thread alebo Wi-Fi zariadenie. Úloha KomArena je pomôcť vybrať správnu cestu: hotový produkt tam, kde šetrí čas, a ESPHome tam, kde dáva zmysel vlastné riešenie.</p>
+  </section>
+
+  <section class="ka-esp-section" aria-labelledby="faq">
+    <div class="ka-esp-section__head">
+      <p class="ka-esp-eyebrow">FAQ</p>
+      <h2 id="faq">Časté otázky k ESPHome</h2>
+    </div>
+    <div class="ka-esp-faq">
+      <details>
+        <summary>Potrebujem vedieť programovať?</summary>
+        <p>Na prvé projekty zvyčajne stačí rozumieť základnej konfigurácii ESPHome YAML. Pri zložitejších zariadeniach je výhodou technická skúsenosť a schopnosť čítať dokumentáciu.</p>
+      </details>
+      <details>
+        <summary>Funguje ESPHome bez internetu?</summary>
+        <p>ESPHome zariadenia môžu fungovať v lokálnej sieti s Home Assistantom podľa konfigurácie. Internet môže byť potrebný pri inštalácii, aktualizáciách alebo sťahovaní závislostí.</p>
+      </details>
+      <details>
+        <summary>Je ESPHome vhodné pre začiatočníka?</summary>
+        <p>Áno, ak začne bezpečným nízkonapäťovým projektom na stole: ESP32, USB napájanie a jeden jednoduchý senzor. Nie je vhodné začínať zásahom do 230 V elektroinštalácie.</p>
+      </details>
+      <details>
+        <summary>Môžem ovládať 230 V zariadenia?</summary>
+        <p>Technicky existujú relé a moduly na spínanie záťaže, ale práca so sieťovým napätím patrí kvalifikovanej osobe. Modul musí byť správne dimenzovaný, izolovaný a uložený v bezpečnom kryte.</p>
+      </details>
+      <details>
+        <summary>Aký je rozdiel medzi ESP32 a ESP8266?</summary>
+        <p>ESP32 je novšia a flexibilnejšia platforma s širšími možnosťami podľa konkrétneho modulu. ESP8266 sa stále používa pri jednoduchých Wi-Fi projektoch, ale výber závisí od požiadaviek projektu.</p>
+      </details>
+      <details>
+        <summary>Ako sa ESPHome prepája s Home Assistantom?</summary>
+        <p>ESPHome pripraví firmvér pre zariadenie a Home Assistant ho môže integrovať ako lokálne zariadenie podľa konfigurácie, siete a podporovaných komponentov.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="ka-esp-section ka-esp-sources" aria-labelledby="zdroje">
+    <p class="ka-esp-eyebrow">Kompatibilita a overené zdroje</p>
+    <h2 id="zdroje">Overujte podľa konkrétnej dosky a komponentu</h2>
+    <p>Kompatibilita závisí od dosky, senzora, napájania, firmvéru, ESPHome komponentu a finálneho zapojenia. Pred publikovaním konkrétnych produktov odporúčame overiť parametre z primárnych zdrojov.</p>
+    <ul class="ka-esp-source-list">
+      <li><a href="https://esphome.io/" rel="noopener">ESPHome dokumentácia</a></li>
+      <li><a href="https://www.home-assistant.io/integrations/esphome/" rel="noopener">Home Assistant ESPHome integrácia</a></li>
+      <li><a href="https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/index.html" rel="noopener">ESP32 dokumentácia konkrétnej dosky</a></li>
+      <li>KomArena návody a Build Lab - doplniť po publikovaní interných návodov.</li>
+    </ul>
+  </section>
+</article>
