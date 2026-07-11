@@ -2,9 +2,22 @@
 
 # KomArena WebOps OS report
 
+## Stav reportu
+
+Tento dokument je historicky snapshot vytvoreny v PR #12 dňa 2026-05-14. Aktualny prevadzkovy stav Autopilot OS sa vedie v `docs/autopilot/state.md` a planovana praca v `docs/autopilot/backlog.md`.
+
+Po vzniku reportu boli do `main` zloucene:
+
+- PR #13 — KomArena Autopilot OS v3 core,
+- PR #14 — KomArena Autopilot Sprint Runner,
+- PR #15 — ESP32 ESPHome starter product cluster draft,
+- PR #16 — ESP32 DevKit source document.
+
+Otvoreny PR #19 nie je sucastou `main`. Tento report zostava pracovnou mapou a historickym podkladom; pri rozpore ma prednost aktualny `state.md`, backlog a potvrdena Git historia.
+
 ## Summary
 
-Tento report mapuje aktuálny stav repozitára pre autonómnu prácu Codex agentov na KomArena.sk. Cieľom je pomenovať, čo už v repozitári existuje, kde sa nachádzajú produktové CSV, šablóny, stránky a obsahové štandardy, čo je pripravené na ďalšiu prácu, čo chýba a ktoré oblasti sú rizikové.
+Tento report mapoval stav repozitara pri vytvoreni PR #12 pre autonomnu pracu Codex agentov na KomArena.sk. Cieľom je pomenovať, čo už v repozitári existuje, kde sa nachádzajú produktové CSV, šablóny, stránky a obsahové štandardy, čo je pripravené na ďalšiu prácu, čo chýba a ktoré oblasti sú rizikové.
 
 Report nemení produktové dáta, runtime kód, nastavenia produkčného webu ani importné súbory. Slúži ako pracovná mapa pre ďalšie malé Pull Requesty.
 
@@ -105,7 +118,7 @@ Táto časť nepôsobí ako jadro KomArena e-shopu. Pri autonómnej práci na Ko
 - Chýba adresár pre blogové návrhy alebo hotové články.
 - Chýba adresár pre modelové projekty a predajné zostavy.
 - Chýba evidencia interných odkazov medzi produktmi, článkami, kategóriami a sociálnymi výstupmi.
-- Chýba bezpečný backlog issues priamo v repozitári, ktorý by agent vedel spracovať bez prístupu k GitHub Issues.
+- Chýba synchronizácia repozitárového backlogu s GitHub Issues a PR metadátami; autoritatívny repo backlog je v `docs/autopilot/backlog.md`.
 - Chýba lokálna dokumentácia k tomu, ako validovať CSV nad rámec základného parsovania.
 - Chýba dokumentovaný postup publikovania produktu z `draft` do `publish`.
 - Chýba evidencia zdrojov pravdy pre každý produkt mimo jednotlivých produktových reportov.
@@ -179,7 +192,7 @@ Táto časť nepôsobí ako jadro KomArena e-shopu. Pri autonómnej práci na Ko
 
 ## Open points
 
-- Otvorený bod: otvorené GitHub Pull Requesty nebolo možné lokálne skontrolovať, pretože príkaz `gh` nie je v prostredí dostupný.
+- Otvorený bod: rozhodnúť o ďalšom postupe pre otvorený PR #19; nie je súčasťou `main`.
 - Otvorený bod: overiť, či produkčný WordPress obsahuje exportovateľné stránky, blogy a produkty, ktoré zatiaľ nie sú v tomto repozitári.
 - Otvorený bod: rozhodnúť, či sa bude pôvodný 20-produktový CSV balík ďalej udržiavať, alebo nahradí overenejším menším balíkom.
 - Otvorený bod: potvrdiť cieľovú štruktúru adresárov pre blogové návrhy, modelové projekty, produktové dokumenty a interné prelinkovanie.
