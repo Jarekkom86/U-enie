@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Replaced hardcoded shop, cart and ReSmart service destinations with WooCommerce-derived URLs and audited canonical fallbacks.
+- Sent product search to the verified shop archive and removed unsupported `SearchAction` structured data.
+- Removed automatic featured/latest product selection; cards now require explicit approved product IDs and safely fall back to categories or a fourth shop card.
+- Updated the footer returns link to the audited canonical `/reklamacie-a-vratenie/` URL.
+- Kept the template opt-in: no WordPress pages, products, redirects, cache or production settings were changed.
+
 ## 1.1.0-beta1 - 2026-07-16
 
 - Added the opt-in **KomArena Homepage v4 (staging)** plugin page template.

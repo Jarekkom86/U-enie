@@ -15,11 +15,11 @@ The repository implementation includes:
 - a dedicated CSS bundle,
 - one H1 and semantic heading order,
 - crawlable HTML navigation and internal links,
-- product search using the standard WordPress/WooCommerce query,
-- WooCommerce-backed product cards,
+- product search posted to the verified WooCommerce shop archive rather than the redirected root query endpoint,
+- WooCommerce-backed product cards supplied only through explicit approved IDs,
 - category fallbacks when product data is incomplete,
 - dynamic cart count,
-- structured data for OnlineStore, WebSite and ReSmart Service,
+- structured data for OnlineStore, WebSite and ReSmart Service without an unverified SearchAction,
 - no custom JavaScript,
 - reduced-motion support,
 - staging-only activation through a selectable page template.
@@ -30,9 +30,10 @@ The implementation must not be enabled as the public homepage until all of the f
 
 - approved local hero and section photographs are uploaded in WebP or AVIF,
 - remote image defaults are replaced through `komarena_home_v4_images`,
-- the four featured products are explicitly approved and supplied through `komarena_home_v4_product_ids`,
+- one to four products are explicitly approved and supplied through `komarena_home_v4_product_ids`; the current audit validates only `2997`, `2984` and `2978`, with a fourth shop card used for a three-product set,
+- product `2467` remains excluded until its price, main image and source-backed copy pass a new audit,
 - incorrect or unverified WooCommerce prices are fixed or the affected products remain unpublished,
-- every navigation target returns the intended page and HTTP 200,
+- every navigation target returns the intended canonical page and HTTP 200 without an unnecessary redirect,
 - ReSmart form and privacy acceptance render correctly,
 - staging Lighthouse and accessibility checks pass,
 - a production backup and rollback path are confirmed.
@@ -80,7 +81,7 @@ The implementation must not be enabled as the public homepage until all of the f
 ### W-001 — Staging content mapping
 
 - map real WordPress pages and product-category slugs,
-- identify four approved featured products,
+- identify one to four explicitly approved products; do not fall back to featured or latest products,
 - verify price, stock, image rights and compatibility,
 - supply IDs through the documented filter,
 - do not publish or change product data without owner approval.

@@ -12,45 +12,44 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+$ka_shop_url = '';
+if (function_exists('wc_get_page_permalink')) {
+    $ka_shop_url = wc_get_page_permalink('shop');
+}
+if (!$ka_shop_url && function_exists('get_post_type_archive_link')) {
+    $ka_shop_url = get_post_type_archive_link('product');
+}
+if (!$ka_shop_url) {
+    $ka_shop_url = home_url('/produkty/');
+}
+
 $ka_cart_count = 0;
-$ka_cart_url = home_url('/kosik/');
+$ka_cart_url = '';
 if (function_exists('WC') && WC()->cart) {
     $ka_cart_count = (int) WC()->cart->get_cart_contents_count();
 }
 if (function_exists('wc_get_cart_url')) {
     $ka_cart_url = wc_get_cart_url();
 }
+if (!$ka_cart_url && function_exists('wc_get_page_permalink')) {
+    $ka_cart_url = wc_get_page_permalink('cart');
+}
+if (!$ka_cart_url) {
+    $ka_cart_url = home_url('/cart/');
+}
+
+$ka_resmart_service_url = home_url('/resmart/#objednat-servis');
 
 $ka_products = array();
-if (function_exists('wc_get_products')) {
+if (function_exists('wc_get_product')) {
     $ka_product_ids = array_filter(array_map('absint', (array) apply_filters('komarena_home_v4_product_ids', array())));
-    if ($ka_product_ids) {
-        foreach ($ka_product_ids as $ka_product_id) {
-            $ka_product = wc_get_product($ka_product_id);
-            if ($ka_product && 'publish' === get_post_status($ka_product_id)) {
-                $ka_products[] = $ka_product;
-            }
-            if (4 <= count($ka_products)) {
-                break;
-            }
+    foreach ($ka_product_ids as $ka_product_id) {
+        $ka_product = wc_get_product($ka_product_id);
+        if ($ka_product && 'publish' === get_post_status($ka_product_id)) {
+            $ka_products[] = $ka_product;
         }
-    } else {
-        $ka_products = wc_get_products(array(
-            'status' => 'publish',
-            'limit' => 4,
-            'featured' => true,
-            'stock_status' => 'instock',
-            'orderby' => 'date',
-            'order' => 'DESC',
-        ));
-        if (!$ka_products) {
-            $ka_products = wc_get_products(array(
-                'status' => 'publish',
-                'limit' => 4,
-                'stock_status' => 'instock',
-                'orderby' => 'date',
-                'order' => 'DESC',
-            ));
+        if (4 <= count($ka_products)) {
+            break;
         }
     }
 }
@@ -70,7 +69,7 @@ $ka_images = (array) apply_filters('komarena_home_v4_images', $ka_image_defaults
 $ka_has_seo_plugin = defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION') || defined('AIOSEO_VERSION');
 $ka_service_node = array(
     '@type' => 'Service',
-    '@id' => home_url('/resmart/#service'),
+    '@id' => $ka_resmart_service_url,
     'name' => 'ReSmart servis smart domácnosti',
     'url' => home_url('/resmart/'),
     'provider' => array(
@@ -103,11 +102,6 @@ if ($ka_has_seo_plugin) {
                 'name' => get_bloginfo('name') ?: 'KomArena',
                 'inLanguage' => 'sk-SK',
                 'publisher' => array('@id' => home_url('/#organization')),
-                'potentialAction' => array(
-                    '@type' => 'SearchAction',
-                    'target' => home_url('/?s={search_term_string}&post_type=product'),
-                    'query-input' => 'required name=search_term_string',
-                ),
             ),
             $ka_service_node,
         ),

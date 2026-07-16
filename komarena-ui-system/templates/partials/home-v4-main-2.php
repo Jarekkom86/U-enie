@@ -9,13 +9,13 @@
     </div>
     <div class="product-toolbar">
       <div class="filters" aria-label="Kategórie produktov">
-        <a class="chip active" href="<?php echo esc_url(home_url('/obchod/')); ?>">Odporúčané</a>
+        <a class="chip active" href="<?php echo esc_url($ka_shop_url); ?>">Odporúčané</a>
         <a class="chip" href="<?php echo esc_url(home_url('/home-assistant/')); ?>">Home Assistant</a>
         <a class="chip" href="<?php echo esc_url(home_url('/protokoly-a-integracie/')); ?>">Zigbee</a>
         <a class="chip" href="<?php echo esc_url(home_url('/esp-esphome/')); ?>">ESPHome</a>
         <a class="chip" href="<?php echo esc_url(home_url('/napajanie/')); ?>">Napájanie</a>
       </div>
-      <a class="text-link" href="<?php echo esc_url(home_url('/obchod/')); ?>">Všetky produkty <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="text-link" href="<?php echo esc_url($ka_shop_url); ?>">Všetky produkty <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <?php if (!empty($ka_products)) : ?>
       <div class="product-grid">
@@ -42,13 +42,23 @@
             </div>
           </article>
         <?php endforeach; ?>
+        <?php if (3 === count($ka_products)) : ?>
+          <article class="product-card product-fallback">
+            <div class="product-content">
+              <span class="product-kicker">Celý sortiment</span>
+              <h3><a href="<?php echo esc_url($ka_shop_url); ?>">Všetky produkty</a></h3>
+              <p>Prezrite si aktuálne publikovaný sortiment a vyberte si podľa svojho projektu.</p>
+              <div class="product-footer"><a href="<?php echo esc_url($ka_shop_url); ?>">Otvoriť obchod →</a></div>
+            </div>
+          </article>
+        <?php endif; ?>
       </div>
     <?php else : ?>
       <div class="product-grid product-grid-fallback">
         <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/home-assistant/')); ?>"><div class="product-content"><span class="product-kicker">Lokálne centrum</span><h3>Home Assistant</h3><p>Huby, koordinátory a príslušenstvo pre stabilný základ smart domácnosti.</p><span class="text-link">Otvoriť kategóriu →</span></div></a>
         <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/esp-esphome/')); ?>"><div class="product-content"><span class="product-kicker">Vlastné projekty</span><h3>ESPHome</h3><p>ESP32, senzory, relé a napájanie pre lokálne automatizácie.</p><span class="text-link">Otvoriť kategóriu →</span></div></a>
         <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/protokoly-a-integracie/')); ?>"><div class="product-content"><span class="product-kicker">Bezdrôtová sieť</span><h3>Zigbee</h3><p>Koordinátory, senzory a zariadenia s vysvetlenou kompatibilitou.</p><span class="text-link">Otvoriť kategóriu →</span></div></a>
-        <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/resmart/')); ?>"><div class="product-content"><span class="product-kicker">Servis dostupný</span><h3>ReSmart</h3><p>Diagnostika a oprava, keď smart zariadenie nefunguje podľa očakávania.</p><span class="text-link">Otvoriť servis →</span></div></a>
+        <a class="product-card product-fallback" href="<?php echo esc_url($ka_resmart_service_url); ?>"><div class="product-content"><span class="product-kicker">Servis dostupný</span><h3>ReSmart</h3><p>Diagnostika a oprava, keď smart zariadenie nefunguje podľa očakávania.</p><span class="text-link">Otvoriť servis →</span></div></a>
       </div>
     <?php endif; ?>
   </div>
@@ -104,7 +114,7 @@
               <span><i class="check">✓</i> Bez zdieľania hesiel</span>
             </div>
 
-            <a class="btn btn-primary" href="<?php echo esc_url(home_url('/resmart/')); ?>">Odoslať servisný dopyt</a>
+            <a class="btn btn-primary" href="<?php echo esc_url($ka_resmart_service_url); ?>">Odoslať servisný dopyt</a>
           </div>
         </div>
       </div>
@@ -166,7 +176,7 @@
         <h3>Vyberte najbližšiu cestu</h3>
         <p class="muted">Každé tlačidlo vedie na samostatnú indexovateľnú stránku s jasným ďalším krokom.</p>
         <a class="btn btn-dark" href="<?php echo esc_url(home_url('/kontakt/')); ?>">Chcem odporúčanie produktu</a>
-        <a class="btn btn-primary" href="<?php echo esc_url(home_url('/resmart/')); ?>">Potrebujem ReSmart servis</a>
+        <a class="btn btn-primary" href="<?php echo esc_url($ka_resmart_service_url); ?>">Potrebujem ReSmart servis</a>
         <a class="text-link" href="<?php echo esc_url(home_url('/navody/')); ?>">Najprv si pozriem návody →</a>
       </div>
     </div>

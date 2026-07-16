@@ -22,6 +22,8 @@ The template:
 - uses one semantic H1 and indexable HTML links,
 - keeps navigation and conversion CTAs usable without JavaScript,
 - loads no custom JavaScript,
+- derives the shop and cart URLs from WooCommerce with safe canonical fallbacks,
+- sends product search to the verified shop archive instead of the redirected root URL,
 - reads product title, image, price, stock state and URL from published WooCommerce products,
 - falls back to indexable category cards when suitable products are unavailable,
 - includes structured data for the store, website and ReSmart service,
@@ -40,17 +42,25 @@ The template:
 
 ## Product selection
 
-By default the template shows up to four published, in-stock featured WooCommerce products. If no featured products exist, it uses the latest published, in-stock products.
+The template never selects featured, latest or otherwise unreviewed products automatically. It renders only one to four published product IDs explicitly supplied through the filter below. With no filter value, it shows indexable category and ReSmart fallback cards. With exactly three approved products, it adds a fourth **Všetky produkty** card instead of guessing a product.
 
 A controlled product list can be provided without editing the template:
 
 ```php
 add_filter('komarena_home_v4_product_ids', function () {
-    return array(123, 456, 789, 1011);
+    return array(2997, 2984, 2978);
 });
 ```
 
-Only verified published products should be passed to the filter.
+The read-only production audit on 2026-07-16 validated only `2997`, `2984` and `2978` for this staging surface. Product `2467` (Home Assistant Green) is deliberately excluded until its price, image and source-backed copy are corrected and re-audited. Do not add unverified products to the filter.
+
+## Routing and search
+
+- Shop URLs use `wc_get_page_permalink('shop')`, then the product archive, then `/produkty/`.
+- Cart URLs use `wc_get_cart_url()`, then the cart page permalink, then `/cart/`.
+- ReSmart CTAs use `/resmart/#objednat-servis`.
+- The product-search form posts to the shop archive. The root search endpoint is not used because the temporary root redirect intercepts it.
+- The template does not emit `SearchAction` structured data until an endpoint is continuously verified in the target environment.
 
 ## Image slots
 

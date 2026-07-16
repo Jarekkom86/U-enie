@@ -12,11 +12,11 @@
           <p class="lead">Vyberieme kompatibilné zariadenia pre Home Assistant, ESPHome, Zigbee, Thread a Matter. Keď už niečo nefunguje, ReSmart nájde príčinu a navrhne riešenie.</p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="<?php echo esc_url(home_url('/obchod/')); ?>">Prezrieť overené produkty</a>
-            <a class="btn btn-ghost" href="<?php echo esc_url(home_url('/resmart/')); ?>">Vyriešiť problém cez ReSmart</a>
+            <a class="btn btn-primary" href="<?php echo esc_url($ka_shop_url); ?>">Prezrieť overené produkty</a>
+            <a class="btn btn-ghost" href="<?php echo esc_url($ka_resmart_service_url); ?>">Vyriešiť problém cez ReSmart</a>
           </div>
 
-          <form class="hero-search" role="search" action="<?php echo esc_url(home_url('/')); ?>" method="get">
+          <form class="hero-search" role="search" action="<?php echo esc_url($ka_shop_url); ?>" method="get">
             <label for="product-search">Vyhľadať produkt alebo riešenie</label>
             <input id="product-search" name="s" type="search" placeholder="Napríklad Home Assistant Green, ESP32, Zigbee…" autocomplete="off">
             <input type="hidden" name="post_type" value="product">
@@ -98,7 +98,7 @@
           <span class="text-link">Porovnať protokoly <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
         </a>
 
-        <a class="path-card medium" href="<?php echo esc_url(home_url('/obchod/')); ?>">
+        <a class="path-card medium" href="<?php echo esc_url($ka_shop_url); ?>">
           <span class="path-symbol"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9h18l-1 11H4L3 9Z"></path><path d="M8 9a4 4 0 0 1 8 0"></path></svg></span>
           <div><h3>Overený obchod</h3><p>Huby, senzory, napájanie, ESP moduly a príslušenstvo so servisným kontextom.</p></div>
           <span class="text-link">Otvoriť obchod <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
