@@ -10,10 +10,10 @@
     <div class="product-toolbar">
       <div class="filters" aria-label="Kategórie produktov">
         <a class="chip active" href="<?php echo esc_url(home_url('/obchod/')); ?>">Odporúčané</a>
-        <a class="chip" href="<?php echo esc_url(home_url('/kategoria/home-assistant/')); ?>">Home Assistant</a>
-        <a class="chip" href="<?php echo esc_url(home_url('/kategoria/zigbee/')); ?>">Zigbee</a>
-        <a class="chip" href="<?php echo esc_url(home_url('/kategoria/esphome/')); ?>">ESPHome</a>
-        <a class="chip" href="<?php echo esc_url(home_url('/kategoria/napajanie/')); ?>">Napájanie</a>
+        <a class="chip" href="<?php echo esc_url(home_url('/home-assistant/')); ?>">Home Assistant</a>
+        <a class="chip" href="<?php echo esc_url(home_url('/protokoly-a-integracie/')); ?>">Zigbee</a>
+        <a class="chip" href="<?php echo esc_url(home_url('/esp-esphome/')); ?>">ESPHome</a>
+        <a class="chip" href="<?php echo esc_url(home_url('/napajanie/')); ?>">Napájanie</a>
       </div>
       <a class="text-link" href="<?php echo esc_url(home_url('/obchod/')); ?>">Všetky produkty <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
@@ -45,9 +45,9 @@
       </div>
     <?php else : ?>
       <div class="product-grid product-grid-fallback">
-        <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/kategoria/home-assistant/')); ?>"><div class="product-content"><span class="product-kicker">Lokálne centrum</span><h3>Home Assistant</h3><p>Huby, koordinátory a príslušenstvo pre stabilný základ smart domácnosti.</p><span class="text-link">Otvoriť kategóriu →</span></div></a>
-        <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/kategoria/esphome/')); ?>"><div class="product-content"><span class="product-kicker">Vlastné projekty</span><h3>ESPHome</h3><p>ESP32, senzory, relé a napájanie pre lokálne automatizácie.</p><span class="text-link">Otvoriť kategóriu →</span></div></a>
-        <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/kategoria/zigbee/')); ?>"><div class="product-content"><span class="product-kicker">Bezdrôtová sieť</span><h3>Zigbee</h3><p>Koordinátory, senzory a zariadenia s vysvetlenou kompatibilitou.</p><span class="text-link">Otvoriť kategóriu →</span></div></a>
+        <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/home-assistant/')); ?>"><div class="product-content"><span class="product-kicker">Lokálne centrum</span><h3>Home Assistant</h3><p>Huby, koordinátory a príslušenstvo pre stabilný základ smart domácnosti.</p><span class="text-link">Otvoriť kategóriu →</span></div></a>
+        <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/esp-esphome/')); ?>"><div class="product-content"><span class="product-kicker">Vlastné projekty</span><h3>ESPHome</h3><p>ESP32, senzory, relé a napájanie pre lokálne automatizácie.</p><span class="text-link">Otvoriť kategóriu →</span></div></a>
+        <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/protokoly-a-integracie/')); ?>"><div class="product-content"><span class="product-kicker">Bezdrôtová sieť</span><h3>Zigbee</h3><p>Koordinátory, senzory a zariadenia s vysvetlenou kompatibilitou.</p><span class="text-link">Otvoriť kategóriu →</span></div></a>
         <a class="product-card product-fallback" href="<?php echo esc_url(home_url('/resmart/')); ?>"><div class="product-content"><span class="product-kicker">Servis dostupný</span><h3>ReSmart</h3><p>Diagnostika a oprava, keď smart zariadenie nefunguje podľa očakávania.</p><span class="text-link">Otvoriť servis →</span></div></a>
       </div>
     <?php endif; ?>
@@ -134,16 +134,16 @@
 
       <div class="guide-grid">
         <article class="guide-card">
-          <a class="guide-media" href="<?php echo esc_url(home_url('/navody/ako-zacat-s-home-assistant/')); ?>"><img src="<?php echo esc_url($ka_images['guide_home_assistant']); ?>" width="1200" height="800" loading="lazy" decoding="async" alt="Začiatok s Home Assistant v modernej domácnosti"></a>
-          <div class="guide-body"><span class="guide-label">Hlavný sprievodca</span><h3><a href="<?php echo esc_url(home_url('/navody/ako-zacat-s-home-assistant/')); ?>">Ako začať s Home Assistant bez zbytočných chýb</a></h3><p>Hardvér, Zigbee koordinátor, zálohy, sieť a bezpečný vzdialený prístup krok za krokom.</p></div>
+          <a class="guide-media" href="<?php echo esc_url(home_url('/ako-zacat-s-home-assistant/')); ?>"><img src="<?php echo esc_url($ka_images['guide_home_assistant']); ?>" width="1200" height="800" loading="lazy" decoding="async" alt="Začiatok s Home Assistant v modernej domácnosti"></a>
+          <div class="guide-body"><span class="guide-label">Hlavný sprievodca</span><h3><a href="<?php echo esc_url(home_url('/ako-zacat-s-home-assistant/')); ?>">Ako začať s Home Assistant bez zbytočných chýb</a></h3><p>Hardvér, Zigbee koordinátor, zálohy, sieť a bezpečný vzdialený prístup krok za krokom.</p></div>
         </article>
         <article class="guide-card">
-          <a class="guide-media" href="<?php echo esc_url(home_url('/navody/zigbee-vs-thread-vs-matter/')); ?>"><img src="<?php echo esc_url($ka_images['guide_protocols']); ?>" width="800" height="600" loading="lazy" decoding="async" alt="Porovnanie bezdrôtových protokolov smart domácnosti"></a>
-          <div class="guide-body"><span class="guide-label">Kompatibilita</span><h3><a href="<?php echo esc_url(home_url('/navody/zigbee-vs-thread-vs-matter/')); ?>">Zigbee vs. Thread vs. Matter</a></h3><p>Kedy ktorý protokol dáva zmysel a čo potrebujete na jeho používanie.</p></div>
+          <a class="guide-media" href="<?php echo esc_url(home_url('/ako-vybrat-smart-integraciu/')); ?>"><img src="<?php echo esc_url($ka_images['guide_protocols']); ?>" width="800" height="600" loading="lazy" decoding="async" alt="Porovnanie bezdrôtových protokolov smart domácnosti"></a>
+          <div class="guide-body"><span class="guide-label">Kompatibilita</span><h3><a href="<?php echo esc_url(home_url('/ako-vybrat-smart-integraciu/')); ?>">Ako vybrať smart integráciu</a></h3><p>Ako vybrať protokol a integráciu podľa zariadenia, stability a budúceho rozšírenia.</p></div>
         </article>
         <article class="guide-card">
-          <a class="guide-media" href="<?php echo esc_url(home_url('/navody/ako-vybrat-esp32/')); ?>"><img src="<?php echo esc_url($ka_images['guide_esphome']); ?>" width="800" height="600" loading="lazy" decoding="async" alt="Výber ESP32 dosky pre ESPHome"></a>
-          <div class="guide-body"><span class="guide-label">ESPHome</span><h3><a href="<?php echo esc_url(home_url('/navody/ako-vybrat-esp32/')); ?>">Ako vybrať ESP32 pre vlastný projekt</a></h3><p>Rozmery, napájanie, piny, Wi‑Fi, Bluetooth a vhodné použitie.</p></div>
+          <a class="guide-media" href="<?php echo esc_url(home_url('/esphome-od-zakladov/')); ?>"><img src="<?php echo esc_url($ka_images['guide_esphome']); ?>" width="800" height="600" loading="lazy" decoding="async" alt="Výber ESP32 dosky pre ESPHome"></a>
+          <div class="guide-body"><span class="guide-label">ESPHome</span><h3><a href="<?php echo esc_url(home_url('/esphome-od-zakladov/')); ?>">ESPHome od základov</a></h3><p>Prvý bezpečný projekt, výber dosky, napájanie, senzor a integrácia do Home Assistantu.</p></div>
         </article>
       </div>
     </div>
