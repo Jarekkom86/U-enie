@@ -17,7 +17,6 @@ final class KomArena_Ui_System {
     const VERSION = '1.1.0-beta1';
     const HANDLE_STYLE = 'komarena-ui-system-style';
     const HANDLE_POLISH_STYLE = 'komarena-ui-system-polish-style';
-    const HANDLE_HOME_V4_STYLE = 'komarena-home-v4-style';
     const HOME_V4_TEMPLATE = 'komarena-home-v4';
 
     public static function init() {
@@ -37,11 +36,7 @@ final class KomArena_Ui_System {
         }
 
         if (self::is_home_v4_template()) {
-            $home_css_file = plugin_dir_path(__FILE__) . 'assets/css/komarena-home-v4.css';
-            $home_css_url = plugin_dir_url(__FILE__) . 'assets/css/komarena-home-v4.css';
-            $home_version = file_exists($home_css_file) ? (string) filemtime($home_css_file) : self::VERSION;
-
-            wp_enqueue_style(self::HANDLE_HOME_V4_STYLE, $home_css_url, array(), $home_version, 'all');
+            self::enqueue_home_v4_styles();
             return;
         }
 
@@ -57,6 +52,25 @@ final class KomArena_Ui_System {
 
         if (file_exists($polish_css_file)) {
             wp_enqueue_style(self::HANDLE_POLISH_STYLE, $polish_css_url, array(self::HANDLE_STYLE), $polish_version, 'all');
+        }
+    }
+
+    private static function enqueue_home_v4_styles() {
+        $dependencies = array();
+
+        for ($index = 1; $index <= 4; $index++) {
+            $handle = 'komarena-home-v4-' . $index;
+            $relative_path = 'assets/css/komarena-home-v4-' . $index . '.css';
+            $file = plugin_dir_path(__FILE__) . $relative_path;
+            $url = plugin_dir_url(__FILE__) . $relative_path;
+            $version = file_exists($file) ? (string) filemtime($file) : self::VERSION;
+
+            if (!file_exists($file)) {
+                continue;
+            }
+
+            wp_enqueue_style($handle, $url, $dependencies, $version, 'all');
+            $dependencies = array($handle);
         }
     }
 
