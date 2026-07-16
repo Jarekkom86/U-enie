@@ -67,47 +67,62 @@ $ka_image_defaults = array(
 );
 $ka_images = (array) apply_filters('komarena_home_v4_images', $ka_image_defaults);
 
-$ka_schema = array(
-    '@context' => 'https://schema.org',
-    '@graph' => array(
-        array(
-            '@type' => 'OnlineStore',
-            '@id' => home_url('/#organization'),
-            'name' => get_bloginfo('name') ?: 'KomArena',
-            'url' => home_url('/'),
-            'description' => 'Overené produkty, návody a servis pre smart domácnosť, Home Assistant a ESPHome.',
-            'areaServed' => array('@type' => 'Country', 'name' => 'Slovensko'),
-        ),
-        array(
-            '@type' => 'WebSite',
-            '@id' => home_url('/#website'),
-            'url' => home_url('/'),
-            'name' => get_bloginfo('name') ?: 'KomArena',
-            'inLanguage' => 'sk-SK',
-            'publisher' => array('@id' => home_url('/#organization')),
-            'potentialAction' => array(
-                '@type' => 'SearchAction',
-                'target' => home_url('/?s={search_term_string}&post_type=product'),
-                'query-input' => 'required name=search_term_string',
-            ),
-        ),
-        array(
-            '@type' => 'Service',
-            '@id' => home_url('/resmart/#service'),
-            'name' => 'ReSmart servis smart domácnosti',
-            'url' => home_url('/resmart/'),
-            'provider' => array('@id' => home_url('/#organization')),
-            'areaServed' => array('@type' => 'Country', 'name' => 'Slovensko'),
-            'serviceType' => array('Diagnostika smart domácnosti', 'Servis Aqara a smart zámkov', 'Home Assistant servis', 'Zigbee, Thread a Matter diagnostika', 'ESPHome servis'),
-        ),
+$ka_has_seo_plugin = defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION') || defined('AIOSEO_VERSION');
+$ka_service_node = array(
+    '@type' => 'Service',
+    '@id' => home_url('/resmart/#service'),
+    'name' => 'ReSmart servis smart domácnosti',
+    'url' => home_url('/resmart/'),
+    'provider' => array(
+        '@type' => 'Organization',
+        'name' => get_bloginfo('name') ?: 'KomArena',
+        'url' => home_url('/'),
     ),
+    'areaServed' => array('@type' => 'Country', 'name' => 'Slovensko'),
+    'serviceType' => array('Diagnostika smart domácnosti', 'Servis Aqara a smart zámkov', 'Home Assistant servis', 'Zigbee, Thread a Matter diagnostika', 'ESPHome servis'),
 );
+
+if ($ka_has_seo_plugin) {
+    $ka_schema = array_merge(array('@context' => 'https://schema.org'), $ka_service_node);
+} else {
+    $ka_schema = array(
+        '@context' => 'https://schema.org',
+        '@graph' => array(
+            array(
+                '@type' => 'OnlineStore',
+                '@id' => home_url('/#organization'),
+                'name' => get_bloginfo('name') ?: 'KomArena',
+                'url' => home_url('/'),
+                'description' => 'Overené produkty, návody a servis pre smart domácnosť, Home Assistant a ESPHome.',
+                'areaServed' => array('@type' => 'Country', 'name' => 'Slovensko'),
+            ),
+            array(
+                '@type' => 'WebSite',
+                '@id' => home_url('/#website'),
+                'url' => home_url('/'),
+                'name' => get_bloginfo('name') ?: 'KomArena',
+                'inLanguage' => 'sk-SK',
+                'publisher' => array('@id' => home_url('/#organization')),
+                'potentialAction' => array(
+                    '@type' => 'SearchAction',
+                    'target' => home_url('/?s={search_term_string}&post_type=product'),
+                    'query-input' => 'required name=search_term_string',
+                ),
+            ),
+            $ka_service_node,
+        ),
+    );
+}
+$ka_schema = (array) apply_filters('komarena_home_v4_schema', $ka_schema, $ka_has_seo_plugin);
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <?php if (!$ka_has_seo_plugin) : ?>
   <meta name="description" content="Overené smart-home produkty, Home Assistant, ESPHome, Zigbee a Matter na jednom mieste. KomArena poradí s výberom a ReSmart vyrieši diagnostiku aj servis.">
+  <link rel="canonical" href="<?php echo esc_url(get_permalink()); ?>">
+  <?php endif; ?>
   <meta name="theme-color" content="#f6faf9">
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link rel="preload" as="image" fetchpriority="high" href="<?php echo esc_url($ka_images['hero']); ?>">
