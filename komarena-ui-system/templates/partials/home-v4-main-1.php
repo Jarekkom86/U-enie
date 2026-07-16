@@ -92,7 +92,7 @@
           <span class="text-link">Prejsť do ESPHome <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
         </a>
 
-        <a class="path-card medium" href="<?php echo esc_url(home_url('/protokoly/')); ?>">
+        <a class="path-card medium" href="<?php echo esc_url(home_url('/protokoly-a-integracie/')); ?>">
           <span class="path-symbol"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.6a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 20h.01"></path></svg></span>
           <div><h3>Zigbee, Thread a Matter</h3><p>Rozdiely, kompatibilita a výber protokolu bez zbytočného chaosu.</p></div>
           <span class="text-link">Porovnať protokoly <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
