@@ -28,7 +28,7 @@ PR #49 — docs: add QA automation workflow — bol zlouceny do `main` po uspesn
 
 - W-012 / issue #41: izolovany lokalny WordPress staging pre draft PR #36 caka na overeny SQL export a kompletny WordPress/FTP snapshot.
 - R-007 / issue #34: verejna ReSmart stranka je read-only overena; prihlaseny audit revizie a realny test odoslania formulara zostavaju mimo automatizacie.
-- B-003, B-004 a B-007 az B-009 zostavaju planovane podla backlogu.
+- B-003, B-004, B-008 a B-009 zostavaju planovane podla backlogu.
 - Rozhodnut o PR #19.
 - Rozhodnut o PR #1.
 - Rozhodnut o historickych vetvach.

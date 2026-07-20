@@ -67,6 +67,31 @@ Q3 vyžaduje výslovne udelený prístup a presný rozsah. Aktuálne samotné ve
 | Severity a dopad | S1 až S4 a používateľský alebo obchodný dopad. |
 | Ďalší krok | Bezpečná oprava, blokátor alebo rozhodnutie vlastníka. |
 
+## Vizuálna QA vrstva
+
+Táto vrstva je súčasťou Q1 až Q3, nie samostatný proces. Hodnotí iba renderovaný výsledok; nemení CSS, šablóny, obsah ani produkčné nastavenia.
+
+| Kontext | Povinné viewporty | Povinný dôkaz | Rozsah |
+|---|---|---|---|
+| Q1 verejný read-only | 390 px mobil; širší viewport iba pri potrebe reprodukcie | Čas, URL, viewport, viditeľný problém a screenshot, ak je možné ho bezpečne uložiť | Horizontálne pretekanie, viditeľnosť H1, navigácie, formulára a kľúčového CTA bez interakcie. |
+| Q2 lokálny staging | 1440 px, 768 px, 390 px | Screenshot každého breakpointu, commit/PR head a stručný zoznam rozdielov | Header, hero, karty, grid, navigácia, vyhľadávanie, košík, footer, focus a responsivita. |
+| Q3 schválený audit | Len explicitne schválené viewporty a stránky | Auditný záznam podľa schváleného rozsahu | Iba read-first porovnanie s odsúhlasenou baseline. |
+
+### Vizuálna baseline a porovnanie
+
+1. Baseline vždy pomenovať commitom, URL alebo schváleným referenčným screenshotom; bez nej netvrdiť pixelovú regresiu.
+2. Porovnávať hierarchiu, čitateľnosť, kontrast, odsadenie, zarovnanie, pretekanie, prekrytie, funkčnú viditeľnosť prvkov a stav keyboard focus.
+3. Hodnotiť najprv kritické cesty: vstupná navigácia, hlavný nadpis, hlavné CTA, vyhľadávanie alebo košík, formulár a footer.
+4. S2 je neviditeľný alebo prekrývajúci sa kľúčový prvok nákupnej cesty; S3 je výrazná responzívna alebo obsahová regresia; S4 je drobná vizuálna odchýlka bez vplyvu na použitie.
+5. Vizualizáciu možno označiť ako overenú iba ak je známy jej zdroj, viewport a čas. Neinterpretovať rozdiel bez dôkazu ako chybu kódu.
+
+### Vizuálne stop podmienky
+
+- Bez Q2 vstupnej brány W-012 nesmie vizuálna QA vyžadovať lokálne spustenie Dockeru ani preview PR #36.
+- Verejný Q1 audit nesmie vypĺňať alebo odosielať formuláre, meniť cookies ani vytvárať účet alebo objednávku.
+- Screenshot s citlivým údajom, prihláseným obsahom alebo zákazníckymi dátami sa nesmie uložiť do repozitára.
+- Vizuálny nález neoprávňuje na automatickú zmenu runtime súborov alebo produkcie.
+
 ## Aktuálne známe hranice
 
 - ReSmart verejné URL možno overovať iba Q1; formulár sa bez samostatného súhlasu neodosiela.
