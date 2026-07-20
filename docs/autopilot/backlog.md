@@ -8,7 +8,7 @@
 
 ## Baseline overenia
 
-`dc3120f1fbae58f8baaa0d6c9321348ce7b12e26`
+`c9e0f9f9fe10467206c5539ca9db1b7b0ee047f9`
 
 | ID | Nazov | Typ | Obchodny dopad | Riziko | Vetva | Vystup | Uroven | Stav |
 |---|---|---|---|---|---|---|---|---|
@@ -28,7 +28,9 @@
 
 - PR #12 vytvoril WebOps report a PR #13 vytvoril Autopilot OS v3 core; ide o potvrdene zakladne artefakty, nie o povodne backlog polozky.
 - B-001, B-002 a B-011 su potvrdene ako dokoncene v `main` cez PR #14, #15 a #16.
-- B-003 az B-009 zostavaju planovane a nedokoncene.
+- B-003, B-004 a B-007 az B-009 zostavaju planovane a nedokoncene.
+- B-005 je dokoncene cez docs-only PR #48; register zaznamenava iba planovane interne vazby a ich brany bez zivych URL.
+- B-006 je dokoncene cez docs-only PR #49; rozsiruje existujuci QA Autopilot o bezpecne testovacie urovne Q0 az Q3 bez spustenia stagingu alebo produkcnych testov.
 - B-010 je dokoncene cez docs-only PR #46; checklist nepublikoval ziaden produkt ani nemenil WooCommerce data.
 - Otvoreny PR #19 nie je sucastou `main` ani dokonceneho backlogu.
 

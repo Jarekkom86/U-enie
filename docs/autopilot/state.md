@@ -6,13 +6,13 @@
 
 ## Baseline overenia
 
-`dc3120f1fbae58f8baaa0d6c9321348ce7b12e26`
+`c9e0f9f9fe10467206c5539ca9db1b7b0ee047f9`
 
 ## Aktualna faza
 
 Live operacny stav sa vedie v GitHub dashboarde issue #24; tento dokument je repozitorovy orientacny stav.
 
-Do `main` boli po povinnej CI doplnene docs-only PR #45 (lokalny staging runbook pre W-012) a PR #46 (checklist publikovania produktu). Nezmenili runtime, produkciu ani externe systemy.
+Do `main` boli po povinnej CI doplnene docs-only PR #45 (lokalny staging runbook pre W-012), #46 (checklist publikovania produktu), #47 (zosuladenie stavu), #48 (register interneho prelinkovania) a #49 (bezpecnostne urovne QA). Nezmenili runtime, produkciu ani externe systemy.
 
 Otvorene PR #36 a #32 zostavaju draft. PR #19 a PR #1 zostavaju otvorene a maju vyslovny zakaz automatickeho merge.
 
@@ -22,13 +22,13 @@ PR #16 — Create ESP32 DevKit source document — bol zlouceny do `main`.
 
 ## Aktualny posledny potvrdeny miletnik
 
-PR #46 — docs: add product publishing checklist — bol zlouceny do `main` po uspesnej KomArena validation.
+PR #49 — docs: add QA automation workflow — bol zlouceny do `main` po uspesnej KomArena validation.
 
 ## Aktualne otvorene polozky
 
 - W-012 / issue #41: izolovany lokalny WordPress staging pre draft PR #36 caka na overeny SQL export a kompletny WordPress/FTP snapshot.
 - R-007 / issue #34: verejna ReSmart stranka je read-only overena; prihlaseny audit revizie a realny test odoslania formulara zostavaju mimo automatizacie.
-- B-003 az B-009 zostavaju planovane podla backlogu.
+- B-003, B-004 a B-007 az B-009 zostavaju planovane podla backlogu.
 - Rozhodnut o PR #19.
 - Rozhodnut o PR #1.
 - Rozhodnut o historickych vetvach.
@@ -62,7 +62,7 @@ T-002 — zosuladit backlog a WebOps report s potvrdenym stavom `main` bez zmeny
 
 ## Aktualny odporucany dalsi krok
 
-Po dodani overenych zaloh vykonat vstupnu branu W-012 podla `docs/komarena-home-v4-local-staging.md`; dovtedy vybrat iba nizkorizikovy docs alebo produktovy draft z B-003 az B-009.
+Po dodani overenych zaloh vykonat vstupnu branu W-012 podla `docs/komarena-home-v4-local-staging.md`; dovtedy overit prekryv B-007 s novym QA workflow, aby sa nepripravoval duplicitny dizajnovy proces.
 
 ## Vyzaduje overenie
 
