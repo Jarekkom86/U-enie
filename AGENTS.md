@@ -61,6 +61,15 @@ Home Assistant nepoužívaj ako lacnú SEO nálepku. Používaj ho iba ako techn
 - [Šablóna článku alebo návodu](docs/templates/article-template.md)
 - [Šablóna sociálneho balíčka](docs/templates/social-package-template.md)
 - [Pravidlá WooCommerce CSV](docs/templates/csv-product-rules.md)
+- [Fixný KomArena style brief pre lokálneho agenta](templates/style-brief.md)
+- [Jednotný KomArena style system](docs/komarena-unified-style-system.md)
+- [Lokálna pamäť agenta](docs/agent-memory.md)
+
+## Lokálny admin/dizajn agent
+
+Pri práci na stránkach KomArena.sk agent najprv načíta `templates/style-brief.md`, `docs/komarena-unified-style-system.md` a `docs/agent-memory.md`. Tieto súbory určujú fixný vizuálny smer: svetlý technický dizajn, tyrkysové akcenty, čitateľné tmavé texty, zaoblené karty, decentné tiene, jasné CTA, technické tabuľky a bezpečnostné boxy.
+
+Agent môže samostatne pripravovať audit, návrh štruktúry, lokálne HTML/CSS šablóny a bezpečné WordPress shortcode riešenia. Globálne šablóny, checkout, košík, účet, platby, doprava, objednávky, databáza a produkčné nastavenia ostávajú mimo rozsah bez výslovného schválenia.
 
 ## Priorita dokumentov
 
@@ -74,7 +83,10 @@ Poradie záväznosti:
 6. `docs/seo-internal-linking.md`
 7. `docs/product-blog-project-system.md`
 8. `docs/social-content-standard.md`
-9. `docs/templates/*.md`
+9. `templates/style-brief.md`
+10. `docs/komarena-unified-style-system.md`
+11. `docs/agent-memory.md`
+12. `docs/templates/*.md`
 
 Ak vznikne rozpor, agent má pravidlá zjednotiť a označiť otvorený bod.
 

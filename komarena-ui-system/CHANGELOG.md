@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.3 - 2026-05-29
+- Added scoped ESP & ESPHome landing page shortcode `[komarena_esp_esphome_page]`.
+- Added a reusable HTML template for the ESP & ESPHome page with hero, technical diagram, product cards, ESP32 table, safety box, FAQ and source section.
+- Added `.ka-esp-page` CSS rules for a light Home Assistant-style KomArena visual language: teal accents, readable dark text, rounded cards, restrained shadows, technical tables and mobile layout.
+- Kept checkout, cart, account, payment, shipping, orders and database untouched.
+- No JavaScript enqueue and no external image or vendor logo usage.
+
+## 1.0.2 - 2026-05-15
+- Added `komarena-web-polish.css` as a frontend polish layer.
+- Improved homepage rhythm, product cards, category/shop listings, product detail readability, CTA consistency, reusable content cards, warning blocks and focus states.
+- Kept transaction pages guarded from aggressive layout restyling.
+
 ## 1.0.1 - 2026-05-04
 - Reduced header top-row visual height for a tighter modern look.
 - Reduced main menu spacing and link padding.
