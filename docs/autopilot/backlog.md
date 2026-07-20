@@ -4,11 +4,11 @@
 
 ## Datum posledneho overenia
 
-2026-07-11
+2026-07-20
 
 ## Baseline overenia
 
-`afe7619462dcdc8da09844f56ce5973b35655cac`
+`dc3120f1fbae58f8baaa0d6c9321348ce7b12e26`
 
 | ID | Nazov | Typ | Obchodny dopad | Riziko | Vetva | Vystup | Uroven | Stav |
 |---|---|---|---|---|---|---|---|---|
@@ -21,14 +21,15 @@
 | B-007 | Create Design visual QA workflow | Dizajn | stredny | stredne | design-visual-qa-workflow | workflow navrh | LEVEL 2 | todo |
 | B-008 | Create homepage growth audit | UX CRO | vysoky | stredne | ux-homepage-growth-audit | audit | LEVEL 2 | todo |
 | B-009 | Create category landing page draft | Kategorie | vysoky | stredne | category-landing-page-draft | draft | LEVEL 2 | todo |
-| B-010 | Create publishing checklist | Publishing | vysoky | nizke | publishing-checklist | checklist | LEVEL 1 | todo |
+| B-010 | Create publishing checklist | Publishing | vysoky | nizke | publishing-checklist | checklist | LEVEL 1 | done — PR #46 merged |
 | B-011 | Create ESP32 DevKit source document | Produktovy zdroj | vysoky | stredne | product-esp32-devkit-source-doc | source document draft | LEVEL 2 | done — PR #16 merged |
 
 ## Stav po zosuladeni
 
 - PR #12 vytvoril WebOps report a PR #13 vytvoril Autopilot OS v3 core; ide o potvrdene zakladne artefakty, nie o povodne backlog polozky.
 - B-001, B-002 a B-011 su potvrdene ako dokoncene v `main` cez PR #14, #15 a #16.
-- B-003 az B-010 zostavaju planovane a nedokoncene.
+- B-003 az B-009 zostavaju planovane a nedokoncene.
+- B-010 je dokoncene cez docs-only PR #46; checklist nepublikoval ziaden produkt ani nemenil WooCommerce data.
 - Otvoreny PR #19 nie je sucastou `main` ani dokonceneho backlogu.
 
 ## Pravidlo vyberu
