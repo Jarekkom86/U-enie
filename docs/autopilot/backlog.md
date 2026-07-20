@@ -17,7 +17,7 @@
 | B-003 | Create ESPHome start CSV draft | CSV | vysoky | stredne | csv-esphome-start-draft | CSV draft | LEVEL 2 | todo |
 | B-004 | Create ESPHome thermometer project | Projekt | vysoky | stredne | project-esphome-thermometer | modelovy projekt | LEVEL 2 | todo |
 | B-005 | Create internal linking register | SEO | vysoky | nizke | seo-internal-linking-register | linking register | LEVEL 2 | done — PR #48 merged |
-| B-006 | Create QA automation workflow draft | QA | vysoky | stredne | qa-automation-workflow-draft | workflow navrh | LEVEL 2 | todo |
+| B-006 | Create QA automation workflow draft | QA | vysoky | stredne | qa-automation-workflow-draft | workflow navrh | LEVEL 2 | done — PR #49 merged |
 | B-007 | Create Design visual QA workflow | Dizajn | stredny | stredne | design-visual-qa-workflow | workflow navrh | LEVEL 2 | todo |
 | B-008 | Create homepage growth audit | UX CRO | vysoky | stredne | ux-homepage-growth-audit | audit | LEVEL 2 | todo |
 | B-009 | Create category landing page draft | Kategorie | vysoky | stredne | category-landing-page-draft | draft | LEVEL 2 | todo |
