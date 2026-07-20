@@ -1,6 +1,25 @@
 # Changelog
 
+## Unreleased
+
+- Replaced hardcoded shop, cart and ReSmart service destinations with WooCommerce-derived URLs and audited canonical fallbacks.
+- Sent product search to the verified shop archive and removed unsupported `SearchAction` structured data.
+- Removed automatic featured/latest product selection; cards now require explicit approved product IDs and safely fall back to categories or a fourth shop card.
+- Updated the footer returns link to the audited canonical `/reklamacie-a-vratenie/` URL.
+- Kept the template opt-in: no WordPress pages, products, redirects, cache or production settings were changed.
+
+## 1.1.0-beta1 - 2026-07-16
+
+- Added the opt-in **KomArena Homepage v4 (staging)** plugin page template.
+- Added a dedicated no-JavaScript homepage stylesheet focused on semantic structure, conversion paths and responsive performance.
+- Added WooCommerce-backed featured product cards with category fallbacks.
+- Added dynamic store, website and ReSmart service structured data.
+- Added filterable product IDs and image slots for controlled staging configuration.
+- Kept activation reversible: the template is not assigned to any page automatically.
+- No database, checkout, payment, shipping, tax, order or production changes.
+
 ## 1.0.1 - 2026-05-04
+
 - Reduced header top-row visual height for a tighter modern look.
 - Reduced main menu spacing and link padding.
 - Reduced spacing between sticky header/menu and homepage hero section.
@@ -9,6 +28,7 @@
 - No PHP logic changes except version bump; no DB/admin/checkout/payment/shipping/order changes.
 
 ## 1.0.0 - 2026-05-04
+
 - Initial release of KomArena UI System plugin.
 - Hardened frontend-only visual system for Neve/WooCommerce contexts.
 - Added stronger header search support for WooCommerce native selectors, AWS and DGWT/FiboSearch selectors.
@@ -18,5 +38,4 @@
 - Switched footer to light technical palette (#F7FCFC + teal accents).
 - Kept plugin safe: no DB updates, no admin styling, no JS enqueue, no checkout/payment/shipping/order logic changes.
 - Release marked ready for **test installation**, not automatic production merge.
-
 - Added additional Neve wrapper hardening and transaction-page guardrails for grid rules.

@@ -1,0 +1,45 @@
+    .path-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .path-card{position:relative;min-height:300px;padding:28px;border-radius:30px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);isolation:isolate;transition:transform .22s ease,box-shadow .22s ease}
+    .path-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(21,64,69,.13)}
+    .path-card.large{grid-column:span 6;min-height:440px;color:#fff}
+    .path-card.medium{grid-column:span 3}
+    .path-card.wide{grid-column:span 6;min-height:290px}
+    .path-card .card-media{position:absolute;inset:0;z-index:-2}
+    .path-card .card-media img{width:100%;height:100%;object-fit:cover}
+    .path-card.large::after,.path-card.wide.photo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,34,40,.12) 20%,rgba(8,34,40,.9) 100%)}
+    .path-card .card-bottom{position:absolute;left:28px;right:28px;bottom:26px}
+    .path-card .tag{display:inline-flex;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    .path-card h3{margin-top:14px}
+    .path-card p{margin-top:10px;color:inherit;opacity:.82}
+    .path-card.medium{display:flex;flex-direction:column;justify-content:space-between}
+    .path-card.medium:nth-of-type(2){background:linear-gradient(150deg,#e7f9f4,#dff2ff)}
+    .path-card.medium:nth-of-type(3){background:linear-gradient(150deg,#fff0dd,#ffe5ef)}
+    .path-card.medium:nth-of-type(4){background:linear-gradient(150deg,#ede9ff,#e6efff)}
+    .path-symbol{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.72);color:var(--navy);box-shadow:0 10px 30px rgba(47,69,80,.09)}
+    .path-card.medium p{color:var(--muted)}
+    .path-card.wide{grid-column:span 6;background:var(--navy);color:#fff;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:25px}
+    .wide-copy p{color:#c5dcdf;margin:13px 0 20px}
+    .wide-visual{height:210px;border-radius:22px;overflow:hidden}
+    .wide-visual img{width:100%;height:100%;object-fit:cover}
+
+    .products{background:var(--bg-2)}
+    .product-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:24px}
+    .filters{display:flex;gap:9px;flex-wrap:wrap}
+    .chip{padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink-2);font-size:12px;font-weight:800}
+    .chip.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .product-card{background:#fff;border:1px solid var(--line);border-radius:26px;overflow:hidden;box-shadow:0 8px 25px rgba(27,66,72,.06);transition:transform .22s ease,box-shadow .22s ease}
+    .product-card:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(27,66,72,.12)}
+    .product-media{height:250px;padding:24px;position:relative;background:linear-gradient(150deg,#f7fbfa,#edf4f2)}
+    .product-media img{width:100%;height:100%;object-fit:contain}
+    .product-badge{position:absolute;left:15px;top:15px;padding:6px 9px;border-radius:999px;background:var(--navy);color:#fff;font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+    .product-content{padding:21px}
+    .product-kicker{color:var(--teal-dark);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.09em}
+    .product-card h3{font-size:20px;margin-top:7px}
+    .product-card p{margin-top:9px;color:var(--muted);font-size:14px}
+    .compat{display:flex;flex-wrap:wrap;gap:6px;margin:15px 0 18px}
+    .compat span{padding:5px 8px;border-radius:8px;background:#edf8f5;color:#236f67;font-size:10px;font-weight:800}
+    .product-footer{padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .product-footer small{color:var(--muted)}
+    .product-footer a{font-weight:900;color:var(--teal-dark)}
+    .prototype-note{margin-top:18px;padding:14px 16px;border-radius:14px;background:#fff7e5;border:1px solid #f5dda1;color:#665226;font-size:13px}
