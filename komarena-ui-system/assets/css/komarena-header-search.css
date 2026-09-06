@@ -1,0 +1,158 @@
+/* =========================================================
+   KOMARENA UI SYSTEM — HEADER PRODUCT SEARCH
+   Component: header-search
+   Purpose: one visual owner for the desktop/tablet product search.
+   This layer intentionally overrides older broad search rules from
+   komarena-unified-ui.css without touching WooCommerce search logic.
+   ========================================================= */
+
+.site-header .aws-container,
+.site-header .dgwt-wcas-search-wrapp {
+  border: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.site-header .search-form,
+.site-header .woocommerce-product-search,
+.site-header .aws-search-form,
+.site-header .dgwt-wcas-search-form {
+  box-sizing: border-box;
+  display: flex !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 46px;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 1px solid var(--ka-border) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Hidden routing fields (post_type, taxonomy helpers, etc.) must never
+   participate in the visual flex layout. */
+.site-header .search-form input[type="hidden"],
+.site-header .woocommerce-product-search input[type="hidden"],
+.site-header .aws-search-form input[type="hidden"],
+.site-header .dgwt-wcas-search-form input[type="hidden"] {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  flex: 0 0 0 !important;
+}
+
+.site-header .search-field,
+.site-header .woocommerce-product-search .search-field,
+.site-header .aws-search-field,
+.site-header .dgwt-wcas-search-input {
+  box-sizing: border-box;
+  flex: 1 1 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 46px;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  padding: 0 16px !important;
+  color: var(--ka-text) !important;
+}
+
+.site-header .woocommerce-product-search select,
+.site-header .search-form select,
+.site-header .aws-search-form select,
+.site-header .dgwt-wcas-search-wrapp select {
+  box-sizing: border-box;
+  flex: 0 1 260px !important;
+  width: auto !important;
+  min-width: 170px !important;
+  max-width: 260px !important;
+  min-height: 46px;
+  margin: 0 !important;
+  border: 0 !important;
+  border-left: 1px solid var(--ka-border) !important;
+  border-radius: 0 !important;
+  background: #fff !important;
+  padding: 0 38px 0 18px !important;
+  color: var(--ka-text) !important;
+}
+
+.site-header .search-submit,
+.site-header .woocommerce-product-search button,
+.site-header .aws-search-btn,
+.site-header .dgwt-wcas-search-submit {
+  box-sizing: border-box;
+  flex: 0 0 52px !important;
+  width: 52px !important;
+  min-width: 52px !important;
+  max-width: 52px !important;
+  min-height: 46px;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--ka-primary) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.site-header .search-submit:hover,
+.site-header .woocommerce-product-search button:hover,
+.site-header .aws-search-btn:hover,
+.site-header .dgwt-wcas-search-submit:hover {
+  background: var(--ka-primary-hover) !important;
+}
+
+/* No decorative/form pseudo element may create a trailing visual cell. */
+.site-header .search-form::before,
+.site-header .search-form::after,
+.site-header .woocommerce-product-search::before,
+.site-header .woocommerce-product-search::after,
+.site-header .aws-search-form::before,
+.site-header .aws-search-form::after,
+.site-header .dgwt-wcas-search-form::before,
+.site-header .dgwt-wcas-search-form::after {
+  content: none !important;
+  display: none !important;
+}
+
+@media (max-width: 980px) {
+  .site-header .woocommerce-product-search select,
+  .site-header .search-form select,
+  .site-header .aws-search-form select,
+  .site-header .dgwt-wcas-search-wrapp select {
+    flex-basis: 210px !important;
+    max-width: 210px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header .search-form,
+  .site-header .woocommerce-product-search,
+  .site-header .aws-search-form,
+  .site-header .dgwt-wcas-search-form {
+    min-height: 44px;
+  }
+
+  .site-header .woocommerce-product-search select,
+  .site-header .search-form select,
+  .site-header .aws-search-form select,
+  .site-header .dgwt-wcas-search-wrapp select {
+    display: none !important;
+  }
+
+  .site-header .search-submit,
+  .site-header .woocommerce-product-search button,
+  .site-header .aws-search-btn,
+  .site-header .dgwt-wcas-search-submit {
+    flex-basis: 48px !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+  }
+}
