@@ -71,8 +71,17 @@ function containsAny(haystack, tokens = []) {
 
 function globalRejectReason(item, rulesDoc) {
   const haystack = normalize([item.title, item.descriptionSnippet].join(' '));
+  const title = normalize(item.title);
+  const nativePrice = Number(item.nativePrice);
+  const accessoryOnlyTitleTokens = [
+    'prislusenstvo', 'accessories', 'zubehor', 'ersatzteil', 'nahradne diely', 'nahradny diel',
+    'cover', 'faceplate', 'stojan', 'stand', 'obal', 'kryt', 'filter set', 'kefa', 'brush set'
+  ];
+
   if (containsAny(haystack, rulesDoc.globalRejectTokens || [])) return 'Wanted/exchange listing';
-  if (!Number.isFinite(Number(item.nativePrice)) || Number(item.nativePrice) <= 0) return 'Missing or zero sale price';
+  if (containsAny(title, accessoryOnlyTitleTokens)) return 'Accessory/parts-only listing';
+  if (!Number.isFinite(nativePrice) || nativePrice <= 0) return 'Missing or zero sale price';
+  if (nativePrice <= 5 && item.category !== 'free') return 'Placeholder/symbolic price requires manual review';
   return null;
 }
 
@@ -203,13 +212,13 @@ async function main() {
   const inbox = enriched.filter(item => item.eligibleForInbox).sort((a, b) => b.score - a.score);
 
   const payload = {
-    version: '0.2.1-p1-auto-score',
+    version: '0.2.2-p1-auto-score',
     capturedAt: input.capturedAt,
     enrichedAt: now.toISOString(),
     sourceListingCount: enriched.length,
     inboxCandidateCount: inbox.length,
     ruleVersion: rulesDoc.version,
-    safety: 'Auto-enriched candidates require positive hardware identity, reject wanted/exchange/accessory noise, always retain verificationHold=true and cannot become an automatic BUY.',
+    safety: 'Auto-enriched candidates require positive hardware identity, reject wanted/exchange/accessory/placeholder-price noise, always retain verificationHold=true and cannot become an automatic BUY.',
     candidates: inbox,
     rejectedCount: enriched.length - inbox.length
   };
