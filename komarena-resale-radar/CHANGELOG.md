@@ -4,6 +4,29 @@ Všetky významné zmeny KomArena Resale Radar sa zapisujú sem.
 
 MASTER DESIGN LOCK: schválený vizuálny jazyk KomArena sa pri funkčných aktualizáciách nemení bez výslovného pokynu vlastníka.
 
+## 0.1.2-pro-filter — 2026-09-08
+
+### Pridané
+
+1. **PRO FILTER** — rozbaliteľný pokročilý filter nad Deal Inboxom bez zmeny MASTER vizuálneho smeru.
+2. **Ekonomické limity** — nastaviteľná nákupná/predajná cena, minimálny čistý zisk, ROI a Deal Score.
+3. **Riziko a rýchlosť** — max. technické riziko, min. dopyt, max. vek ponuky a min. logistické skóre.
+4. **Multi-filter** — viacnásobný výber krajín a kategórií plus text/model/porucha, lokalita a zdroj.
+5. **Verification filter** — všetky ponuky, iba bez blokácie alebo iba cenové outliery/položky s povinným overením.
+6. **Rýchle prepínače** — iba ziskové dealy a urgentné ponuky (`score >= 78` a vek `<= 24 h`).
+7. **Radenie** — score, čistý zisk, ROI, čerstvosť, nákupná cena a technické riziko.
+8. **Preset systém** — vstavané presety Top Deal, Rýchly flip, BA + okolie, De'Longhi, Konzoly, Za odvoz a Verification; používateľ môže ukladať aj vlastné presety.
+9. **Persistentné nastavenie** — PRO FILTER a vlastné presety sa ukladajú lokálne cez `localStorage`.
+10. **Aktívne chips a counter** — Radar priebežne ukazuje počet aktívnych podmienok a počet výsledkov.
+
+### Stabilita a bezpečnosť
+
+- PRO FILTER nemení výpočet Deal Score ani verification gate; iba zužuje a radí už vyhodnotené ponuky.
+- Povinné manuálne overenie cenového outlieru sa nedá filtrom zmeniť na automatický nákup.
+- Pôvodné rýchle filtre Krajina/Kategória/Verdikt zostávajú funkčné a kombinujú sa s PRO filtrom.
+- Filter modul sa načítava oddelene cez `filters.js` a `filters.css`, aby sa minimalizoval zásah do stabilného MVP jadra.
+- GitHub Actions `KomArena validation` pre commit s PRO filtrom: **success**.
+
 ## 0.1.0-mvp — 2026-09-08
 
 ### Pridané
