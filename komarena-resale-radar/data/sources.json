@@ -1,0 +1,97 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-09-08",
+  "sources": [
+    {
+      "id": "bazos-sk",
+      "name": "Bazoš.sk",
+      "country": "SK",
+      "priority": 1,
+      "url": "https://www.bazos.sk/",
+      "monitoring": ["rss", "email-alert", "saved-query"],
+      "status": "ready",
+      "focus": ["coffee", "consoles", "pc", "games", "free"]
+    },
+    {
+      "id": "bazar-sk",
+      "name": "Bazar.sk",
+      "country": "SK",
+      "priority": 2,
+      "url": "https://www.bazar.sk/",
+      "monitoring": ["saved-query", "manual-review"],
+      "status": "candidate",
+      "focus": ["coffee", "consoles", "pc", "games"]
+    },
+    {
+      "id": "facebook-marketplace-sk",
+      "name": "Facebook Marketplace SK",
+      "country": "SK",
+      "priority": 1,
+      "url": "https://www.facebook.com/marketplace/",
+      "monitoring": ["manual-review"],
+      "status": "manual-only",
+      "focus": ["coffee", "consoles", "pc", "games", "free"],
+      "note": "Automatizovať iba cez povolené/oficiálne rozhranie; žiadne session cookies v repozitári."
+    },
+    {
+      "id": "bazos-cz",
+      "name": "Bazoš.cz",
+      "country": "CZ",
+      "priority": 1,
+      "url": "https://www.bazos.cz/",
+      "monitoring": ["rss", "email-alert", "saved-query"],
+      "status": "ready",
+      "focus": ["coffee", "consoles", "pc", "games", "free"]
+    },
+    {
+      "id": "sbazar-cz",
+      "name": "Sbazar.cz",
+      "country": "CZ",
+      "priority": 2,
+      "url": "https://www.sbazar.cz/",
+      "monitoring": ["saved-query", "manual-review"],
+      "status": "candidate",
+      "focus": ["coffee", "consoles", "pc", "games"]
+    },
+    {
+      "id": "aukro-cz",
+      "name": "Aukro.cz",
+      "country": "CZ",
+      "priority": 2,
+      "url": "https://aukro.cz/",
+      "monitoring": ["saved-query", "manual-review"],
+      "status": "candidate",
+      "focus": ["consoles", "games", "collectibles", "pc"]
+    },
+    {
+      "id": "darujizaodvoz-cz",
+      "name": "Daruji za odvoz",
+      "country": "CZ",
+      "priority": 1,
+      "url": "https://www.darujizaodvoz.cz/",
+      "monitoring": ["app-alert", "manual-review"],
+      "status": "ready-manual",
+      "focus": ["free", "pc", "electronics"]
+    },
+    {
+      "id": "olx-pl",
+      "name": "OLX.pl",
+      "country": "PL",
+      "priority": 1,
+      "url": "https://www.olx.pl/",
+      "monitoring": ["saved-search", "platform-alert"],
+      "status": "ready",
+      "focus": ["coffee", "consoles", "pc", "games", "free", "damaged"]
+    },
+    {
+      "id": "allegro-lokalnie-pl",
+      "name": "Allegro Lokalnie",
+      "country": "PL",
+      "priority": 1,
+      "url": "https://allegrolokalnie.pl/",
+      "monitoring": ["saved-search", "manual-review"],
+      "status": "ready-manual",
+      "focus": ["coffee", "consoles", "pc", "games", "damaged"]
+    }
+  ]
+}
