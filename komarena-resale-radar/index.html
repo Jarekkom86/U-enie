@@ -7,120 +7,74 @@
   <meta name="description" content="KomArena Resale Radar — rozhodovacie centrum pre bazárové, darované a opraviteľné produkty.">
   <title>KomArena Resale Radar</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="filters.css">
+  <link rel="stylesheet" href="priority-board.css">
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
       <a class="brand" href="#top" aria-label="KomArena Resale Radar domov">
         <span class="brand-mark" aria-hidden="true">R</span>
-        <span>
-          <strong>KomArena</strong>
-          <small>RESALE RADAR</small>
-        </span>
+        <span><strong>KomArena</strong><small>RESALE RADAR</small></span>
       </a>
       <div class="topbar-status">
         <span class="status-dot" aria-hidden="true"></span>
-        <span>MVP · decision center</span>
-        <span class="version">v0.1.0</span>
+        <span>EXPANDED SOURCING · P1–P4</span>
+        <span class="version">v0.1.3</span>
       </div>
     </header>
 
     <main id="top" class="main">
       <section class="hero panel">
         <div>
-          <p class="eyebrow">DEAL INTELLIGENCE / SK · CZ · PL</p>
+          <p class="eyebrow">DEAL INTELLIGENCE / SK · CZ · PL · AT · HU · DE</p>
           <h1>Nakupovať iba tam, kde čísla dávajú zmysel.</h1>
-          <p class="lead">Radar kombinuje cenu, očakávaný zisk, ROI, dopyt, technické riziko, čerstvosť a logistiku. Vysoké skóre nie je automatický nákup — je to priorita na rýchle manuálne overenie.</p>
+          <p class="lead">Radar kombinuje cenu, čistý zisk, ROI, dopyt, technické riziko, opraviteľnosť, rýchlosť obratu, čerstvosť a logistiku. Priorita P1–P4 určuje, ako agresívne segment sledujeme — nikdy nenahrádza overenie vlastníctva, funkčnosti a reálnej trhovej ceny.</p>
         </div>
         <div class="hero-actions">
           <a class="button primary" href="#analyzer">Analyzovať ponuku</a>
           <a class="button ghost" href="#sources">Zdroje</a>
+          <a class="button ghost" href="#priorities">Priority</a>
         </div>
       </section>
 
       <section class="kpi-grid" aria-label="Kľúčové ukazovatele">
-        <article class="kpi panel">
-          <span>Deal inbox</span>
-          <strong id="kpiDeals">0</strong>
-          <small>modelové kandidáty</small>
-        </article>
-        <article class="kpi panel">
-          <span>Hot deals</span>
-          <strong id="kpiHot">0</strong>
-          <small>score ≥ 78</small>
-        </article>
-        <article class="kpi panel">
-          <span>Očak. čistý zisk</span>
-          <strong id="kpiProfit">0 €</strong>
-          <small>po všetkých nákladoch</small>
-        </article>
-        <article class="kpi panel">
-          <span>Watchlist</span>
-          <strong id="kpiWatchlist">0</strong>
-          <small>uložené lokálne</small>
-        </article>
+        <article class="kpi panel"><span>Deal inbox</span><strong id="kpiDeals">0</strong><small>aktuálne kandidáty</small></article>
+        <article class="kpi panel"><span>Hot deals</span><strong id="kpiHot">0</strong><small>score ≥ 78</small></article>
+        <article class="kpi panel"><span>Očak. čistý zisk</span><strong id="kpiProfit">0 €</strong><small>po všetkých nákladoch</small></article>
+        <article class="kpi panel"><span>Watchlist</span><strong id="kpiWatchlist">0</strong><small>uložené lokálne</small></article>
       </section>
 
       <section class="section panel" aria-labelledby="inbox-title">
         <div class="section-head">
-          <div>
-            <p class="eyebrow">DEAL INBOX</p>
-            <h2 id="inbox-title">Prioritizované ponuky</h2>
-          </div>
-          <div class="filters" aria-label="Filtre ponúk">
-            <label>
-              <span>Krajina</span>
-              <select id="filterCountry">
-                <option value="all">Všetky</option>
-                <option value="SK">SK</option>
-                <option value="CZ">CZ</option>
-                <option value="PL">PL</option>
-              </select>
-            </label>
-            <label>
-              <span>Kategória</span>
-              <select id="filterCategory">
-                <option value="all">Všetky</option>
-                <option value="delonghi">Kávovary</option>
-                <option value="consoles">Konzoly</option>
-                <option value="pc">PC / notebooky</option>
-                <option value="games">Hry</option>
-                <option value="free">Za odvoz</option>
-              </select>
-            </label>
-            <label>
-              <span>Verdikt</span>
-              <select id="filterVerdict">
-                <option value="all">Všetky</option>
-                <option value="buy">KÚPIŤ</option>
-                <option value="negotiate">VYJEDNÁVAŤ</option>
-                <option value="watch">SLEDOVAŤ</option>
-                <option value="skip">PRESKOČIŤ</option>
-              </select>
-            </label>
+          <div><p class="eyebrow">DEAL INBOX</p><h2 id="inbox-title">Prioritizované ponuky</h2></div>
+          <div class="filters" aria-label="Rýchle filtre ponúk">
+            <label><span>Krajina</span><select id="filterCountry">
+              <option value="all">Všetky</option><option value="SK">SK</option><option value="CZ">CZ</option><option value="PL">PL</option><option value="AT">AT</option><option value="HU">HU</option><option value="DE">DE</option>
+            </select></label>
+            <label><span>Kategória</span><select id="filterCategory">
+              <option value="all">Všetky</option>
+              <optgroup label="P1 — aktívny lov">
+                <option value="delonghi">Kávovary</option><option value="consoles">Konzoly</option><option value="pc">PC / notebooky</option><option value="games">Hry</option><option value="phones">Telefóny</option><option value="robot-vacuums">Robotické vysávače</option><option value="power-tools">Aku náradie</option>
+              </optgroup>
+              <optgroup label="P2 — silné segmenty">
+                <option value="components">PC komponenty</option><option value="vacuum-cleaners">Dyson / tyčové vysávače</option><option value="3d-printers">3D tlačiarne</option><option value="smart-home">Smart home</option><option value="networking">Sieťové prvky</option><option value="audio">Audio</option><option value="free">Za odvoz</option>
+              </optgroup>
+              <optgroup label="P3–P4 — selektívne">
+                <option value="cameras">Foto</option><option value="drones">Drony</option><option value="ereaders">Čítačky</option><option value="monitors">Monitory</option><option value="printers">Tlačiarne</option><option value="tv">TV</option><option value="large-appliances">Biela technika</option>
+              </optgroup>
+            </select></label>
+            <label><span>Verdikt</span><select id="filterVerdict">
+              <option value="all">Všetky</option><option value="buy">KÚPIŤ</option><option value="negotiate">VYJEDNÁVAŤ</option><option value="watch">SLEDOVAŤ</option><option value="skip">PRESKOČIŤ</option>
+            </select></label>
           </div>
         </div>
 
-        <div class="notice">
-          <strong>MVP režim:</strong> tabuľka nižšie používa modelové dáta na overenie scoringu. Žiadny riadok nie je prezentovaný ako aktuálna živá ponuka.
-        </div>
+        <div class="notice"><strong>LIVE / evidence režim:</strong> ponuky môžu používať overené verejné listingy aj konzervatívne interné odhady predajnej ceny, servisu a rizika. Cenový outlier alebo nejasný pôvod vždy aktivuje manuálne overenie.</div>
 
         <div class="table-wrap">
           <table>
-            <thead>
-              <tr>
-                <th>Score</th>
-                <th>Produkt</th>
-                <th>Zdroj</th>
-                <th>Nákup</th>
-                <th>Oprava + ostatné</th>
-                <th>Predaj</th>
-                <th>Zisk</th>
-                <th>ROI</th>
-                <th>Verdikt</th>
-                <th></th>
-              </tr>
-            </thead>
+            <thead><tr><th>Score</th><th>Produkt</th><th>Zdroj</th><th>Nákup</th><th>Oprava + ostatné</th><th>Predaj</th><th>Zisk</th><th>ROI</th><th>Verdikt</th><th></th></tr></thead>
             <tbody id="dealRows"></tbody>
           </table>
         </div>
@@ -129,141 +83,54 @@
 
       <section id="analyzer" class="section grid-2">
         <article class="panel analyzer-card">
-          <div class="section-head compact">
-            <div>
-              <p class="eyebrow">QUICK ANALYZER</p>
-              <h2>Prepočet ponuky</h2>
-            </div>
-          </div>
-
+          <div class="section-head compact"><div><p class="eyebrow">QUICK ANALYZER</p><h2>Prepočet ponuky</h2></div></div>
           <form id="analyzerForm" class="form-grid">
-            <label class="span-2">
-              <span>Názov / model</span>
-              <input id="qaTitle" type="text" value="De'Longhi Magnifica S — modelový príklad" autocomplete="off">
-            </label>
-            <label>
-              <span>Nákupná cena €</span>
-              <input id="qaPurchase" type="number" min="0" step="0.01" value="45">
-            </label>
-            <label>
-              <span>Očak. predaj €</span>
-              <input id="qaResale" type="number" min="0" step="0.01" value="180">
-            </label>
-            <label>
-              <span>Doprava €</span>
-              <input id="qaShipping" type="number" min="0" step="0.01" value="8">
-            </label>
-            <label>
-              <span>Diely / servis €</span>
-              <input id="qaParts" type="number" min="0" step="0.01" value="25">
-            </label>
-            <label>
-              <span>Poplatky + ostatné €</span>
-              <input id="qaOther" type="number" min="0" step="0.01" value="9">
-            </label>
-            <label>
-              <span>Riziková rezerva €</span>
-              <input id="qaContingency" type="number" min="0" step="0.01" value="18">
-            </label>
-            <label>
-              <span>Dopyt 1–10</span>
-              <input id="qaDemand" type="number" min="1" max="10" step="1" value="8">
-            </label>
-            <label>
-              <span>Technické riziko 1–10</span>
-              <input id="qaRisk" type="number" min="1" max="10" step="1" value="4">
-            </label>
-            <label>
-              <span>Vek ponuky v hodinách</span>
-              <input id="qaAge" type="number" min="0" step="0.5" value="2">
-            </label>
-            <label>
-              <span>Logistika</span>
-              <select id="qaLogistics">
-                <option value="10">Osobne do 15 km</option>
-                <option value="8" selected>Do 30 km</option>
-                <option value="5">Do 80 km</option>
-                <option value="4">Zásielka s ochranou</option>
-                <option value="2">Zásielka bez ochrany</option>
-                <option value="1">Nejasná</option>
-              </select>
-            </label>
-            <div class="span-2 form-actions">
-              <button class="button primary" type="submit">Prepočítať</button>
-              <button class="button ghost" id="saveAnalysis" type="button">Uložiť do watchlistu</button>
-            </div>
+            <label class="span-2"><span>Názov / model</span><input id="qaTitle" type="text" value="De'Longhi Magnifica S — modelový príklad" autocomplete="off"></label>
+            <label><span>Nákupná cena €</span><input id="qaPurchase" type="number" min="0" step="0.01" value="45"></label>
+            <label><span>Očak. predaj €</span><input id="qaResale" type="number" min="0" step="0.01" value="180"></label>
+            <label><span>Doprava €</span><input id="qaShipping" type="number" min="0" step="0.01" value="8"></label>
+            <label><span>Diely / servis €</span><input id="qaParts" type="number" min="0" step="0.01" value="25"></label>
+            <label><span>Poplatky + ostatné €</span><input id="qaOther" type="number" min="0" step="0.01" value="9"></label>
+            <label><span>Riziková rezerva €</span><input id="qaContingency" type="number" min="0" step="0.01" value="18"></label>
+            <label><span>Dopyt 1–10</span><input id="qaDemand" type="number" min="1" max="10" step="1" value="8"></label>
+            <label><span>Technické riziko 1–10</span><input id="qaRisk" type="number" min="1" max="10" step="1" value="4"></label>
+            <label><span>Vek ponuky v hodinách</span><input id="qaAge" type="number" min="0" step="0.5" value="2"></label>
+            <label><span>Logistika</span><select id="qaLogistics"><option value="10">Osobne do 15 km</option><option value="8" selected>Do 30 km</option><option value="5">Do 80 km</option><option value="4">Zásielka s ochranou</option><option value="2">Zásielka bez ochrany</option><option value="1">Nejasná</option></select></label>
+            <div class="span-2 form-actions"><button class="button primary" type="submit">Prepočítať</button><button class="button ghost" id="saveAnalysis" type="button">Uložiť do watchlistu</button></div>
           </form>
         </article>
 
         <article class="panel result-card" aria-live="polite">
-          <p class="eyebrow">DECISION</p>
-          <div class="score-orbit" aria-label="Deal score">
-            <span id="qaScore">0</span>
-            <small>/100</small>
-          </div>
-          <div id="qaVerdict" class="verdict watch">SLEDOVAŤ</div>
-          <dl class="result-grid">
-            <div><dt>Celkové náklady</dt><dd id="qaTotal">0 €</dd></div>
-            <div><dt>Čistý zisk</dt><dd id="qaProfit">0 €</dd></div>
-            <div><dt>ROI</dt><dd id="qaRoi">0 %</dd></div>
-            <div><dt>Break-even</dt><dd id="qaBreakEven">0 €</dd></div>
-          </dl>
-          <p id="qaReason" class="result-note"></p>
+          <p class="eyebrow">DECISION</p><div class="score-orbit" aria-label="Deal score"><span id="qaScore">0</span><small>/100</small></div><div id="qaVerdict" class="verdict watch">SLEDOVAŤ</div>
+          <dl class="result-grid"><div><dt>Celkové náklady</dt><dd id="qaTotal">0 €</dd></div><div><dt>Čistý zisk</dt><dd id="qaProfit">0 €</dd></div><div><dt>ROI</dt><dd id="qaRoi">0 %</dd></div><div><dt>Break-even</dt><dd id="qaBreakEven">0 €</dd></div></dl><p id="qaReason" class="result-note"></p>
         </article>
       </section>
 
       <section id="watchlist" class="section panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">WATCHLIST</p>
-            <h2>Uložené príležitosti</h2>
-          </div>
-          <button id="clearWatchlist" class="button danger" type="button">Vymazať watchlist</button>
-        </div>
-        <div id="watchlistCards" class="card-grid"></div>
-        <div id="emptyWatchlist" class="empty">Watchlist je zatiaľ prázdny.</div>
+        <div class="section-head"><div><p class="eyebrow">WATCHLIST</p><h2>Uložené príležitosti</h2></div><button id="clearWatchlist" class="button danger" type="button">Vymazať watchlist</button></div>
+        <div id="watchlistCards" class="card-grid"></div><div id="emptyWatchlist" class="empty">Watchlist je zatiaľ prázdny.</div>
       </section>
 
       <section id="sources" class="section panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">SOURCE REGISTRY</p>
-            <h2>Monitorované zdroje</h2>
-          </div>
-          <span id="sourceCount" class="pill">0 zdrojov</span>
-        </div>
+        <div class="section-head"><div><p class="eyebrow">SOURCE REGISTRY</p><h2>Monitorované zdroje</h2></div><span id="sourceCount" class="pill">0 zdrojov</span></div>
         <div id="sourceCards" class="source-grid"></div>
       </section>
 
-      <section class="section grid-3">
-        <article class="panel mini-playbook">
-          <p class="eyebrow">PRIORITA 1</p>
-          <h3>De'Longhi</h3>
-          <p>Hľadať opakovateľné hydraulické/mechanické poruchy a veľký rozdiel medzi cenou poškodeného a otestovaného kusu.</p>
-          <strong>Target: ≥ 80 € čistý zisk</strong>
-        </article>
-        <article class="panel mini-playbook">
-          <p class="eyebrow">PRIORITA 1</p>
-          <h3>Konzoly</h3>
-          <p>Rýchly obrat, jednoduchý benchmark. Tvrdá kontrola HDMI, mechaniky, ovládačov, sériového čísla a účtových zámkov.</p>
-          <strong>Target: ≥ 50 € čistý zisk</strong>
-        </article>
-        <article class="panel mini-playbook">
-          <p class="eyebrow">PRIORITA 1</p>
-          <h3>PC / notebooky</h3>
-          <p>Preferovať štandardné business rady a opravy SSD/RAM/batérie/klávesnice. Vyhýbať sa kvapaline a nejasným doskám.</p>
-          <strong>Target: ≥ 60 € čistý zisk</strong>
-        </article>
+      <section id="priorities" class="section panel priority-section">
+        <div class="priority-head">
+          <div><p class="eyebrow">CATEGORY PLAYBOOKS / P1–P4</p><h2>Prioritná matica sortimentu</h2></div>
+          <div class="priority-legend"><span id="priorityCategoryCount" class="pill">0 segmentov</span><span class="pill">P1 aktívne</span><span class="pill">P2 silné</span><span class="pill">P3 selektívne</span><span class="pill">P4 výnimočne</span></div>
+        </div>
+        <div id="priorityBoard" class="priority-groups"><div class="priority-fallback">Načítavam prioritnú maticu…</div></div>
       </section>
     </main>
 
-    <footer class="footer">
-      <span>KomArena Resale Radar · v0.1.0-mvp</span>
-      <span>Žiadny automatický nákup · localStorage iba pre lokálny watchlist</span>
-    </footer>
+    <footer class="footer"><span>KomArena Resale Radar · v0.1.3-expanded</span><span>Žiadny automatický nákup · povinné overenie vlastníctva a rizikových outlierov</span></footer>
   </div>
 
   <script src="app.js" defer></script>
   <script src="live.js" defer></script>
+  <script src="filters-v2.js" defer></script>
+  <script src="priority-board.js" defer></script>
 </body>
 </html>
