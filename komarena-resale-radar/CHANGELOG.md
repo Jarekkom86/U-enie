@@ -4,6 +4,54 @@ Všetky významné zmeny KomArena Resale Radar sa zapisujú sem.
 
 MASTER DESIGN LOCK: schválený vizuálny jazyk KomArena sa pri funkčných aktualizáciách nemení bez výslovného pokynu vlastníka.
 
+## 0.1.3-expanded — 2026-09-08
+
+### Pridané
+
+1. **24 zdrojov namiesto 9** — rozšírenie siete o ďalšie slovenské, české a poľské zdroje a o geograficky výhodné Rakúsko a Maďarsko; Nemecko slúži najmä na špecifické modely, diely a benchmark.
+2. **P1–P4 priorita zdrojov a segmentov** — P1 aktívne loviť, P2 silné príležitosti, P3 selektívne, P4 iba výnimočný deal/diely/lokálny odvoz.
+3. **21 produktových segmentov** — kávovary, konzoly, PC/notebooky, hry, telefóny/tablety, robotické vysávače, aku náradie, PC komponenty, Dyson/tyčové vysávače, 3D tlačiarne, smart home, networking, audio, za odvoz, foto, drony, čítačky, monitory, tlačiarne, TV a veľká biela technika.
+4. **Opraviteľnosť a obrat** — každý segment má vlastné skóre opraviteľnosti a rýchlosti obratu, cieľový čistý zisk, ROI, preferované modely, vhodné poruchy a zoznam rizík.
+5. **Dynamická prioritná matica** — spodná časť Radaru už nie je pevná trojica kariet; vykresľuje P1–P4 priamo z `data/categories.json`.
+6. **PRO FILTER v2** — filtruje aj podľa P1–P4, minimálnej opraviteľnosti a minimálnej rýchlosti obratu; kategórie sa načítavajú dynamicky z dát.
+7. **Rozšírené krajiny** — rýchle filtre a PRO FILTER podporujú SK, CZ, PL, AT, HU a DE.
+8. **Nové presety** — P1 aktívny lov, Top Deal, Rýchly obrat, Najlepšie opraviteľné, BA + SK/AT/HU, Kávovary, Konzoly, Telefóny, Robotické vysávače, Aku náradie, Za odvoz a Verification outliery.
+9. **Reálne zapojenie filtra do indexu** — `filters.css` a `filters-v2.js` sú načítané priamo z `index.html`; predchádzajúci prototyp filtra zostáva v repozitári iba ako história, ale nie je aktívne načítaný.
+10. **Rozšírený source registry** — priorita zdroja, spôsob monitoringu, stav integrácie a zameranie sú explicitne uložené v dátach.
+
+### P1 — aktívne loviť
+
+- De'Longhi a automatické kávovary
+- PlayStation / Xbox / Nintendo konzoly a originálne ovládače
+- Business notebooky, vybrané MacBooky a PC
+- Hry, retro a výhodné bundle
+- iPhone / Samsung / Google telefóny a tablety
+- Robotické vysávače Roborock / Dreame / iRobot
+- Aku náradie Makita / Bosch Professional / DeWalt / Milwaukee
+
+### P2 — silné príležitosti
+
+- GPU / CPU / RAM / SSD a PC komponenty
+- Dyson a prémiové tyčové vysávače
+- 3D tlačiarne
+- Smart home / Home Assistant / Shelly / Sonoff / Zigbee / Thread
+- Ubiquiti / MikroTik / Omada a sieťové prvky
+- Hi-Fi / soundbary / aktívne audio
+- darované / za odvoz / symbolická cena
+
+### Bezpečnosť a disciplína
+
+- Telefóny, MacBooky, drony a konzoly s Activation Lock / FRP / account lock alebo nejasným vlastníctvom majú bezpečnostné veto.
+- Batérie s nafúknutím, požiarom alebo nejasným poškodením BMS sa nepovažujú za bežný rýchly servisný flip.
+- Pri 230 V a sieťovej časti spotrebičov sa nepredpokladá laická oprava; Radar iba hodnotí obchodnú príležitosť a riziko.
+- Veľká biela technika a TV sú P4 kvôli logistike, skladovaniu a riziku panelov/ťažkých opráv.
+- Facebook zdroje zostávajú `manual-only`; žiadne session cookies ani obchádzanie podmienok platformy.
+
+### Overenie
+
+- GitHub Actions `KomArena validation` pre funkčný commit `779f6fdb4482137a7e0a9faca52d41b4880b67af`: **success**.
+- MASTER vizuálny smer KomArena zostal zachovaný.
+
 ## 0.1.2-pro-filter — 2026-09-08
 
 ### Pridané
