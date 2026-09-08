@@ -1,0 +1,60 @@
+{
+  "version": "0.1.0",
+  "categories": [
+    {
+      "id": "delonghi",
+      "name": "De'Longhi kávovary",
+      "priority": 1,
+      "targetNetProfit": 80,
+      "targetRoiPct": 60,
+      "demand": 8,
+      "preferred": ["Magnifica", "Magnifica S", "ECAM platform"],
+      "goodFaults": ["zanesenie", "tesnenia", "prietokomer", "čerpadlo", "ventil", "sparovacia jednotka", "čistenie a odvápnenie"],
+      "avoid": ["prepätie s rozsiahlym poškodením", "korózia po vode", "viacnásobná neznáma porucha", "chýbajúce kľúčové diely"]
+    },
+    {
+      "id": "consoles",
+      "name": "Herné konzoly",
+      "priority": 1,
+      "targetNetProfit": 50,
+      "targetRoiPct": 30,
+      "demand": 9,
+      "preferred": ["PS4 Slim", "PS4 Pro", "PS5", "Xbox One S/X", "Xbox Series S/X", "Nintendo Switch/OLED"],
+      "goodFaults": ["čistenie", "ventilátor", "HDD/SSD", "mechanika pri lacnom diele", "ovládač drift pri známom rozsahu"],
+      "avoid": ["account lock", "podozrivé vlastníctvo", "ťažké board-level poškodenie", "nejasný HDMI/SoC fault bez rezervy"]
+    },
+    {
+      "id": "pc",
+      "name": "PC a notebooky",
+      "priority": 1,
+      "targetNetProfit": 60,
+      "targetRoiPct": 35,
+      "demand": 8,
+      "preferred": ["Dell Latitude", "HP EliteBook/ProBook", "Lenovo ThinkPad", "štandardné desktop PC"],
+      "goodFaults": ["SSD", "RAM", "batéria", "klávesnica", "ventilátor", "čistenie", "OS"],
+      "avoid": ["liquid damage", "BGA/GPU", "zamknutý BIOS", "nejasný motherboard fault"]
+    },
+    {
+      "id": "games",
+      "name": "Hry a bundle",
+      "priority": 1,
+      "targetNetProfit": 15,
+      "targetRoiPct": 30,
+      "demand": 9,
+      "preferred": ["Nintendo first-party", "PlayStation exclusives", "retro a zberateľské tituly", "výhodné bundle"],
+      "goodFaults": ["kozmetické obaly", "špinavé disky pri opraviteľnom stave", "nekompletný bundle s hodnotnými kusmi"],
+      "avoid": ["neoveriteľné digitálne účty", "reprodukcie vydávané za originál", "poškodené médiá bez testu"]
+    },
+    {
+      "id": "free",
+      "name": "Darované / za odvoz",
+      "priority": 2,
+      "targetNetProfit": 30,
+      "targetRoiPct": 100,
+      "demand": 6,
+      "preferred": ["malá elektronika", "PC komponenty", "monitory", "ovládače", "kávovary", "ľahko rozoberateľné zariadenia"],
+      "goodFaults": ["neotestované", "chýbajúci lacný adaptér", "znečistenie", "jednoduchá mechanická závada"],
+      "avoid": ["veľký odvoz bez hodnoty", "nebezpečné poškodenie", "náklady na likvidáciu vyššie než hodnota", "nejasné vlastníctvo"]
+    }
+  ]
+}
