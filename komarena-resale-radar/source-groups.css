@@ -1,0 +1,8 @@
+.source-priority-groups { display:grid; gap:12px; }
+.source-priority-group { border:1px solid var(--ka-border); border-radius:12px; overflow:hidden; background:rgba(255,255,255,.012); }
+.source-priority-head { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; padding:14px 16px; border-bottom:1px solid var(--ka-border); background:rgba(255,255,255,.018); }
+.source-priority-head h3 { margin:0; font-size:14px; }
+.source-priority-head p { margin:4px 0 0; color:var(--ka-muted); font-size:10px; line-height:1.45; }
+.source-priority-group .source-grid { padding:12px; grid-template-columns:repeat(auto-fill,minmax(245px,1fr)); }
+.source-focus { color:#789b9e !important; font-size:9px !important; text-transform:uppercase; letter-spacing:.04em; }
+@media (max-width:640px){.source-priority-head{flex-direction:column}.source-priority-group .source-grid{grid-template-columns:1fr}}
