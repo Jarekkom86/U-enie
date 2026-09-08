@@ -4,6 +4,38 @@ Všetky významné zmeny KomArena Resale Radar sa zapisujú sem.
 
 MASTER DESIGN LOCK: schválený vizuálny jazyk KomArena sa pri funkčných aktualizáciách nemení bez výslovného pokynu vlastníka.
 
+## 0.2.0-p1-live-intake — 2026-09-08
+
+### Pridané
+
+1. **Evidence-backed P1 snapshot** — Deal Inbox obsahuje reálne aktuálne ponuky z Bazoš.sk, Bazoš.cz, OLX.pl a Willhaben.at pre De'Longhi, konzoly, iPhone, Roborock a Makita.
+2. **Automatický Bazoš SK/CZ intake** — nízkofrekvenčný verejný zber bez prihlásenia, cookies alebo kontaktovania predávajúceho; normalizuje listing ID, URL, názov, cenu, menu, lokalitu, dátum, kategóriu a source family.
+3. **7 ostrých P1 vyhľadávaní** — De'Longhi SK/CZ, iPhone 13 SK, PS5 SK/CZ, Roborock SK a Makita SK.
+4. **Deduplikácia a história zachytenia** — `sourceFamily + listingId`, `firstSeenAt`, `lastSeenAt` a `seenCount`.
+5. **Deterministický enrichment** — modelové pravidlá pre iPhone 13, PS5, Magnifica/Magnifica S, Roborock S8/S7 MaxV a Makita DDF453.
+6. **Konzervatívna ekonomika** — normalizovaná nákupná cena, doprava, diely, rezerva, referenčný predaj, čistý zisk, ROI, dopyt, opraviteľnosť, obrat, riziko, logistika a Deal Score.
+7. **Fail-closed classifier** — vyraďuje `kúpim/hľadám/vymením`, hry a príslušenstvo zamieňané za hardvér, diely-only ponuky, účtové zámky a placeholder/symbolické ceny 1–5 € mimo free segmentu.
+8. **AUTO P1 verification gate** — automaticky objavený kandidát nikdy nedostane priamy verdikt `KÚPIŤ`; zostáva `POVINNÉ OVERENIE` až do kontroly konkrétneho kusu, vlastníctva a čerstvej trhovej ceny.
+9. **LIVE + AUTO merge** — `live.js` kombinuje ručne/evidence overené ponuky s automaticky objavenými kandidátmi; ručne overený záznam má pri duplicite prednosť.
+10. **GitHub Actions intake pipeline** — syntax check, zber, enrichment, QA súhrn a 7-dňový artifact; po merge do `main` je workflow pripravený na hodinový beh `17 * * * *` a zápis aktualizovaných snapshotov.
+
+### QA výsledok
+
+- Ostrý smoke test zachytil **137 unikátnych aktuálnych listingov** zo 7 vyhľadávaní; všetkých 7 dotazov vrátilo HTTP 200.
+- Prvá voľnejšia verzia classifiera pustila 18 kandidátov a odhalila false positives (PS5 hry, headset, stojan, `kúpim/vymením`). Tento výsledok nebol publikovaný ako dôveryhodný Deal Inbox.
+- Po sprísnení hardvérovej identity ostali 3 kandidáti; ďalšia kontrola zachytila Roborock príslušenstvo a Magnifica Evo s placeholder cenou 1 €.
+- Finálny fail-closed test pustil **1 z 137** kandidátov: De'Longhi Magnifica S ECAM 22.112.B za 50 €; **136 listingov bolo zámerne odmietnutých**.
+- QA snapshot je publikovaný aj na feature vetve, aby rawgithack preview okamžite zobrazilo `AUTO P1` kandidáta.
+
+### Bezpečnosť a limity
+
+- Žiadne automatické nákupy ani správy predávajúcim.
+- Žiadne prihlasovacie údaje, cookies, session tokeny ani obchádzanie loginu.
+- Bazoš zber beží sekvenčne s oneskorením; nejde o agresívny crawler.
+- OLX.pl a Willhaben.at sú v tejto verzii evidence-backed LIVE zdroje, nie automaticky scrapované zdroje.
+- Facebook Marketplace zostáva `manual-only`, kým nebude k dispozícii povolené oficiálne rozhranie.
+- Automatické referenčné predajné ceny sú zatiaľ konzervatívne modelové baseline, nie ešte živý median realizovaných predajov; fresh market-comp engine je ďalší krok.
+
 ## 0.1.3-expanded — 2026-09-08
 
 ### Pridané
