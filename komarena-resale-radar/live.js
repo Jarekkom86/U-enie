@@ -115,3 +115,15 @@
 
   document.addEventListener("DOMContentLoaded", loadLiveSnapshot);
 })();
+
+(function loadProFilterModule() {
+  const css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = "filters.css";
+  document.head.append(css);
+
+  const script = document.createElement("script");
+  script.src = "filters.js";
+  script.async = false;
+  document.head.append(script);
+})();
