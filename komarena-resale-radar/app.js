@@ -345,7 +345,7 @@ function reasonFor(result) {
   return "Score je príliš nízke vzhľadom na viazaný kapitál, riziko alebo slabý absolútny zisk.";
 }
 
-let latestAnalysis = calculateDeal(analyzerInput());
+let latestAnalysis = null;
 
 function renderAnalysis(result) {
   latestAnalysis = result;
