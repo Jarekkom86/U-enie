@@ -12,6 +12,11 @@
     }
   }
 
+  function dealIdentity(item) {
+    if (item?.sourceFamily && item?.listingId) return `${item.sourceFamily}:${item.listingId}`;
+    return String(item?.id || item?.sourceUrl || "");
+  }
+
   function decorateLiveRows() {
     document.querySelectorAll("#dealRows tr").forEach(row => {
       const saveButton = row.querySelector(".save-deal");
@@ -28,10 +33,11 @@
         const evidence = document.createElement("span");
         evidence.className = "meta live-evidence";
         const confidence = Math.round(Number(deal.evidenceConfidence || 0) * 100);
+        const autoTag = deal.autoDiscovered ? "AUTO P1 · " : "LIVE · ";
         evidence.textContent = deal.verificationHold
-          ? `LIVE · POVINNÉ OVERENIE · evidencia ${confidence}%`
-          : `LIVE · evidencia ${confidence}%`;
-        evidence.title = [deal.benchmark, deal.note].filter(Boolean).join("\n\n");
+          ? `${autoTag}POVINNÉ OVERENIE · evidencia ${confidence}%`
+          : `${autoTag}evidencia ${confidence}%`;
+        evidence.title = [deal.normalizedModel, deal.benchmark, deal.note].filter(Boolean).join("\n\n");
         productCell.append(document.createElement("br"), evidence);
       }
 
@@ -54,56 +60,90 @@
 
   function applyVerificationGate(result) {
     if (!result.verificationHold) return result;
-
-    // Price outliers and incomplete evidence never receive a direct BUY verdict.
-    // The underlying score remains visible so the user can see the economic upside,
-    // but the operational verdict is capped until identity/state evidence is checked.
-    if (result.verdict === "buy") {
-      return { ...result, verdict: "negotiate" };
-    }
+    if (result.verdict === "buy") return { ...result, verdict: "negotiate" };
     return result;
   }
 
-  function updateLiveUi(snapshot) {
+  async function fetchJsonOptional(url) {
+    try {
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) return null;
+      return await response.json();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function mergeSnapshots(manualSnapshot, autoSnapshot) {
+    const manual = Array.isArray(manualSnapshot?.deals) ? manualSnapshot.deals : [];
+    const autoCandidates = Array.isArray(autoSnapshot?.candidates)
+      ? autoSnapshot.candidates.map(item => ({ ...item, autoDiscovered: true }))
+      : [];
+
+    const merged = [];
+    const seen = new Set();
+
+    // Evidence-backed manual review always wins over an automatically enriched duplicate.
+    for (const item of manual) {
+      const key = dealIdentity(item);
+      if (key) seen.add(key);
+      merged.push(item);
+    }
+
+    for (const item of autoCandidates) {
+      const key = dealIdentity(item);
+      if (key && seen.has(key)) continue;
+      if (key) seen.add(key);
+      merged.push(item);
+    }
+
+    return merged;
+  }
+
+  function updateLiveUi(snapshot, autoSnapshot, displayedCount) {
     const notice = document.querySelector(".notice");
     if (notice) {
       notice.innerHTML = "";
       const strong = document.createElement("strong");
-      strong.textContent = "LIVE snapshot: ";
+      strong.textContent = "LIVE + AUTO P1: ";
+      const autoText = autoSnapshot
+        ? `Automatický intake zachytil ${Number(autoSnapshot.sourceListingCount || 0)} listingov a ${Number(autoSnapshot.inboxCandidateCount || 0)} prešlo konzervatívnym modelovým filtrom. `
+        : "Automatický P1 snapshot zatiaľ nie je publikovaný na tejto vetve. ";
       notice.append(strong, document.createTextNode(
-        `verejné ponuky overené ${snapshot.observedAt || "dnes"}. ` +
-        "Predajná cena, servis a riziková rezerva sú naše konzervatívne odhady. " +
-        "Cenový outlier alebo chýbajúce údaje aktivujú povinné manuálne overenie."
+        `${displayedCount} ponúk je aktuálne pripravených v Deal Inboxe. ${autoText}` +
+        "AUTO kandidát nikdy nedostane priamy verdikt KÚPIŤ: najprv sa overuje konkrétny model, stav, vlastníctvo a čerstvá trhová cena."
       ));
     }
 
     const dealKpi = document.getElementById("kpiDeals");
     if (dealKpi && dealKpi.nextElementSibling) {
-      dealKpi.nextElementSibling.textContent = "evidence-backed snapshot";
+      dealKpi.nextElementSibling.textContent = autoSnapshot ? "live + auto P1 candidates" : "evidence-backed snapshot";
     }
 
     const version = document.querySelector(".topbar .version");
-    if (version) version.textContent = snapshot.version || "v0.1.1";
+    if (version) version.textContent = autoSnapshot ? "v0.2.0-P1" : (snapshot.version || "v0.2.0");
   }
 
   async function loadLiveSnapshot() {
     try {
-      const response = await fetch("data/live-deals.json", { cache: "no-store" });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const [snapshot, autoSnapshot] = await Promise.all([
+        fetchJsonOptional("data/live-deals.json"),
+        fetchJsonOptional("data/p1-scored-listings.json")
+      ]);
 
-      const snapshot = await response.json();
       if (!snapshot || !Array.isArray(snapshot.deals) || snapshot.deals.length === 0) {
         throw new Error("Live snapshot has no deals");
       }
 
-      const scored = snapshot.deals
+      const combined = mergeSnapshots(snapshot, autoSnapshot);
+      const scored = combined
         .map(item => applyVerificationGate(calculateDeal(item)))
         .sort((a, b) => b.score - a.score);
 
       deals.splice(0, deals.length, ...scored);
       renderKpis();
       renderDeals();
-      updateLiveUi(snapshot);
+      updateLiveUi(snapshot, autoSnapshot, scored.length);
     } catch (error) {
       const notice = document.querySelector(".notice");
       if (notice) {
@@ -114,16 +154,4 @@
   }
 
   document.addEventListener("DOMContentLoaded", loadLiveSnapshot);
-})();
-
-(function loadProFilterModule() {
-  const css = document.createElement("link");
-  css.rel = "stylesheet";
-  css.href = "filters.css";
-  document.head.append(css);
-
-  const script = document.createElement("script");
-  script.src = "filters.js";
-  script.async = false;
-  document.head.append(script);
 })();
