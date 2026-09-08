@@ -58,18 +58,32 @@ function ageHours(item, now = new Date()) {
 
 function eurPrice(item, fx) {
   const price = Number(item.nativePrice);
-  if (!Number.isFinite(price) || price < 0) return null;
+  if (!Number.isFinite(price) || price <= 0) return null;
   if (item.nativeCurrency === 'EUR') return price;
   if (item.nativeCurrency === 'CZK') return price / Number(fx.CZK_PER_EUR || 1);
   if (item.nativeCurrency === 'PLN') return price / Number(fx.PLN_PER_EUR || 1);
   return null;
 }
 
+function containsAny(haystack, tokens = []) {
+  return tokens.some(token => haystack.includes(normalize(token)));
+}
+
+function globalRejectReason(item, rulesDoc) {
+  const haystack = normalize([item.title, item.descriptionSnippet].join(' '));
+  if (containsAny(haystack, rulesDoc.globalRejectTokens || [])) return 'Wanted/exchange listing';
+  if (!Number.isFinite(Number(item.nativePrice)) || Number(item.nativePrice) <= 0) return 'Missing or zero sale price';
+  return null;
+}
+
 function matchRule(item, rules) {
-  const haystack = normalize([item.title, item.descriptionSnippet, item.category].join(' '));
+  const haystack = normalize([item.title, item.descriptionSnippet].join(' '));
   const exactCategory = rules.filter(rule => rule.category === item.category);
   for (const rule of exactCategory) {
-    if ((rule.match || []).some(token => haystack.includes(normalize(token)))) return rule;
+    const positive = containsAny(haystack, rule.match || []);
+    const excluded = containsAny(haystack, rule.exclude || []);
+    const required = !(rule.requireAny || []).length || containsAny(haystack, rule.requireAny || []);
+    if (positive && !excluded && required) return rule;
   }
   return null;
 }
@@ -79,12 +93,12 @@ function applyFaultRules(item, base, faultRules) {
   let risk = Number(base.baseRisk || 5);
   let parts = Number(base.defaultParts || 0);
   let contingency = Number(base.defaultContingency || 0);
-  let verificationHold = true; // Auto-discovered listings always require a human verification gate.
+  let verificationHold = true;
   let veto = false;
   const matched = [];
 
   for (const fault of faultRules || []) {
-    if (!(fault.tokens || []).some(token => haystack.includes(normalize(token)))) continue;
+    if (!containsAny(haystack, fault.tokens || [])) continue;
     matched.push(fault.id);
     risk += Number(fault.riskDelta || 0);
     parts = Math.max(parts, Number(fault.partsMinimum || 0));
@@ -99,11 +113,11 @@ function applyFaultRules(item, base, faultRules) {
 function logisticsScore(item) {
   const location = normalize(item.location);
   if (item.country === 'SK') {
-    if (/(bratislava|petrzalka|petržalka|senec|samorin|šamorín|dunajska streda|dunajská streda|pezinok|malacky)/.test(location)) return 9;
+    if (/(bratislava|petrzalka|senec|samorin|dunajska streda|pezinok|malacky)/.test(location)) return 9;
     return 6;
   }
   if (item.country === 'CZ') {
-    if (/(hodonin|hodonín|breclav|břeclav|brno)/.test(location)) return 6;
+    if (/(hodonin|breclav|brno)/.test(location)) return 6;
     return 4;
   }
   return 4;
@@ -111,16 +125,17 @@ function logisticsScore(item) {
 
 function operationalVerdict(score, profit, veto) {
   if (veto || profit <= 0) return 'skip';
-  // Auto-enriched listings never become BUY before manual verification.
-  if (score >= 78) return 'negotiate';
   if (score >= 62) return 'negotiate';
   if (score >= 50) return 'watch';
   return 'skip';
 }
 
 function enrich(item, rulesDoc, now) {
+  const rejectReason = globalRejectReason(item, rulesDoc);
+  if (rejectReason) return { ...item, eligibleForInbox: false, enrichmentReason: rejectReason };
+
   const rule = matchRule(item, rulesDoc.rules || []);
-  if (!rule) return { ...item, eligibleForInbox: false, enrichmentReason: 'No trusted model rule' };
+  if (!rule) return { ...item, eligibleForInbox: false, enrichmentReason: 'No trusted hardware/model rule' };
 
   const purchase = eurPrice(item, rulesDoc.fx || {});
   if (purchase === null) return { ...item, eligibleForInbox: false, enrichmentReason: 'Price unavailable' };
@@ -172,9 +187,9 @@ function enrich(item, rulesDoc, now) {
     benchmark: `Automatický konzervatívny benchmark ${rule.normalizedModel}: referenčný predaj ${resale} €. Pred nákupom potvrdiť čerstvými porovnateľnými ponukami.`,
     note: fault.veto
       ? 'AUTO VETO: text obsahuje riziko účtového/zariadenového zámku. Nekupovať bez úplného legitímneho odomknutia a overenia vlastníctva.'
-      : 'AUTO DISCOVERY: kandidát vznikol z verejného vyhľadávania a modelového pravidla. Verdikt je zámerne blokovaný na manuálne overenie modelu, stavu, vlastníctva a reálnej trhovej ceny.',
+      : 'AUTO DISCOVERY: hardware/model prešiel identifikačným filtrom, ale nákup zostáva manuálne blokovaný do kontroly konkrétneho kusu, vlastníctva a čerstvej trhovej ceny.',
     eligibleForInbox: economicallyInteresting && !fault.veto,
-    enrichmentReason: economicallyInteresting ? 'Matched trusted model rule + positive conservative economics' : 'Weak economics after conservative costs',
+    enrichmentReason: economicallyInteresting ? 'Trusted hardware identity + positive conservative economics' : 'Weak economics after conservative costs',
     enrichedAt: now.toISOString()
   };
 }
@@ -188,20 +203,20 @@ async function main() {
   const inbox = enriched.filter(item => item.eligibleForInbox).sort((a, b) => b.score - a.score);
 
   const payload = {
-    version: '0.2.0-p1-auto-score',
+    version: '0.2.1-p1-auto-score',
     capturedAt: input.capturedAt,
     enrichedAt: now.toISOString(),
     sourceListingCount: enriched.length,
     inboxCandidateCount: inbox.length,
     ruleVersion: rulesDoc.version,
-    safety: 'Auto-enriched candidates always retain verificationHold=true and cannot become an automatic BUY.',
+    safety: 'Auto-enriched candidates require positive hardware identity, reject wanted/exchange/accessory noise, always retain verificationHold=true and cannot become an automatic BUY.',
     candidates: inbox,
     rejectedCount: enriched.length - inbox.length
   };
 
   await fs.writeFile(OUTPUT, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
-  console.log(`P1 enrichment: ${payload.inboxCandidateCount}/${payload.sourceListingCount} candidates passed conservative inbox economics.`);
-  for (const candidate of inbox.slice(0, 12)) {
+  console.log(`P1 enrichment: ${payload.inboxCandidateCount}/${payload.sourceListingCount} candidates passed strict identity + conservative economics.`);
+  for (const candidate of inbox.slice(0, 15)) {
     console.log(`${candidate.score}\t${candidate.country}\t${candidate.normalizedModel}\tbuy ${candidate.purchase.toFixed(0)}€\tprofit ${candidate.netProfit.toFixed(0)}€\t${candidate.sourceUrl}`);
   }
 }
