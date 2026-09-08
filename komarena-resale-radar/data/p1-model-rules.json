@@ -1,0 +1,185 @@
+{
+  "version": "0.2.1",
+  "updatedAt": "2026-09-08T10:55:00+02:00",
+  "fx": {
+    "EUR": 1,
+    "CZK_PER_EUR": 24.19,
+    "PLN_PER_EUR": 4.31
+  },
+  "globalRejectTokens": [
+    "koupim", "kúpim", "kupim", "hledam", "hľadám", "hladam",
+    "vymenim", "vymením", "vymena", "výmena", "exchange only"
+  ],
+  "rules": [
+    {
+      "id": "iphone13-128",
+      "category": "phones",
+      "priority": 1,
+      "match": ["iphone 13 128", "iphone13 128"],
+      "exclude": ["obal", "case", "kryt", "sklo na iphone", "display na iphone", "lcd", "diely", "parts"],
+      "normalizedModel": "Apple iPhone 13 128GB",
+      "resaleReference": 255,
+      "demand": 10,
+      "repairability": 7,
+      "turnover": 10,
+      "baseRisk": 4,
+      "defaultParts": 10,
+      "defaultContingency": 25,
+      "maxAutoPurchase": 210
+    },
+    {
+      "id": "ps5-slim-disc",
+      "category": "consoles",
+      "priority": 1,
+      "match": ["ps5 slim disc", "playstation 5 slim disc", "ps5 slim 1tb"],
+      "exclude": ["cover", "kryt", "stojan", "stand", "headset", "pulse", "sluchad", "hra ", "game ", "disk hra", "ovladac", "ovládač"],
+      "normalizedModel": "Sony PlayStation 5 Slim 1TB",
+      "resaleReference": 420,
+      "demand": 10,
+      "repairability": 5,
+      "turnover": 10,
+      "baseRisk": 3,
+      "defaultParts": 0,
+      "defaultContingency": 30,
+      "maxAutoPurchase": 340
+    },
+    {
+      "id": "ps5-standard",
+      "category": "consoles",
+      "priority": 1,
+      "match": ["playstation 5", "ps5"],
+      "requireAny": ["konzola", "konzole", "console", "slim", "disc", "digital", "pro", "1tb", "825gb", "2tb", "fat"],
+      "exclude": [
+        "cover", "kryt", "stojan", "stand", "headset", "pulse", "sluchad", "faceplate",
+        "assassin", "watch dogs", "resident evil", "nhl ", "outcast", "spiderman", "fifa ", "fc 2", "hra ", "game ",
+        "ovladac", "ovládač", "dual sense", "dualsense", "dock", "nabijack", "nabíjačk"
+      ],
+      "normalizedModel": "Sony PlayStation 5",
+      "resaleReference": 390,
+      "demand": 10,
+      "repairability": 5,
+      "turnover": 10,
+      "baseRisk": 3,
+      "defaultParts": 0,
+      "defaultContingency": 30,
+      "maxAutoPurchase": 315
+    },
+    {
+      "id": "magnifica-s",
+      "category": "delonghi",
+      "priority": 1,
+      "match": ["magnifica s", "magnificas", "ecam 22", "ecam22"],
+      "exclude": ["diely", "náhradné diely", "ersatzteil", "parts only"],
+      "normalizedModel": "De'Longhi Magnifica S",
+      "resaleReference": 125,
+      "demand": 8,
+      "repairability": 9,
+      "turnover": 8,
+      "baseRisk": 3,
+      "defaultParts": 10,
+      "defaultContingency": 15,
+      "maxAutoPurchase": 75
+    },
+    {
+      "id": "magnifica-generic",
+      "category": "delonghi",
+      "priority": 1,
+      "match": ["delonghi magnifica", "de'longhi magnifica", "magnifica"],
+      "exclude": ["diely", "náhradné diely", "ersatzteil", "parts only"],
+      "normalizedModel": "De'Longhi Magnifica",
+      "resaleReference": 110,
+      "demand": 8,
+      "repairability": 9,
+      "turnover": 8,
+      "baseRisk": 3,
+      "defaultParts": 10,
+      "defaultContingency": 15,
+      "maxAutoPurchase": 65
+    },
+    {
+      "id": "roborock-s8",
+      "category": "robot-vacuums",
+      "priority": 1,
+      "match": ["roborock s8"],
+      "exclude": ["kefa", "brush", "filter", "mop", "vrecko", "sáčok", "dock only", "náhradný diel", "diely"],
+      "normalizedModel": "Roborock S8",
+      "resaleReference": 300,
+      "demand": 8,
+      "repairability": 7,
+      "turnover": 8,
+      "baseRisk": 3,
+      "defaultParts": 8,
+      "defaultContingency": 25,
+      "maxAutoPurchase": 225
+    },
+    {
+      "id": "roborock-s7-maxv",
+      "category": "robot-vacuums",
+      "priority": 1,
+      "match": ["roborock s7 maxv", "s7 maxv"],
+      "exclude": ["kefa", "brush", "filter", "mop", "vrecko", "sáčok", "dock only", "náhradný diel", "diely"],
+      "normalizedModel": "Roborock S7 MaxV",
+      "resaleReference": 260,
+      "demand": 8,
+      "repairability": 7,
+      "turnover": 8,
+      "baseRisk": 3,
+      "defaultParts": 8,
+      "defaultContingency": 25,
+      "maxAutoPurchase": 190
+    },
+    {
+      "id": "makita-ddf453",
+      "category": "power-tools",
+      "priority": 1,
+      "match": ["ddf453", "makita ddf453"],
+      "exclude": ["motor ddf453", "prevodovka", "gearbox", "diely", "náhradný diel"],
+      "normalizedModel": "Makita DDF453 LXT",
+      "resaleReference": 120,
+      "demand": 8,
+      "repairability": 8,
+      "turnover": 8,
+      "baseRisk": 4,
+      "defaultParts": 5,
+      "defaultContingency": 18,
+      "maxAutoPurchase": 75
+    }
+  ],
+  "faultRules": [
+    {
+      "id": "account-lock-risk",
+      "tokens": ["icloud", "activation lock", "frp", "blokovany", "blokovaný", "locked"],
+      "riskDelta": 5,
+      "verificationHold": true,
+      "veto": true
+    },
+    {
+      "id": "broken-glass",
+      "tokens": ["prasknute sklo", "prasknuté sklo", "rozbite sklo", "rozbité sklo", "zadne sklo", "zadné sklo"],
+      "riskDelta": 2,
+      "partsMinimum": 65,
+      "contingencyMinimum": 30,
+      "verificationHold": true
+    },
+    {
+      "id": "pump-fault",
+      "tokens": ["cerpadlo", "čerpadlo", "pumpa", "pump", "pompa"],
+      "riskDelta": 1,
+      "partsMinimum": 25,
+      "contingencyMinimum": 18
+    },
+    {
+      "id": "generic-broken",
+      "tokens": ["nefunkc", "pokazen", "pokazený", "uszkodz", "poskod", "poškod", "defekt", "defektni", "defektní"],
+      "riskDelta": 3,
+      "partsMinimum": 35,
+      "contingencyMinimum": 30,
+      "verificationHold": true
+    },
+    {
+      "id": "functional-claim",
+      "tokens": ["plne funkc", "plne funkč", "fully functional", "funkcny", "funkčný", "funkcni", "funkční"],
+      "riskDelta": -1
+    }
+  ]
+}

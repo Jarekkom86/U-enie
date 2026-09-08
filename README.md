@@ -18,6 +18,12 @@ pre checkout, platby a objednávky.
 Google Apps Script projekt na pravidlové triedenie Gmailu. Má dry-run režim,
 audit log, dashboard a ochranu pred automatickým mazaním správ.
 
+### [KomArena Resale Radar](komarena-resale-radar/)
+
+Rozhodovacie centrum pre bazárové, darované a opraviteľné produkty. Spája Deal
+Score, Quick Analyzer, lokálny watchlist, zdrojový register a kategóriové
+playbooky pre rýchloobrátkový resale/repas bez automatických nákupov.
+
 ### [WebOps dokumentácia](docs/komarena-webops-os-report.md)
 
 Mapa e-commerce procesov, produktových dát, obsahových štandardov, SEO,
@@ -48,6 +54,7 @@ kontrolných zoznamov pre bezpečnú spoluprácu s AI agentmi.
 | --- | --- |
 | `komarena-ui-system/` | WordPress UI plugin |
 | `gmail-cleaner-control-center/` | Gmail automatizácia |
+| `komarena-resale-radar/` | Deal intelligence pre bazárový resale/repas |
 | `docs/` | WebOps, e-commerce, SEO a procesná dokumentácia |
 | `docs/product-csv/` | WooCommerce CSV a validačné reporty |
 | `.github/workflows/` | Automatické kontroly |
