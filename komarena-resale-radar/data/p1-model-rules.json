@@ -1,17 +1,22 @@
 {
-  "version": "0.2.0",
-  "updatedAt": "2026-09-08T10:23:00+02:00",
+  "version": "0.2.1",
+  "updatedAt": "2026-09-08T10:55:00+02:00",
   "fx": {
     "EUR": 1,
     "CZK_PER_EUR": 24.19,
     "PLN_PER_EUR": 4.31
   },
+  "globalRejectTokens": [
+    "koupim", "kúpim", "kupim", "hledam", "hľadám", "hladam",
+    "vymenim", "vymením", "vymena", "výmena", "exchange only"
+  ],
   "rules": [
     {
       "id": "iphone13-128",
       "category": "phones",
       "priority": 1,
       "match": ["iphone 13 128", "iphone13 128"],
+      "exclude": ["obal", "case", "kryt", "sklo na iphone", "display na iphone", "lcd", "diely", "parts"],
       "normalizedModel": "Apple iPhone 13 128GB",
       "resaleReference": 255,
       "demand": 10,
@@ -27,6 +32,7 @@
       "category": "consoles",
       "priority": 1,
       "match": ["ps5 slim disc", "playstation 5 slim disc", "ps5 slim 1tb"],
+      "exclude": ["cover", "kryt", "stojan", "stand", "headset", "pulse", "sluchad", "hra ", "game ", "disk hra", "ovladac", "ovládač"],
       "normalizedModel": "Sony PlayStation 5 Slim 1TB",
       "resaleReference": 420,
       "demand": 10,
@@ -42,6 +48,12 @@
       "category": "consoles",
       "priority": 1,
       "match": ["playstation 5", "ps5"],
+      "requireAny": ["konzola", "konzole", "console", "slim", "disc", "digital", "pro", "1tb", "825gb", "2tb", "fat"],
+      "exclude": [
+        "cover", "kryt", "stojan", "stand", "headset", "pulse", "sluchad", "faceplate",
+        "assassin", "watch dogs", "resident evil", "nhl ", "outcast", "spiderman", "fifa ", "fc 2", "hra ", "game ",
+        "ovladac", "ovládač", "dual sense", "dualsense", "dock", "nabijack", "nabíjačk"
+      ],
       "normalizedModel": "Sony PlayStation 5",
       "resaleReference": 390,
       "demand": 10,
@@ -57,6 +69,7 @@
       "category": "delonghi",
       "priority": 1,
       "match": ["magnifica s", "magnificas", "ecam 22", "ecam22"],
+      "exclude": ["diely", "náhradné diely", "ersatzteil", "parts only"],
       "normalizedModel": "De'Longhi Magnifica S",
       "resaleReference": 125,
       "demand": 8,
@@ -72,6 +85,7 @@
       "category": "delonghi",
       "priority": 1,
       "match": ["delonghi magnifica", "de'longhi magnifica", "magnifica"],
+      "exclude": ["diely", "náhradné diely", "ersatzteil", "parts only"],
       "normalizedModel": "De'Longhi Magnifica",
       "resaleReference": 110,
       "demand": 8,
@@ -87,6 +101,7 @@
       "category": "robot-vacuums",
       "priority": 1,
       "match": ["roborock s8"],
+      "exclude": ["kefa", "brush", "filter", "mop", "vrecko", "sáčok", "dock only", "náhradný diel", "diely"],
       "normalizedModel": "Roborock S8",
       "resaleReference": 300,
       "demand": 8,
@@ -102,6 +117,7 @@
       "category": "robot-vacuums",
       "priority": 1,
       "match": ["roborock s7 maxv", "s7 maxv"],
+      "exclude": ["kefa", "brush", "filter", "mop", "vrecko", "sáčok", "dock only", "náhradný diel", "diely"],
       "normalizedModel": "Roborock S7 MaxV",
       "resaleReference": 260,
       "demand": 8,
@@ -117,6 +133,7 @@
       "category": "power-tools",
       "priority": 1,
       "match": ["ddf453", "makita ddf453"],
+      "exclude": ["motor ddf453", "prevodovka", "gearbox", "diely", "náhradný diel"],
       "normalizedModel": "Makita DDF453 LXT",
       "resaleReference": 120,
       "demand": 8,
