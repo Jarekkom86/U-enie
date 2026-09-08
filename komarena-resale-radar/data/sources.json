@@ -1,97 +1,34 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.3",
   "updated": "2026-09-08",
   "sources": [
-    {
-      "id": "bazos-sk",
-      "name": "Bazoš.sk",
-      "country": "SK",
-      "priority": 1,
-      "url": "https://www.bazos.sk/",
-      "monitoring": ["rss", "email-alert", "saved-query"],
-      "status": "ready",
-      "focus": ["coffee", "consoles", "pc", "games", "free"]
-    },
-    {
-      "id": "bazar-sk",
-      "name": "Bazar.sk",
-      "country": "SK",
-      "priority": 2,
-      "url": "https://www.bazar.sk/",
-      "monitoring": ["saved-query", "manual-review"],
-      "status": "candidate",
-      "focus": ["coffee", "consoles", "pc", "games"]
-    },
-    {
-      "id": "facebook-marketplace-sk",
-      "name": "Facebook Marketplace SK",
-      "country": "SK",
-      "priority": 1,
-      "url": "https://www.facebook.com/marketplace/",
-      "monitoring": ["manual-review"],
-      "status": "manual-only",
-      "focus": ["coffee", "consoles", "pc", "games", "free"],
-      "note": "Automatizovať iba cez povolené/oficiálne rozhranie; žiadne session cookies v repozitári."
-    },
-    {
-      "id": "bazos-cz",
-      "name": "Bazoš.cz",
-      "country": "CZ",
-      "priority": 1,
-      "url": "https://www.bazos.cz/",
-      "monitoring": ["rss", "email-alert", "saved-query"],
-      "status": "ready",
-      "focus": ["coffee", "consoles", "pc", "games", "free"]
-    },
-    {
-      "id": "sbazar-cz",
-      "name": "Sbazar.cz",
-      "country": "CZ",
-      "priority": 2,
-      "url": "https://www.sbazar.cz/",
-      "monitoring": ["saved-query", "manual-review"],
-      "status": "candidate",
-      "focus": ["coffee", "consoles", "pc", "games"]
-    },
-    {
-      "id": "aukro-cz",
-      "name": "Aukro.cz",
-      "country": "CZ",
-      "priority": 2,
-      "url": "https://aukro.cz/",
-      "monitoring": ["saved-query", "manual-review"],
-      "status": "candidate",
-      "focus": ["consoles", "games", "collectibles", "pc"]
-    },
-    {
-      "id": "darujizaodvoz-cz",
-      "name": "Daruji za odvoz",
-      "country": "CZ",
-      "priority": 1,
-      "url": "https://www.darujizaodvoz.cz/",
-      "monitoring": ["app-alert", "manual-review"],
-      "status": "ready-manual",
-      "focus": ["free", "pc", "electronics"]
-    },
-    {
-      "id": "olx-pl",
-      "name": "OLX.pl",
-      "country": "PL",
-      "priority": 1,
-      "url": "https://www.olx.pl/",
-      "monitoring": ["saved-search", "platform-alert"],
-      "status": "ready",
-      "focus": ["coffee", "consoles", "pc", "games", "free", "damaged"]
-    },
-    {
-      "id": "allegro-lokalnie-pl",
-      "name": "Allegro Lokalnie",
-      "country": "PL",
-      "priority": 1,
-      "url": "https://allegrolokalnie.pl/",
-      "monitoring": ["saved-search", "manual-review"],
-      "status": "ready-manual",
-      "focus": ["coffee", "consoles", "pc", "games", "damaged"]
-    }
+    {"id":"bazos-sk","name":"Bazoš.sk","country":"SK","priority":1,"url":"https://www.bazos.sk/","monitoring":["rss","email-alert","saved-query"],"status":"ready","focus":["coffee","consoles","pc","games","phones","tools","free"]},
+    {"id":"facebook-marketplace-sk","name":"Facebook Marketplace SK","country":"SK","priority":1,"url":"https://www.facebook.com/marketplace/","monitoring":["manual-review","saved-search"],"status":"manual-only","focus":["coffee","consoles","pc","phones","tools","vacuum","free"],"note":"Automatizovať iba cez povolené/oficiálne rozhranie; žiadne session cookies v repozitári."},
+    {"id":"za-odvoz-sk","name":"Za-odvoz.sk / Darujem za odvoz","country":"SK","priority":1,"url":"https://www.za-odvoz.sk/","monitoring":["app-alert","saved-search","manual-review"],"status":"ready-manual","focus":["free","pc","electronics","tools","small-appliances"]},
+    {"id":"bazar-sk","name":"Bazar.sk","country":"SK","priority":2,"url":"https://www.bazar.sk/","monitoring":["saved-query","manual-review"],"status":"candidate","focus":["coffee","consoles","pc","phones","games","tools"]},
+    {"id":"facebook-groups-sk","name":"Facebook lokálne bazárové skupiny SK","country":"SK","priority":2,"url":"https://www.facebook.com/groups/","monitoring":["manual-review"],"status":"manual-only","focus":["free","electronics","tools","pc","home-appliances"]},
+
+    {"id":"bazos-cz","name":"Bazoš.cz","country":"CZ","priority":1,"url":"https://www.bazos.cz/","monitoring":["rss","email-alert","saved-query"],"status":"ready","focus":["coffee","consoles","pc","phones","games","free"]},
+    {"id":"darujizaodvoz-cz","name":"Daruji za odvoz","country":"CZ","priority":1,"url":"https://www.darujizaodvoz.cz/","monitoring":["app-alert","manual-review"],"status":"ready-manual","focus":["free","pc","electronics","tools"]},
+    {"id":"facebook-marketplace-cz","name":"Facebook Marketplace CZ","country":"CZ","priority":2,"url":"https://www.facebook.com/marketplace/","monitoring":["manual-review","saved-search"],"status":"manual-only","focus":["coffee","consoles","pc","phones","tools","free"]},
+    {"id":"sbazar-cz","name":"Sbazar.cz","country":"CZ","priority":2,"url":"https://www.sbazar.cz/","monitoring":["saved-query","manual-review"],"status":"candidate","focus":["coffee","consoles","pc","phones","games"]},
+    {"id":"aukro-cz","name":"Aukro.cz","country":"CZ","priority":2,"url":"https://aukro.cz/","monitoring":["saved-query","manual-review"],"status":"candidate","focus":["consoles","games","collectibles","pc","phones","audio","cameras"]},
+    {"id":"bazar-cz","name":"Bazar.cz","country":"CZ","priority":3,"url":"https://www.bazar.cz/","monitoring":["saved-query","manual-review"],"status":"candidate","focus":["electronics","pc","phones","tools","free"]},
+    {"id":"annonce-cz","name":"Annonce.cz","country":"CZ","priority":3,"url":"https://www.annonce.cz/","monitoring":["manual-review"],"status":"candidate","focus":["coffee","pc","consoles","phones","small-appliances","tools"]},
+    {"id":"hyperinzerce-cz","name":"Hyperinzerce.cz","country":"CZ","priority":3,"url":"https://hyperinzerce.cz/","monitoring":["manual-review"],"status":"candidate","focus":["electronics","pc","tools","home-appliances"]},
+
+    {"id":"olx-pl","name":"OLX.pl","country":"PL","priority":1,"url":"https://www.olx.pl/","monitoring":["saved-search","platform-alert"],"status":"ready","focus":["coffee","consoles","pc","phones","games","free","damaged","tools"]},
+    {"id":"allegro-lokalnie-pl","name":"Allegro Lokalnie","country":"PL","priority":1,"url":"https://allegrolokalnie.pl/","monitoring":["saved-search","manual-review"],"status":"ready-manual","focus":["coffee","consoles","pc","phones","games","damaged","components"]},
+    {"id":"sprzedajemy-pl","name":"Sprzedajemy.pl","country":"PL","priority":2,"url":"https://sprzedajemy.pl/","monitoring":["saved-search","manual-review"],"status":"candidate","focus":["electronics","pc","phones","tools","home-appliances"]},
+    {"id":"gratka-pl","name":"Gratka.pl","country":"PL","priority":3,"url":"https://gratka.pl/","monitoring":["manual-review"],"status":"candidate","focus":["electronics","pc","phones","tools"]},
+    {"id":"facebook-marketplace-pl","name":"Facebook Marketplace PL","country":"PL","priority":3,"url":"https://www.facebook.com/marketplace/","monitoring":["manual-review"],"status":"manual-only","focus":["electronics","pc","phones","tools","free"]},
+
+    {"id":"willhaben-at","name":"Willhaben.at","country":"AT","priority":1,"url":"https://www.willhaben.at/iad/kaufen-und-verkaufen","monitoring":["saved-search","platform-alert","manual-review"],"status":"candidate-high-value","focus":["coffee","consoles","pc","phones","tools","audio","cameras"],"note":"Vysoká priorita pre Bratislavu a okolie vďaka krátkej logistike do východného Rakúska."},
+    {"id":"facebook-marketplace-at","name":"Facebook Marketplace AT","country":"AT","priority":2,"url":"https://www.facebook.com/marketplace/","monitoring":["manual-review"],"status":"manual-only","focus":["electronics","tools","coffee","pc","phones"]},
+    {"id":"jofogas-hu","name":"Jófogás.hu","country":"HU","priority":2,"url":"https://www.jofogas.hu/","monitoring":["manual-review","saved-search"],"status":"candidate","focus":["electronics","pc","phones","tools","coffee"]},
+    {"id":"facebook-marketplace-hu","name":"Facebook Marketplace HU","country":"HU","priority":3,"url":"https://www.facebook.com/marketplace/","monitoring":["manual-review"],"status":"manual-only","focus":["electronics","tools","pc","phones"]},
+
+    {"id":"kleinanzeigen-de","name":"Kleinanzeigen.de","country":"DE","priority":3,"url":"https://www.kleinanzeigen.de/","monitoring":["saved-search","manual-review"],"status":"candidate","focus":["consoles","pc","phones","coffee","damaged","parts"],"note":"Veľký trh vhodný hlavne pre špecifické modely, poškodené kusy a diely; logistiku treba prísne započítať."},
+    {"id":"ebay-de","name":"eBay.de","country":"DE","priority":4,"url":"https://www.ebay.de/","monitoring":["saved-search","price-benchmark"],"status":"benchmark-plus-sourcing","focus":["parts","collectibles","games","electronics","cameras"]}
   ]
 }
