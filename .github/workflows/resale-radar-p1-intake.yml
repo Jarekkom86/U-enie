@@ -1,0 +1,56 @@
+name: Resale Radar P1 Intake
+
+on:
+  pull_request:
+    paths:
+      - 'komarena-resale-radar/scripts/p1-intake.mjs'
+      - 'komarena-resale-radar/data/p1-auto-listings.json'
+      - '.github/workflows/resale-radar-p1-intake.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: resale-radar-p1-intake
+  cancel-in-progress: false
+
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validate intake syntax
+        run: node --check komarena-resale-radar/scripts/p1-intake.mjs
+
+      - name: Run low-frequency P1 intake
+        run: node komarena-resale-radar/scripts/p1-intake.mjs
+
+      - name: Show source health
+        run: |
+          node -e "const d=require('./komarena-resale-radar/data/p1-auto-listings.json'); console.log(JSON.stringify({capturedAt:d.capturedAt, listingCount:d.listingCount, sourceStatus:d.sourceStatus}, null, 2))"
+
+      - name: Commit refreshed intake on scheduled/manual main run
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+        run: |
+          if git diff --quiet -- komarena-resale-radar/data/p1-auto-listings.json; then
+            echo 'No intake changes to commit.'
+            exit 0
+          fi
+          git config user.name 'komarena-resale-radar-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add komarena-resale-radar/data/p1-auto-listings.json
+          git commit -m 'data: refresh Resale Radar P1 intake'
+          git push
