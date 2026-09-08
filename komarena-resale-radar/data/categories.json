@@ -1,60 +1,141 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.3",
+  "updated": "2026-09-08",
+  "priorityLegend": {
+    "1": "Aktívne loviť — vysoká likvidita alebo veľmi dobrá opraviteľnosť.",
+    "2": "Silný segment — kupovať pri dobrom diskonte a jasnej diagnostike.",
+    "3": "Selektívne — záleží na konkrétnom modeli, poruche a logistike.",
+    "4": "Iba výnimočný deal, diely alebo lokálny odvoz; vysoké riziko viazaného kapitálu."
+  },
   "categories": [
     {
-      "id": "delonghi",
-      "name": "De'Longhi kávovary",
-      "priority": 1,
-      "targetNetProfit": 80,
-      "targetRoiPct": 60,
-      "demand": 8,
-      "preferred": ["Magnifica", "Magnifica S", "ECAM platform"],
-      "goodFaults": ["zanesenie", "tesnenia", "prietokomer", "čerpadlo", "ventil", "sparovacia jednotka", "čistenie a odvápnenie"],
-      "avoid": ["prepätie s rozsiahlym poškodením", "korózia po vode", "viacnásobná neznáma porucha", "chýbajúce kľúčové diely"]
+      "id":"delonghi","name":"De'Longhi a automatické kávovary","priority":1,"targetNetProfit":80,"targetRoiPct":50,"demand":8,"repairability":9,"turnover":8,
+      "preferred":["De'Longhi Magnifica/Magnifica S","ECAM","Dinamica pri známej chybe","Philips/Saeco pri dobrej diagnostike","Krups iba selektívne"],
+      "goodFaults":["zanesenie","tesnenia","prietokomer","čerpadlo","ventil","sparovacia jednotka","mlynček","čistenie a odvápnenie"],
+      "avoid":["prepätie s rozsiahlym poškodením","korózia po vode","viacnásobná neznáma porucha","chýbajúce kľúčové diely"]
     },
     {
-      "id": "consoles",
-      "name": "Herné konzoly",
-      "priority": 1,
-      "targetNetProfit": 50,
-      "targetRoiPct": 30,
-      "demand": 9,
-      "preferred": ["PS4 Slim", "PS4 Pro", "PS5", "Xbox One S/X", "Xbox Series S/X", "Nintendo Switch/OLED"],
-      "goodFaults": ["čistenie", "ventilátor", "HDD/SSD", "mechanika pri lacnom diele", "ovládač drift pri známom rozsahu"],
-      "avoid": ["account lock", "podozrivé vlastníctvo", "ťažké board-level poškodenie", "nejasný HDMI/SoC fault bez rezervy"]
+      "id":"consoles","name":"PlayStation / Xbox / Nintendo konzoly a ovládače","priority":1,"targetNetProfit":50,"targetRoiPct":30,"demand":10,"repairability":7,"turnover":10,
+      "preferred":["PS4 Slim/Pro","PS5 Disc/Slim/Pro","Xbox One S/X","Xbox Series S/X","Nintendo Switch/OLED","originálne ovládače"],
+      "goodFaults":["čistenie","ventilátor","HDD/SSD","mechanika pri lacnom diele","USB port","drift ovládača","batéria ovládača"],
+      "avoid":["account/activation lock","podozrivé vlastníctvo","ťažké board-level poškodenie","nejasný HDMI/SoC fault bez veľkej rezervy"]
     },
     {
-      "id": "pc",
-      "name": "PC a notebooky",
-      "priority": 1,
-      "targetNetProfit": 60,
-      "targetRoiPct": 35,
-      "demand": 8,
-      "preferred": ["Dell Latitude", "HP EliteBook/ProBook", "Lenovo ThinkPad", "štandardné desktop PC"],
-      "goodFaults": ["SSD", "RAM", "batéria", "klávesnica", "ventilátor", "čistenie", "OS"],
-      "avoid": ["liquid damage", "BGA/GPU", "zamknutý BIOS", "nejasný motherboard fault"]
+      "id":"pc","name":"Business notebooky, MacBooky a PC","priority":1,"targetNetProfit":60,"targetRoiPct":35,"demand":9,"repairability":8,"turnover":8,
+      "preferred":["Dell Latitude","HP EliteBook/ProBook","Lenovo ThinkPad","MacBook pri overenom Activation Lock stave","štandardné desktop PC"],
+      "goodFaults":["SSD","RAM","batéria","klávesnica","ventilátor","čistenie","OS","napájací adaptér","Wi-Fi karta"],
+      "avoid":["liquid damage","BGA/GPU","zamknutý BIOS bez legitímneho riešenia","Activation Lock","nejasný motherboard fault"]
     },
     {
-      "id": "games",
-      "name": "Hry a bundle",
-      "priority": 1,
-      "targetNetProfit": 15,
-      "targetRoiPct": 30,
-      "demand": 9,
-      "preferred": ["Nintendo first-party", "PlayStation exclusives", "retro a zberateľské tituly", "výhodné bundle"],
-      "goodFaults": ["kozmetické obaly", "špinavé disky pri opraviteľnom stave", "nekompletný bundle s hodnotnými kusmi"],
-      "avoid": ["neoveriteľné digitálne účty", "reprodukcie vydávané za originál", "poškodené médiá bez testu"]
+      "id":"games","name":"Hry, retro a výhodné bundle","priority":1,"targetNetProfit":15,"targetRoiPct":30,"demand":10,"repairability":5,"turnover":10,
+      "preferred":["Nintendo first-party","PlayStation exclusives","retro a zberateľské tituly","výhodné bundle","kompletné collector edície"],
+      "goodFaults":["kozmetické obaly","znečistenie","bundle vhodný na rozpredaj"],
+      "avoid":["neoveriteľné digitálne účty","reprodukcie vydávané za originál","poškodené médiá bez testu"]
     },
     {
-      "id": "free",
-      "name": "Darované / za odvoz",
-      "priority": 2,
-      "targetNetProfit": 30,
-      "targetRoiPct": 100,
-      "demand": 6,
-      "preferred": ["malá elektronika", "PC komponenty", "monitory", "ovládače", "kávovary", "ľahko rozoberateľné zariadenia"],
-      "goodFaults": ["neotestované", "chýbajúci lacný adaptér", "znečistenie", "jednoduchá mechanická závada"],
-      "avoid": ["veľký odvoz bez hodnoty", "nebezpečné poškodenie", "náklady na likvidáciu vyššie než hodnota", "nejasné vlastníctvo"]
+      "id":"phones","name":"iPhone / Samsung / Google telefóny a tablety","priority":1,"targetNetProfit":50,"targetRoiPct":25,"demand":10,"repairability":7,"turnover":10,
+      "preferred":["iPhone 11 a novšie","Samsung Galaxy S/Note/Z selektívne","Google Pixel","iPad","Samsung Tab S"],
+      "goodFaults":["batéria","displej pri lacnom diele","nabíjací port","zadný kryt","reproduktor/mikrofón","zanesený konektor"],
+      "avoid":["Activation Lock/FRP","neznáme IMEI alebo vlastníctvo","baseband/no service","ťažké poškodenie dosky","nafúknutá batéria bez bezpečného postupu"]
+    },
+    {
+      "id":"robot-vacuums","name":"Robotické vysávače Roborock / Dreame / iRobot","priority":1,"targetNetProfit":50,"targetRoiPct":40,"demand":8,"repairability":8,"turnover":8,
+      "preferred":["Roborock","Dreame","Xiaomi","iRobot Roomba","Ecovacs pri dostupných dieloch"],
+      "goodFaults":["batéria","koleso","bočná kefa","hlavná kefa","senzory","zanesenie","nabíjací dock","čerpadlo mopu"],
+      "avoid":["silná korózia po vode","nejasná chyba hlavnej dosky","chýbajúci drahý dock pri modeli závislom od stanice"]
+    },
+    {
+      "id":"power-tools","name":"Aku náradie a batérie Makita / Bosch / DeWalt / Milwaukee","priority":1,"targetNetProfit":40,"targetRoiPct":35,"demand":9,"repairability":8,"turnover":9,
+      "preferred":["Makita LXT","Bosch Professional","DeWalt XR","Milwaukee M18/M12","Hilti selektívne"],
+      "goodFaults":["uhlíky","spínač","ložisko","skľučovadlo","kabeláž","kontakt batérie","repas batériového packu iba bezpečným postupom"],
+      "avoid":["podozrivé vlastníctvo","požiar/prehriatie batérie","nejasne poškodená BMS","ťažké mechanické poškodenie prevodovky bez dielov"]
+    },
+
+    {
+      "id":"components","name":"GPU, CPU, RAM, SSD a PC komponenty","priority":2,"targetNetProfit":35,"targetRoiPct":25,"demand":9,"repairability":5,"turnover":9,
+      "preferred":["RTX/Radeon GPU","Ryzen/Core CPU","DDR4/DDR5 kits","NVMe SSD","kvalitné PSU"],
+      "goodFaults":["zanesenie","ventilátory","teplovodivá pasta/pady","poškodený chladič pri funkčnej elektronike"],
+      "avoid":["artefakty GPU","mining história bez testu","spálené konektory","neznámy board fault"]
+    },
+    {
+      "id":"vacuum-cleaners","name":"Dyson a prémiové tyčové vysávače","priority":2,"targetNetProfit":45,"targetRoiPct":40,"demand":8,"repairability":8,"turnover":8,
+      "preferred":["Dyson V8/V10/V11/V12/V15","Samsung Jet","Bosch Unlimited","Rowenta X-Force"],
+      "goodFaults":["batéria","filter","kefa","motorová hlavica","spínač","zanesenie","prasknuté bežné plastové diely"],
+      "avoid":["spálená elektronika po vode","nejasná chyba hlavnej dosky","chýbajúca polovica príslušenstva pri vysokej nákupnej cene"]
+    },
+    {
+      "id":"3d-printers","name":"3D tlačiarne a príslušenstvo","priority":2,"targetNetProfit":50,"targetRoiPct":35,"demand":7,"repairability":9,"turnover":7,
+      "preferred":["Bambu Lab","Prusa","Creality Ender/K1","Anycubic","Elegoo"],
+      "goodFaults":["hotend","extruder","termistor","ventilátor","remene","ložiská","leveling","firmware","zanesenie"],
+      "avoid":["požiar alebo poškodená sieťová časť","krivý rám","nekompletná drahá core platforma","nejasná poškodená základná doska bez rezervy"]
+    },
+    {
+      "id":"smart-home","name":"Smart home, Home Assistant, Shelly, Sonoff, Zigbee/Thread","priority":2,"targetNetProfit":25,"targetRoiPct":35,"demand":7,"repairability":7,"turnover":7,
+      "preferred":["Home Assistant Green/Yellow","Shelly","Sonoff","Aqara bez account locku","Zigbee koordinátory","ESP/ESPHome sety"],
+      "goodFaults":["napájací adaptér","firmware","reset/párovanie","konektor","relé pri bezpečnom nízkonapäťovom teste"],
+      "avoid":["cloud/account lock","poškodenie 230 V bez odbornej diagnostiky","neznámy pôvod bezpečnostných zariadení"]
+    },
+    {
+      "id":"networking","name":"Ubiquiti / MikroTik / Wi-Fi a sieťové prvky","priority":2,"targetNetProfit":35,"targetRoiPct":30,"demand":7,"repairability":7,"turnover":7,
+      "preferred":["Ubiquiti UniFi AP/switche","MikroTik","TP-Link Omada","PoE switche","Wi-Fi 6/6E/7 zariadenia"],
+      "goodFaults":["adaptér/PoE injector","factory reset","firmware","ventilátor","konektor"],
+      "avoid":["enterprise lock/licensing","poškodenie bleskom","nejasne mŕtvy PoE front-end"]
+    },
+    {
+      "id":"audio","name":"Hi-Fi, soundbary, aktívne reproduktory a DJ audio","priority":2,"targetNetProfit":50,"targetRoiPct":35,"demand":7,"repairability":7,"turnover":7,
+      "preferred":["Sonos","Bose","JBL","Yamaha","Denon/Marantz","Pioneer DJ selektívne"],
+      "goodFaults":["napájací zdroj","konektor","potenciometer","reproduktorový menič","batéria","čistenie"],
+      "avoid":["neznámy DSP/mainboard fault","po vode","vypálené výkonové stupne bez diagnostiky"]
+    },
+    {
+      "id":"free","name":"Darované / za odvoz / symbolická cena","priority":2,"targetNetProfit":30,"targetRoiPct":100,"demand":6,"repairability":7,"turnover":6,
+      "preferred":["malá elektronika","PC komponenty","náradie","kávovary","vysávače","konzoly","ľahko rozoberateľné zariadenia"],
+      "goodFaults":["neotestované","chýbajúci lacný adaptér","znečistenie","jednoduchá mechanická závada"],
+      "avoid":["veľký odvoz bez hodnoty","nebezpečné poškodenie","náklady na likvidáciu vyššie než hodnota","nejasné vlastníctvo"]
+    },
+
+    {
+      "id":"cameras","name":"Fotoaparáty, objektívy a akčné kamery","priority":3,"targetNetProfit":60,"targetRoiPct":30,"demand":7,"repairability":4,"turnover":7,
+      "preferred":["Sony Alpha","Canon EOS/R","Nikon Z/D","Fujifilm X","GoPro","kvalitné objektívy"],
+      "goodFaults":["batéria","dvierka","kontakt","čistenie senzora iba bezpečne","chýbajúce príslušenstvo"],
+      "avoid":["pleseň v optike","po vode","poškodený snímač","chyba uzávierky bez veľkej rezervy"]
+    },
+    {
+      "id":"drones","name":"DJI drony a príslušenstvo","priority":3,"targetNetProfit":70,"targetRoiPct":35,"demand":7,"repairability":5,"turnover":7,
+      "preferred":["DJI Mini","Air","Mavic","Avata","ovládače a batérie pri overenom stave"],
+      "goodFaults":["vrtule","rameno","gimbal diely pri jasnej chybe","batéria iba pri bezpečnom stave"],
+      "avoid":["account/binding lock","nejasný crash damage","nafúknutá batéria","po vode","chýbajúce sériové číslo alebo pôvod"]
+    },
+    {
+      "id":"ereaders","name":"Kindle / PocketBook / Kobo čítačky","priority":3,"targetNetProfit":25,"targetRoiPct":35,"demand":7,"repairability":6,"turnover":7,
+      "preferred":["Kindle Paperwhite/Oasis","PocketBook InkPad/Era","Kobo Libra/Clara"],
+      "goodFaults":["batéria","USB port","kryt","softvér/reset"],
+      "avoid":["prasknutý E-Ink panel pri bežnom modeli","account lock","po vode"]
+    },
+    {
+      "id":"monitors","name":"Monitory a herné displeje","priority":3,"targetNetProfit":40,"targetRoiPct":35,"demand":7,"repairability":5,"turnover":6,
+      "preferred":["27–34 inch IPS/OLED","144 Hz+ gaming","USB-C dock monitory","ultrawide"],
+      "goodFaults":["adaptér","stojan","kabeláž","tlačidlá","backlight pri jasnej diagnostike"],
+      "avoid":["prasknutý panel","rozsiahle vertikálne čiary","veľké burn-in bez výrazného diskontu"]
+    },
+    {
+      "id":"printers","name":"Laserové tlačiarne, štítkovače a 3D/špecializované tlačiarne","priority":3,"targetNetProfit":40,"targetRoiPct":40,"demand":6,"repairability":7,"turnover":5,
+      "preferred":["Brother laser","HP LaserJet","Zebra/Dymo štítkovače","Epson EcoTank selektívne"],
+      "goodFaults":["valce","pickup roller","fuser pri dostupnom diele","zanesenie","firmware","odpadová nádobka"],
+      "avoid":["lacná atramentová tlačiareň s upchatou hlavou","chýbajúce drahé spotrebné diely","neznáma high-voltage chyba"]
+    },
+
+    {
+      "id":"tv","name":"TV a veľké displeje","priority":4,"targetNetProfit":100,"targetRoiPct":50,"demand":6,"repairability":4,"turnover":4,
+      "preferred":["OLED/QLED iba lokálne a s testom","menšie TV s ľahkou logistikou"],
+      "goodFaults":["zdroj","LED podsvietenie pri jasnej diagnostike","diaľkové ovládanie"],
+      "avoid":["prasknutý panel","rozsiahly burn-in","veľká logistika bez vysokého zisku"]
+    },
+    {
+      "id":"large-appliances","name":"Práčky, sušičky, umývačky a veľká biela technika","priority":4,"targetNetProfit":120,"targetRoiPct":50,"demand":6,"repairability":7,"turnover":4,
+      "preferred":["prémiové modely s jasnou jednoduchou chybou","lokálny odvoz do krátkej vzdialenosti"],
+      "goodFaults":["čerpadlo","remeň","filter","zámok dverí","hadica","senzor pri jasnej diagnostike"],
+      "avoid":["ložiská zalisované v nádrži bez ekonomiky","korózia","nejasná elektronika","ťažká logistika a skladovanie"]
     }
   ]
 }
