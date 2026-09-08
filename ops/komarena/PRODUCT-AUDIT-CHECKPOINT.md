@@ -1,120 +1,93 @@
 # KomArena Product Audit Checkpoint
 
-Last updated: 2026-09-08 17:02 Europe/Bratislava
+Last updated: 2026-09-08 Europe/Bratislava
 
 ## Purpose
-Persistent resume point for KomArena.sk WooCommerce product audit and MASTER normalization. Continue from this file before making the next product wave.
+Persistent resume point for the live KomArena.sk WooCommerce product audit, commercial safety checks and MASTER normalization. Read this file first and continue from **Current resume point**.
 
 ## Process rules
 - Woo physical KomArena stock and supplier stock must never be mixed.
-- Physical KomArena stock: normal `Skladom X ks` according to real local quantity.
-- Supplier >20 pcs: customer-facing `U dodávateľa – 10+ ks` only when the numerical supplier quantity is actually verified.
-- Supplier 1–20 pcs: customer-facing exact `U dodávateľa – X ks` only when the numerical supplier quantity is actually verified.
-- Supplier currently available but no numerical count exposed: customer-facing `U dodávateľa – dostupné` + explicit note that the exact public quantity is unavailable. Never invent `10+`.
-- Supplier 0 / unavailable / unsafe margin: FAIL CLOSED, no ordering.
-- Supplier-backed products: Woo stock_quantity=0, stock_status=onbackorder, backorders=notify, tag `U dodávateľa`.
-- FAIL CLOSED: Woo stock_quantity=0, stock_status=outofstock, backorders=no, remove supplier tag when supplier purchase is not commercially safe.
-- eSUN PLA+ MASTER 1.3 technical data: nozzle 210–230 °C; bed 45–60 °C; high-speed parameter <300 mm/s. Do not copy Botland blanket 350 mm/s.
-- Commercial gate: preserve minimum safe margin rule (target 12% after relevant costs/fees); if uncertain, FAIL CLOSED.
-- Never invent SKU/EAN/stock. Match exact variant first.
+- Physical KomArena stock: normal `Skladom X ks` only from real local quantity.
+- Supplier >20 pcs: customer-facing `U dodávateľa – 10+ ks` only when numerical supplier quantity is actually verified.
+- Supplier 1–20 pcs: exact `U dodávateľa – X ks` only when numerical quantity is actually verified.
+- Supplier currently available but no public numerical count: `U dodávateľa – dostupné`; never invent `10+`.
+- Supplier unavailable, stale, ambiguous exact match or unsafe margin: **FAIL CLOSED**, no ordering.
+- Supplier-backed Woo state: `manage_stock=true`, `stock_quantity=0`, `stock_status=onbackorder`, `backorders=notify`, tag `U dodávateľa`.
+- FAIL CLOSED Woo state: `manage_stock=true`, `stock_quantity=0`, `stock_status=outofstock`, `backorders=no`, remove supplier tag.
+- eSUN PLA+ MASTER 1.3: nozzle 210–230 °C; bed 45–60 °C; high-speed parameter `<300 mm/s`. Do not copy Botland blanket `350 mm/s`.
+- Commercial gate: target minimum safe margin 12% after relevant costs/fees. If uncertain, FAIL CLOSED.
+- Never invent SKU/EAN/stock. Exact variant match first.
+- After each write wave: read-back validation, then update this checkpoint.
 
-## Completed before this checkpoint
-- P0 audit: 84/84 published products reviewed.
-- 18650 Woo ID 4213 regression fixed: stock 0 / outofstock / no backorder.
-- Commercially unsafe ABS+, eVacuum/eCure/eEnclosure/eSpool variants fail-closed where margin/availability was unsafe.
-- PLA+ Black: MASTER 1.3, non-orderable due unsafe margin (Botland exact SUN-28257 was too expensive relative to KomArena 18.90 EUR at the checked price).
-- PLA+ White: MASTER 1.3, supplier-backed, previously verified 1454 pcs.
-- PLA+ Blue: MASTER 1.3, supplier-backed, previously verified 220 pcs.
+## P0 guard state before current resume
+- Full published-product audit previously covered 84/84 products.
+- 18650 Woo ID **4213** was corrected to `0 / outofstock / no backorder`; this is a regression guard and must remain fail-closed unless a new verified commercial source is explicitly established.
+- Commercially unsafe ABS+, eVacuum/eCure/eEnclosure/eSpool variants were fail-closed where margin/availability was unsafe.
 
-## Wave completed 2026-09-08 — Olive / Red / Fire Engine Red
-### eSUN PLA+ Olive Green
-- Woo ID: 3780
-- KomArena price: 18.90 EUR
-- Botland: SUN-28255
-- EAN: 6922572219250
-- Botland observed price during exact-count check: 11.50 EUR
-- Botland observed quantity: 1 pc
-- Result: MASTER 1.3
-- Customer state: `U dodávateľa – 1 ks`
-- Woo: stock 0 / onbackorder / notify
-- Tags: eSUN + U dodávateľa
+## PLA+ cleanup — COMPLETED 2026-09-08
+A full post-write scan of all four pages of published `eSUN PLA+` search results was completed after the final edits. Relevant PLA+ products are now MASTER 1.3; no known `MASTER 1.2`, stale `350 mm/s`, or supplier-tag/stock contradiction remains in the audited PLA+ set.
 
-### eSUN PLA+ Red
-- Woo ID: 3781
-- KomArena price: 18.90 EUR
-- Botland: SUN-28258
-- EAN: 6922572219052
-- Botland observed price during exact-count check: 11.50 EUR
-- Botland observed quantity: 138 pcs
-- Result: MASTER 1.3
-- Customer state: `U dodávateľa – 10+ ks`
-- Woo: stock 0 / onbackorder / notify
-- Tags: eSUN + U dodávateľa
+### Key supplier-backed exact-count examples
+- White 3778: previously verified 1454 pcs -> `10+`.
+- Blue 3779: previously verified 220 pcs -> `10+`.
+- Olive Green 3780: SUN-28255 / EAN 6922572219250 / 1 pc -> exact `1 ks`.
+- Red 3781: SUN-28258 / EAN 6922572219052 / 138 pcs -> `10+`.
+- Fire Engine Red 3782: SUN-28275 / EAN 6922572219236 / 298 pcs -> `10+`.
+- Matcha Green 3854: SUN-28291 / EAN 6922572216464 / 93 pcs -> `10+`.
+- Peach Pink 3865: SUN-28292 / EAN 6922572216471 / 98 pcs -> `10+`.
+- Coral Orange 3838: SUN-28283 / EAN 6922572216365 / 94 pcs -> `10+`.
+- Very Peri 3837: SUN-28279 / EAN 6922572201507 / 96 pcs -> `10+`.
 
-### eSUN PLA+ Fire Engine Red
-- Woo ID: 3782
-- KomArena price: 18.90 EUR
-- Botland: SUN-28275
-- EAN: 6922572219236
-- Botland observed price during exact-count check: 11.50 EUR
-- Botland observed quantity: 298 pcs
-- Result: MASTER 1.3
-- Customer state: `U dodávateľa – 10+ ks`
-- Woo: stock 0 / onbackorder / notify
-- Tags: eSUN + U dodávateľa
+### Supplier-backed without public numerical count
+Normalized to MASTER 1.3 and `0 / onbackorder / notify` with `U dodávateľa`, using `dostupné` rather than invented `10+` where exact count was hidden. This includes, among others: Yellow 3783, Bone White 3784, Brown 3785, Cold White 3798, Soft Blue 3799, Soft Pink 3800, Light Blue 3801, Brick Red 3803, Almond Yellow 3804, Milky White 3805, RGB Red 3844, RGB Blue 3845, RGB Green 3846, Light Khaki 3848, Pine Green 3869, Green 3870, Concrete Grey 3877, Mustard Green 3879, Grey 3797, Dark Blue 3882, Holly Green 3835 and Jade Green 3834.
 
-## Wave completed 2026-09-08 — Yellow / Bone White / Brown
-Fresh Botland PLA category check on 2026-09-08 showed these exact variants as `Available`, `Shipping in 24 hours`, current visible price 10.90 EUR. The fresh public category listing did not expose an exact numerical quantity, so no `10+` quantity was invented.
+### PLA+ FAIL CLOSED after normalization
+All listed products are MASTER 1.3 but ordering is intentionally closed because current supplier state, exact match, or margin was unsafe:
+- Black 3777 — exact supplier price was too high relative to KomArena 18.90 EUR.
+- Purple 3802 — generic `Purple` not safely interchangeable with Very Peri/Lilac.
+- Mint Green 3847 — stale/contradictory supplier stock.
+- Orange 3859 — stale/contradictory supplier stock.
+- Pink 3860 — exact variant known but no sufficiently fresh stock confirmation.
+- Magenta 3881 — stale supplier state.
+- Gold 3880 — stale supplier state.
+- Aqua 3878 — stale supplier state.
+- Beige 3868 — supplier record not fresh enough.
+- Light Beige 3856 — exact Botland price observed 16.90 EUR vs KomArena 18.90 EUR; fails safe 12% commercial gate.
+- Apricot 3855 — current exact public stock not safely confirmed.
+- Silver 3836 — only older `unpacking/available within a few days` state, not safe current stock.
 
-### eSUN PLA+ Yellow
-- Woo ID: 3783
-- KomArena price: 18.90 EUR
-- Botland: SUN-28259
-- EAN: 6922572219069
-- Fresh Botland visible price: 10.90 EUR
-- Fresh supplier state: Available / Shipping in 24 hours; exact numerical count not publicly exposed in the fresh listing
-- Result: MASTER 1.3
-- Customer state: `U dodávateľa – dostupné` + exact-count-unavailable note
-- Woo: stock 0 / onbackorder / notify
-- Tags: eSUN + U dodávateľa
+### Final regression wave completed
+The following former MASTER 1.2 products were upgraded and read back successfully:
+- Magenta 3881
+- Gold 3880
+- Aqua 3878
+- Beige 3868
+- Light Beige 3856
+- Apricot 3855
+- Light Khaki 3848
+- Very Peri 3837
+- Silver 3836
+- Brick Red 3803
 
-### eSUN PLA+ Bone White
-- Woo ID: 3784
-- KomArena price: 18.90 EUR
-- Botland: SUN-28256
-- EAN: 6922572219335
-- Fresh Botland visible price: 10.90 EUR
-- Fresh supplier state: Available / Shipping in 24 hours; exact numerical count not publicly exposed in the fresh listing
-- Result: MASTER 1.3
-- Customer state: `U dodávateľa – dostupné` + exact-count-unavailable note
-- Woo: stock 0 / onbackorder / notify
-- Tags: eSUN + U dodávateľa
+Soft Pink 3800 was already MASTER 1.3 but had a contradictory fail-closed stock state plus supplier tag; it was reconciled to supplier-backed using the fresher supplier availability state.
 
-### eSUN PLA+ Brown
-- Woo ID: 3785
-- KomArena price: 18.90 EUR
-- Botland: SUN-28281
-- EAN: 6922572219199
-- Fresh Botland visible price: 10.90 EUR
-- Fresh supplier state: Available / Shipping in 24 hours; exact numerical count not publicly exposed in the fresh listing
-- Result: MASTER 1.3
-- Customer state: `U dodávateľa – dostupné` + exact-count-unavailable note
-- Woo: stock 0 / onbackorder / notify
-- Tags: eSUN + U dodávateľa
+## PLA+ verification result
+- Targeted read-back of the final 11 problem IDs: PASS.
+- Broad post-write scan pages 1–4: PASS for relevant PLA+ products.
+- Known stale `350 mm/s`: none remaining in audited PLA+ set.
+- Known `MASTER 1.2`: none remaining in audited PLA+ set.
+- Known supplier-tag vs stock-state contradiction: none remaining in audited PLA+ set.
 
-## Next queue — resume here
-1. eSUN PLA+ RGB Red — Woo ID 3844; known Botland SUN-28284 / EAN 6922572216389; old MASTER 1.2 content contains stale 350 mm/s.
-2. eSUN PLA+ Almond Yellow — Woo ID 3804; old MASTER 1.2, supplier tag/state needs exact-source revalidation before customer-facing availability.
-3. Scan remaining published PLA+ items for `data-komarena-standard="1.2"` or stale supplier metadata and normalize only exact verified variants.
-
-For each: exact Woo ID -> exact supplier SKU/EAN -> fresh price -> fresh availability / exact quantity if exposed -> 12% commercial gate -> MASTER 1.3 -> supplier/backorder or FAIL CLOSED -> read-back validation.
-
-## Separate variants already normalized / do not confuse
-- Light Brown Woo ID 3887 is separate from Brown 3785 and is already MASTER 1.3.
-- Plain Red Woo ID 3781 is separate from RGB Red 3844.
+## Current resume point — START HERE
+PLA+ regression cleanup is closed. Continue with **P0 commercial regression guard outside PLA+**, in this order:
+1. Re-read Woo **18650 ID 4213** and enforce `stock=0 / outofstock / backorders=no` if any regression is found.
+2. Re-read all published **eSUN ABS+** products and verify fail-closed state, supplier tag removal, price/margin safety, and MASTER content. Do not reopen ordering without a fresh exact supplier source and 12% commercial gate.
+3. Re-read **eSpool / eSpool+ / eSpool+ 2.0 / eVacuum / eVacuum Kit Pro 3 / eCure / eEnclosure** products. Reconcile any `U dodávateľa` tag vs `outofstock/backorder` contradiction and preserve FAIL CLOSED where commercial source is unsafe.
+4. Run a focused 84-product regression scan for dangerous stock/backorder contradictions after these priority guards.
+5. Update this same checkpoint with exact Woo IDs, changes and next resume point.
 
 ## Tool routing
-- Authoritative Woo operations for KomArena: MCP Server for WordPress (`mosmcp__list-products`, `mosmcp__update-product`).
-- WP Agent connection currently points to TipTopKuchyne, not KomArena — do not use it for KomArena product writes.
-- WordPress.com sees KomArena as Jetpack-connected but site-management MCP is not the Woo authority for this workflow.
-- GitHub persistence: `Jarekkom86/komarena-webops-lab/ops/komarena/PRODUCT-AUDIT-CHECKPOINT.md` on branch `ops/komarena-product-audit-checkpoint`, draft PR #91 until repository validation/merge.
+- Authoritative Woo operations for KomArena: MCP Server for WordPress (`mosmcp__list-products`, `mosmcp__get-product`, `mosmcp__update-product`).
+- WP Agent connection points to TipTopKuchyne, not KomArena — do not use it for KomArena writes.
+- WordPress.com is not the Woo authority for this workflow.
+- GitHub persistence: this file in `Jarekkom86/komarena-webops-lab`, branch `ops/komarena-product-audit-checkpoint`, draft PR #91. Keep updating this file rather than creating parallel checkpoint files.
