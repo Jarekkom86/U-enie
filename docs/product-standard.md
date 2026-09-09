@@ -124,6 +124,22 @@ Použi jednotný text:
 
 > Na produkt sa vzťahuje záruka 24 mesiacov. Pri nákupe cez e-shop má zákazník právo odstúpiť od zmluvy do 14 dní podľa platných podmienok predaja.
 
+## Cenotvorba a break-even
+
+Záväzný ekonomický štandard pre ceny je [Pricing & Break-even MASTER](commerce/pricing-break-even-master.md).
+
+Pravidlá:
+
+- staré orientačné pravidlo `12 % marža = PASS` nie je finálny cenový gate,
+- pred publikovaním ceny musí produkt alebo celý košík prejsť minimálne `ORDER BREAK-EVEN >= 0`,
+- do kalkulácie patria nákup, vstupná doprava dodávateľa, platobná brána, balenie, prípadná dotácia dopravy, dobierkové riziko a daňová rezerva podľa aktuálneho MASTERU,
+- zdravotné a sociálne odvody sa povinne sledujú v mesačnom `BUSINESS BREAK-EVEN`; ak sa požaduje fully-loaded cena, alokujú sa podľa pravidiel MASTERU,
+- dopravu zákazníkovi štandardne platí zákazník; doprava zdarma je povolená iba po výpočte, že objednávka zostane nezáporná,
+- pri Botlande a inom dodávateľovi sa používa skutočná nákupná cena a skutočná/alokovaná vstupná doprava,
+- každá cenová kontrola musí uviesť dátum a zdroj nákupnej aj konkurenčnej ceny,
+- produkt s nejasnou ekonomikou alebo stavom `RED` zostáva `draft` alebo sa neobjedná,
+- zakončenie ceny na `,99 EUR` je obchodná preferencia, nie dôvod ísť pod no-loss price floor; ak by cena `,99` bola stratová, použije sa vyšší bezpečný cenový bod.
+
 ## CSV pravidlá
 
 Každý WooCommerce CSV musí obsahovať minimálne:
