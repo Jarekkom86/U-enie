@@ -124,7 +124,7 @@ ESP32-S3 je iná rodina: používa Bluetooth 5 LE a nepodporuje klasické BR/EDR
 
 ## KomArena prepojenie
 
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
 - ESP & ESPHome: https://komarena.sk/esp-esphome/
 - Home Assistant: https://komarena.sk/home-assistant/
 - Draft 007 — ESPHome Bluetooth Proxy
