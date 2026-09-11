@@ -71,9 +71,9 @@ Pred každým publish approval sa produktové URL načítajú priamo zo živého
 | 19 | 011 — BME280 + ESPHome | C | vysoký | BME280 outofstock | vysoká | sklad/backorder podľa obchodných pravidiel |
 | 20 | 015 — BME280 vs BMP280 | C | stredný | oba produkty outofstock | vysoká | môže ísť informačne neskôr, bez nákupných CTA |
 
-## Preflight checkpoint — Home Assistant fundamentals 021–029
+## Preflight checkpoint — Home Assistant fundamentals 021–032
 
-Druhá vlna bola overená 11. 9. 2026 proti aktuálnej oficiálnej dokumentácii Home Assistant. Táto vlna je zámerne evergreen a nie je viazaná na dostupnosť jedného konkrétneho produktu.
+Druhá vlna bola overená 11. 9. 2026 proti aktuálnej oficiálnej dokumentácii Home Assistant a ESPHome. Táto vlna je zámerne evergreen a nie je viazaná na dostupnosť jedného konkrétneho produktu.
 
 | Draft | Výsledok | Overené | Čo zostáva pred `approved-for-publish` |
 | --- | --- | --- | --- |
@@ -86,6 +86,9 @@ Druhá vlna bola overená 11. 9. 2026 proti aktuálnej oficiálnej dokumentácii
 | 027 — Wi-Fi vs Zigbee vs Thread vs Matter | **RFR** | Matter over Wi-Fi/Ethernet/Thread; Thread ≠ Matter; ZHA coordinator model; ZBT-2 one-protocol recommendation | Thread/Matter status recheck v deň schválenia |
 | 028 — HA bez zbytočných hubov | **RFR** | coordinator vs border router vs controller; existing Thread border-router principle | žiadny hardware CTA bez compatibility/stock gate |
 | 029 — Pohyb → podmienka → svetlo | **RFR** | aktuálne HA 2026.9 `triggers / conditions / actions`, run modes a troubleshooting model | YAML preveriť ešte v aktuálnom editor/config checker; screenshoty; žiadny vypredaný PIR CTA |
+| 030 — Zálohy a obnova | **RFR** | automatic backups, encryption/emergency kit, second/off-site location, restore/migration workflow | backup UI screenshot bez citlivých údajov; recovery wording recheck |
+| 031 — Dashboard organizácia | **RFR** | Sections default, viac dashboardov, built-in dashboardy, user-specific defaults | UI/built-in názvy recheck; mobile/desktop screenshot |
+| 032 — HA + ESPHome starter architektúra | **RFR** | ESPHome Device Builder, native API Local Push, unique names, progressive build model | live ESP32 permalink/stock + vybrať jeden starter sensor; featured diagram |
 
 ### Druhý bezpečný review batch
 
@@ -98,12 +101,15 @@ Odporúčané redakčné poradie:
 5. Draft 023 — DHCP rezervácia vs statická IP
 6. Draft 024 — Ako pomenovať zariadenia a entity
 7. Draft 025 — Zariadenie sa neobjavilo automaticky
-8. Draft 026 — Prvá automatizácia
-9. Draft 029 — Pohyb → podmienka → svetlo
+8. Draft 030 — Zálohy a obnova
+9. Draft 031 — Dashboard organizácia
+10. Draft 026 — Prvá automatizácia
+11. Draft 029 — Pohyb → podmienka → svetlo
+12. Draft 032 — Home Assistant + ESPHome starter architektúra
 
 Tento batch tvorí jeden súvislý beginner funnel:
 
-**čo je Home Assistant → local/cloud → protokoly → architektúra → sieť → naming → troubleshooting → automation basics → modelový projekt**
+**čo je Home Assistant → local/cloud → protokoly → architektúra → sieť → naming → troubleshooting → backup/recovery → dashboard → automation basics → modelový projekt → ESPHome starter**
 
 ## Prvý bezpečný review batch
 
@@ -182,6 +188,7 @@ Pred `ready-for-review` → `approved-for-publish`:
 - [ ] finálny preview desktop + mobil,
 - [ ] odstrániť všetky staging-only poznámky o internom sklade, obchodnom gate a dátume kontroly,
 - [ ] pri dynamických témach Matter/Thread/Home Assistant UI znovu overiť aktuálnu dokumentáciu v deň schválenia,
+- [ ] pri backup/recovery obsahu nikdy nezverejniť emergency kit, key, token alebo recovery secret,
 - [ ] explicitné schválenie publikácie.
 
 ## FAIL CLOSED
