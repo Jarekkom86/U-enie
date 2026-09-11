@@ -139,7 +139,7 @@ Tento článok nie je návod na výrobu sieťového rozvádzača ani krytu pre 2
 
 - 3D tlač: https://komarena.sk/3d-tlac/
 - ESP & ESPHome: https://komarena.sk/esp-esphome/
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
 - Draft 004 — eSUN PLA+ výber a tlač
 - Draft 008 — PLA vs PLA+ vs ABS+
 - Draft 012 — skladovanie a sušenie filamentu
