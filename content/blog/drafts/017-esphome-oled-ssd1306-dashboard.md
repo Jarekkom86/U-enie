@@ -126,7 +126,7 @@ Vráťte sa k Draftu 013 a skontrolujte napájanie. Nová periféria síce nemá
 ## KomArena prepojenie
 
 - OLED 0,96" SSD1306 128×64: https://komarena.sk/produkt/oled-096-i2c-ssd1306-displej-128x64-pre-esphome-dashboard/
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
 - Draft 003 — prvý ESPHome projekt
 - Draft 013 — napájanie ESP32
 - Draft 011 — BME280 + ESPHome
