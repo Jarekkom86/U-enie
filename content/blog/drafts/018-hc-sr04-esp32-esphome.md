@@ -119,7 +119,7 @@ Pre nádrž alebo kvapalinu treba navyše posúdiť vlhkosť, kondenzáciu, tvar
 ## KomArena prepojenie
 
 - HC-SR04: https://komarena.sk/produkt/hc-sr04-ultrazvukovy-senzor-esphome/
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
 - legacy rewrite 1971 — Arduino UNO verzia
 - Draft 003 — prvý ESPHome projekt
 - Draft 013 — napájanie ESP32
