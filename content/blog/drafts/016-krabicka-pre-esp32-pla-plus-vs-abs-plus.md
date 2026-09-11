@@ -75,7 +75,7 @@ eSUN pri ABS+ uvádza vyššiu teplotnú odolnosť než pri PLA-oriented materi�
 - potreba kontrolovaného prostredia a rozumného vetrania pracoviska,
 - zložitejší prvý úspešný výtlačok.
 
-Výrobca pri ABS+ výslovne odporúča enclosed-chamber printing. To je praktický rozdiel oproti PLA+ projektu na bežnej otvorenej tlačiarni. cite technical source in publishing system; not rendered in final WordPress copy unless desired
+Výrobca pri ABS+ výslovne odporúča enclosed-chamber printing. To je praktický rozdiel oproti PLA+ projektu na bežnej otvorenej tlačiarni.
 
 ## Porovnanie pre elektronickú krabičku
 
