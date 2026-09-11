@@ -70,7 +70,7 @@ Napriek názvu `bluetooth_proxy` ESPHome podporuje v tejto funkcii **BLE zariade
 - aktívne spojenia nie sú neobmedzené,
 - nie každá ESP32 varianta má rovnakú Bluetooth výbavu.
 
-ESPHome aktuálne uvádza maximálne 3 simultánne aktívne spojenia na ESPHome Bluetooth Proxy. Zariadenie, ktoré drží spojenie trvalo, môže jeden slot obsadiť nepretržite.
+ESPHome používa na ESP32 predvolene **3 connection slots** pre aktívne BLE spojenia. Aktuálna dokumentácia umožňuje nastavenie až na **9**, ale odporúča neísť nad **5**, pretože každý ďalší slot spotrebúva RAM a vyšší počet môže zhoršiť stabilitu. Zariadenie, ktoré drží spojenie trvalo, obsadí jeden slot po celý čas; pasívne BLE reklamy sa týmto počtom slotov neobmedzujú.
 
 ## Kedy by som zvolil USB adaptér
 
@@ -120,7 +120,7 @@ ESP32-S3 je iná rodina: používa Bluetooth 5 LE a nepodporuje klasické BR/EDR
 
 **4. Potrebujete viac aktívnych spojení?**
 
-- skontrolujte limity konkrétneho proxy/adaptéra a správanie integrácií; nepočítajte s neobmedzeným počtom spojení.
+- skontrolujte `connection_slots`, RAM/stabilitu konkrétneho proxy a správanie integrácií; nepočítajte s neobmedzeným počtom spojení.
 
 ## KomArena prepojenie
 
@@ -140,8 +140,7 @@ Overené 11. 9. 2026:
 
 ## Open points
 
-- pred publikovaním znovu skontrolovať limit aktívnych spojení v aktuálnej ESPHome dokumentácii,
-- otestovať konkrétny KomArena ESP32 DevKit V1 ako proxy v reálnom HAOS prostredí,
+- otestovať konkrétny KomArena ESP32 DevKit V1 ako proxy v reálnom HAOS prostredí pred `approved-for-publish`,
 - neskôr spraviť praktický článok „Kam v dome umiestniť Bluetooth Proxy“.
 
 ## Facebook post
