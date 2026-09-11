@@ -69,6 +69,7 @@ Používateľ má po článku vedieť rozhodnúť, či potrebuje LED ovládač, 
 - Home Assistant hub
 - Protokoly a integrácie
 - Draft 006 — prvá Zigbee sieť
+- Draft 009 — ZHA vs. Zigbee2MQTT
 - budúca produktová stránka Home Assistant Green iba po finalizácii produktu
 
 ### Obchodný ďalší krok
@@ -89,6 +90,8 @@ Green funguje ako nosný vstupný bod do ekosystému: Green → Zigbee/Thread ad
 - ESP & ESPHome hub
 - Draft 005 — stabilné napájanie ESP32
 - Draft 007 — Bluetooth Proxy
+- Draft 010 — ESP32 + PIR
+- Draft 011 — BME280 + ESPHome
 - Senzory
 
 ### Obchodný ďalší krok
@@ -108,7 +111,7 @@ ESP32 → USB kábel → breadboard / vodiče → prvý senzor → ďalší konk
 - aktuálne objednateľné eSUN PLA+ varianty
 - 3D tlač hub
 - Draft 008
-- budúci článok o skladovaní a sušení filamentu
+- Draft 012 — skladovanie a sušenie filamentu
 
 ### Obchodný ďalší krok
 
@@ -120,8 +123,10 @@ PLA+ → vhodná farba → skladovanie/sušenie → príslušenstvo → ďalší
 
 - Napájanie hub
 - Draft 003 — prvý ESPHome projekt
+- Draft 007 — Bluetooth Proxy
+- Draft 010 — ESP32 + PIR
+- Draft 011 — BME280 + ESPHome
 - produktové stránky ESP32
-- budúce návody k senzorom a displejom
 
 ### Primárne outbound odkazy
 
@@ -141,7 +146,7 @@ Diagnostika → vhodný zdroj / menič → kvalitný kábel → stabilný ESP32 
 - Home Assistant hub
 - Protokoly a integrácie
 - Draft 002 — Home Assistant Green
-- budúci článok ZHA vs. Zigbee2MQTT
+- Draft 009 — ZHA vs. Zigbee2MQTT
 
 ### Primárne outbound odkazy
 
@@ -149,6 +154,7 @@ Diagnostika → vhodný zdroj / menič → kvalitný kábel → stabilný ESP32 
 - Protokoly a integrácie
 - Značky a kompatibilita
 - Draft 002
+- Draft 009
 - konkrétny Zigbee koordinátor až po zalistovaní a overení
 
 ### Obchodný ďalší krok
@@ -187,10 +193,12 @@ ESP32 s BLE → stabilné napájanie → proxy → podporované BLE zariadenia.
 - 3D tlač hub
 - PLA+ a ABS+ produktové stránky
 - Draft 004
+- Draft 012
 
 ### Primárne outbound odkazy
 
 - Draft 004 — eSUN PLA+
+- Draft 012 — skladovanie a sušenie
 - 3D tlač hub
 - aktuálne objednateľné PLA+ produkty
 - ABS+ produkt iba ak prejde skladovým a maržovým gate
@@ -199,12 +207,108 @@ ESP32 s BLE → stabilné napájanie → proxy → podporované BLE zariadenia.
 
 Výber podľa použitia → materiál → farba → príslušenstvo → skladovanie / sušenie.
 
+## Draft 009 — ZHA vs. Zigbee2MQTT
+
+### Primárne inbound odkazy
+
+- Draft 006 — prvá Zigbee sieť
+- Home Assistant hub
+- Protokoly a integrácie
+- budúca stránka koordinátora
+
+### Primárne outbound odkazy
+
+- Draft 006
+- Draft 002 — Home Assistant Green
+- Home Assistant
+- Protokoly a integrácie
+- konkrétny koordinátor až po overení oboch stackov
+
+### Obchodný ďalší krok
+
+Rozhodnutie o stacku → výber kompatibilného koordinátora → routery → zariadenia.
+
+### FAIL CLOSED
+
+Žiadny koordinátor sa neodporúča iba podľa popularity; musí byť reálne v sortimente a overený pre zvolený stack.
+
+## Draft 010 — ESP32 + HC-SR501 + ESPHome
+
+### Primárne inbound odkazy
+
+- legacy PIR článok po oprave
+- Draft 003
+- Senzory hub
+- ESP & ESPHome hub
+
+### Primárne outbound odkazy
+
+- Draft 003
+- Draft 005
+- Home Assistant
+- Senzory
+- HC-SR501 produkt iba ako technická referencia, kým je vypredaný
+
+### Obchodný ďalší krok
+
+ESP32 → PIR → vodiče → krabička → ďalší senzor / automatizácia.
+
+### FAIL CLOSED
+
+HC-SR501 je aktuálne `outofstock` a katalógovo skrytý. Predajný CTA sa neaktivuje pred obnovením skladu.
+
+## Draft 011 — BME280 + ESPHome
+
+### Primárne inbound odkazy
+
+- Draft 003
+- Senzory hub
+- ESP & ESPHome hub
+- budúci článok BME280 vs. BMP280
+
+### Primárne outbound odkazy
+
+- Draft 003
+- Draft 005
+- Senzory
+- Home Assistant
+- BME280 produkt iba ako technická referencia, kým je vypredaný
+
+### Obchodný ďalší krok
+
+ESP32 → BME280 → vodiče → krabička → ďalšie environmentálne senzory.
+
+### FAIL CLOSED
+
+BME280 je aktuálne `outofstock` bez backorderu. Predajný CTA sa aktivuje až po skladovom gate.
+
+## Draft 012 — Ako skladovať a sušiť filament
+
+### Primárne inbound odkazy
+
+- 3D tlač hub
+- Draft 004
+- Draft 008
+- eSUN filamentové produktové stránky
+
+### Primárne outbound odkazy
+
+- Draft 004 — eSUN PLA+
+- Draft 008 — PLA vs. PLA+ vs. ABS+
+- 3D tlač hub
+- eBOX / eVacuum iba po aktuálnom skladovom a maržovom gate
+
+### Obchodný ďalší krok
+
+Filament → skladovanie → sušenie → dry box/vákuové príslušenstvo → konzistentná tlač.
+
 ## Aktuálne produktové linky použiteľné v draftoch
 
 ### ESP / ESPHome
 
 - ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
-- PIR HC-SR501: https://komarena.sk/pir-senzor-napr-hc-sr501/
+- HC-SR501 produkt: https://komarena.sk/produkt/hc-sr501-pir-senzor/ — aktuálne outofstock/hidden
+- BME280 produkt: https://komarena.sk/produkt/bme280-senzor-teploty-vlhkosti-a-tlaku-vzduchu/ — aktuálne outofstock
 
 ### Smart Home
 
@@ -234,7 +338,9 @@ Má smerovať na:
 - ESP32 / ESPHome,
 - Home Assistant,
 - Draft 003,
-- budúci samostatný ESPHome PIR projekt.
+- Draft 010 — ESP32 + PIR + ESPHome.
+
+Pred aktívnou propagáciou opraviť H/L trigger vysvetlenie podľa `legacy-post-audit.md`.
 
 ### HC-SR04 s Arduinom
 
@@ -250,20 +356,26 @@ Má smerovať na:
 
 - ESP & ESPHome,
 - Draft 003,
-- relevantné vývojové dosky.
+- relevantné vývojové dosky,
+- budúci aktuálny UNO R4 WiFi vs. konkrétna ESP32 doska poradca.
 
-## Chýbajúce mosty — P0 obsah
+## Chýbajúce mosty — ďalší P0 obsah
 
-Aby cluster neostal rozbitý, prioritne vzniknú:
+Hotové mosty:
 
-1. ZHA vs. Zigbee2MQTT — čo zvoliť a pre koho.
-2. ESP32 + PIR + ESPHome — prvá pohybová automatizácia.
-3. BME280 + ESPHome — teplota, vlhkosť a tlak.
-4. Ako vybrať napájanie pre ESP32 projekt.
-5. Ako skladovať a sušiť filament.
-6. Home Assistant Green + Zigbee koordinátor — kompletný štartovací setup po zalistovaní koordinátora.
-7. Bluetooth Proxy vs. USB Bluetooth adaptér.
-8. 3D tlačená krabička pre ESP32 — PLA+ vs. ABS+ podľa prostredia.
+- Draft 009 — ZHA vs. Zigbee2MQTT
+- Draft 010 — ESP32 + PIR + ESPHome
+- Draft 011 — BME280 + ESPHome
+- Draft 012 — skladovanie a sušenie filamentu
+
+Ďalej prioritne vzniknú:
+
+1. Ako vybrať napájanie pre konkrétny ESP32 projekt.
+2. Home Assistant Green + Zigbee koordinátor — kompletný štartovací setup po zalistovaní koordinátora.
+3. Bluetooth Proxy vs. USB Bluetooth adaptér.
+4. 3D tlačená krabička pre ESP32 — PLA+ vs. ABS+ podľa prostredia.
+5. BME280 vs. BMP280 — čo reálne merajú.
+6. UNO R4 WiFi vs. konkrétna ESP32 doska.
 
 ## Publish gate pre interné linky
 
