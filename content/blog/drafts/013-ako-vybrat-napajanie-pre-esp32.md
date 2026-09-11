@@ -117,7 +117,7 @@ Ak ESP32 resetuje:
 
 ## KomArena prepojenie
 
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
 - HW-319 LM2596: https://komarena.sk/produkt/hw-319-lm2596-step-down-menic-s-led-voltmetrom/
 - Napájanie: https://komarena.sk/napajanie/
 - ESP & ESPHome: https://komarena.sk/esp-esphome/
