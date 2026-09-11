@@ -18,7 +18,7 @@ Každý publikovaný článok má mať podľa relevancie:
 - žiadnu hardcoded cenu alebo sklad v evergreen texte,
 - žiadne dodávateľské, sourcing, nákupné ani interné SKU poznámky.
 
-Pred publikovaním sa každý URL, sklad, visibility, backorder a kompatibilita overujú znova.
+Pred publikovaním sa každý URL, sklad, visibility, backorder a kompatibilita overujú znova. Produktový URL sa nikdy neodvodzuje z názvu; zdroj pravdy je aktuálne pole `permalink` živého WooCommerce produktu.
 
 ## Hlavné obsahové huby
 
@@ -36,11 +36,13 @@ Pred publikovaním sa každý URL, sklad, visibility, backorder a kompatibilita 
 | ReSmart | https://komarena.sk/resmart/ |
 | Produkty | https://komarena.sk/produkty/ |
 
-## Kanonické produktové URL používané v stagingu
+## Produktové URL — snapshot pre staging
+
+Tieto URL sú pracovný snapshot. Tesne pred publikovaním sa vždy načítajú znova zo živého WooCommerce produktu.
 
 ### ESP / senzory
 
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
+- ESP32 DevKit V1, ID 2159: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
 - HC-SR501: https://komarena.sk/produkt/hc-sr501-pir-senzor/ — aktuálne outofstock/hidden
 - BME280: https://komarena.sk/produkt/bme280-senzor-teploty-vlhkosti-a-tlaku-vzduchu/ — aktuálne outofstock
 - BMP280: https://komarena.sk/produkt/bmp280-senzor-teploty-a-tlaku-vzduchu/ — aktuálne outofstock
@@ -146,8 +148,8 @@ Inbound odkazy sa pridávajú až po existencii finálneho permalinku článku.
 
 Pred každým publish approval:
 
+- [ ] produktové URL načítať z aktuálneho živého WooCommerce `permalink`, nie odvodiť z názvu,
 - [ ] všetky interné URL otvoriť a overiť,
-- [ ] staré slugs nahradiť kanonickými URL z tejto matice,
 - [ ] odstrániť odkazy na nepublikované alebo vyradené produkty,
 - [ ] overiť stock/visibility/backorder v deň schválenia,
 - [ ] cenu a sklad nedávať do evergreen anchor textu,
