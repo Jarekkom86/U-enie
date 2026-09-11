@@ -30,6 +30,25 @@ Existujúce publikované články pri kontrole:
 - HC-SR04 s Arduinom,
 - Arduino UNO vs ESP32.
 
+## Live WordPress taxonomy check
+
+Overené kategórie:
+
+- `583` — Home Assistant & ESPHome (`home-assistant-esphome`)
+- `322` — Návody a projekty (`navody-a-projekty`)
+- `586` — Produkty, testy a porovnania (`produkty-testy-porovnania`)
+- `585` — 3D tlač (`3d-tlac`)
+
+Odporúčané priradenie:
+
+| Draft | Primárna kategória | Sekundárna kategória |
+| --- | --- | --- |
+| 003 | 583 | 322 |
+| 005 | 583 | 322 |
+| 013 | 583 | 322 |
+| 014 | 583 | 586 |
+| 008 | 585 | 586 |
+
 ## Fresh source check
 
 Overené 2026-09-11:
@@ -100,6 +119,7 @@ Pre všetkých 5 článkov:
 
 - editorial/SEO/source preflight: **PASS**,
 - duplicate audit: **PASS**,
+- taxonomy check: **PASS**,
 - live product permalink check: **PASS** pre ESP32/HW-319,
 - WordPress publish: **NOT EXECUTED**,
 - merge to `main`: **NOT EXECUTED**.
