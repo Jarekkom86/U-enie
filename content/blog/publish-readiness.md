@@ -46,7 +46,7 @@ Produktový URL sa **nesmie odvodiť z názvu produktu**. Živý WooCommerce pro
 
 Pred každým publish approval sa produktové URL načítajú priamo zo živého WooCommerce poľa `permalink`.
 
-## Poradie 20 draftov
+## Readiness mapa 001–020
 
 | Poradie | Draft | Stav | Obchod | Sklad | Technika | Hlavný gate |
 | ---: | --- | --- | --- | --- | --- | --- |
@@ -70,6 +70,40 @@ Pred každým publish approval sa produktové URL načítajú priamo zo živého
 | 18 | 010 — ESP32 + HC-SR501 + ESPHome | C | stredne vysoký | HC-SR501 outofstock/hidden | vysoká | obnoviť sklad alebo publikovať striktne bez predajného CTA |
 | 19 | 011 — BME280 + ESPHome | C | vysoký | BME280 outofstock | vysoká | sklad/backorder podľa obchodných pravidiel |
 | 20 | 015 — BME280 vs BMP280 | C | stredný | oba produkty outofstock | vysoká | môže ísť informačne neskôr, bez nákupných CTA |
+
+## Preflight checkpoint — Home Assistant fundamentals 021–029
+
+Druhá vlna bola overená 11. 9. 2026 proti aktuálnej oficiálnej dokumentácii Home Assistant. Táto vlna je zámerne evergreen a nie je viazaná na dostupnosť jedného konkrétneho produktu.
+
+| Draft | Výsledok | Overené | Čo zostáva pred `approved-for-publish` |
+| --- | --- | --- | --- |
+| 021 — Čo je Home Assistant a čo nie je | **RFR** | aktuálne HA pojmy a platformový model | SEO duplicita, featured image, WordPress preview |
+| 022 — Lokálna vs cloudová smart domácnosť | **RFR** | local/cloud princípy; BleBox iba ako už overený local príklad | finálny integration wording + preview |
+| 023 — DHCP rezervácia vs statická IP | **RFR** | sieťový koncept bez vendor-specific router postupu | finálna redakčná kontrola + diagram siete |
+| 024 — Ako pomenovať zariadenia a entity | **RFR** | aktuálne Areas/Floors/Devices/Entities/Labels pojmy | screenshoty a UI terminológia recheck day-of |
+| 025 — Zariadenie sa neobjavilo automaticky | **RFR** | discovery troubleshooting bez slepého reset workflow | finálny support/diagnostics wording + screenshoty |
+| 026 — Prvá automatizácia | **RFR** | trigger / condition / action model + aktuálny editor | finálny editor screenshot + syntax recheck |
+| 027 — Wi-Fi vs Zigbee vs Thread vs Matter | **RFR** | Matter over Wi-Fi/Ethernet/Thread; Thread ≠ Matter; ZHA coordinator model; ZBT-2 one-protocol recommendation | Thread/Matter status recheck v deň schválenia |
+| 028 — HA bez zbytočných hubov | **RFR** | coordinator vs border router vs controller; existing Thread border-router principle | žiadny hardware CTA bez compatibility/stock gate |
+| 029 — Pohyb → podmienka → svetlo | **RFR** | aktuálne HA 2026.9 `triggers / conditions / actions`, run modes a troubleshooting model | YAML preveriť ešte v aktuálnom editor/config checker; screenshoty; žiadny vypredaný PIR CTA |
+
+### Druhý bezpečný review batch
+
+Odporúčané redakčné poradie:
+
+1. Draft 021 — Čo je Home Assistant a čo nie je
+2. Draft 022 — Lokálna vs cloudová smart domácnosť
+3. Draft 027 — Wi-Fi vs Zigbee vs Thread vs Matter
+4. Draft 028 — Ako naplánovať Home Assistant domácnosť bez zbytočných hubov
+5. Draft 023 — DHCP rezervácia vs statická IP
+6. Draft 024 — Ako pomenovať zariadenia a entity
+7. Draft 025 — Zariadenie sa neobjavilo automaticky
+8. Draft 026 — Prvá automatizácia
+9. Draft 029 — Pohyb → podmienka → svetlo
+
+Tento batch tvorí jeden súvislý beginner funnel:
+
+**čo je Home Assistant → local/cloud → protokoly → architektúra → sieť → naming → troubleshooting → automation basics → modelový projekt**
 
 ## Prvý bezpečný review batch
 
@@ -147,6 +181,7 @@ Pred `ready-for-review` → `approved-for-publish`:
 - [ ] schema typ zodpovedá článku,
 - [ ] finálny preview desktop + mobil,
 - [ ] odstrániť všetky staging-only poznámky o internom sklade, obchodnom gate a dátume kontroly,
+- [ ] pri dynamických témach Matter/Thread/Home Assistant UI znovu overiť aktuálnu dokumentáciu v deň schválenia,
 - [ ] explicitné schválenie publikácie.
 
 ## FAIL CLOSED
