@@ -157,7 +157,7 @@ ESP32 je nízkonapäťová vývojová platforma. Nepoužívajte ju ako zámienku
 
 Produkčná URL ESP32 pri príprave draftu:
 
-https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
+https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
 
 ## Interné odkazy — návrh
 
@@ -165,7 +165,7 @@ https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
 - Home Assistant: https://komarena.sk/home-assistant/
 - Senzory: https://komarena.sk/senzory/
 - Napájanie: https://komarena.sk/napajanie/
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
 
 ## CTA
 
