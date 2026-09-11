@@ -148,7 +148,7 @@ Bežný HC-SR04 nie je vodotesný; nepoužívať ho bez ďalšieho návrhu v mok
 ## KomArena prepojenie
 
 - HC-SR04 produkt: https://komarena.sk/produkt/hc-sr04-ultrazvukovy-senzor-esphome/
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
 - ESP & ESPHome: https://komarena.sk/esp-esphome/
 - Senzory: https://komarena.sk/senzory/
 
