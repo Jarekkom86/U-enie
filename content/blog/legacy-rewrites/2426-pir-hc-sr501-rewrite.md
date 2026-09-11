@@ -25,7 +25,7 @@ Ako funguje HC-SR501, čo znamenajú režimy H a L, ako ho pripojiť k ESP32 a p
 ## Čo opravujeme oproti publikovanej verzii
 
 1. **H/L režimy:** pôvodný text ich vysvetľuje zavádzajúco. Bežný HC-SR501 používa H ako retriggerable/repeat režim a L ako single/non-repeatable režim.
-2. Starý ESP32 produktový odkaz smeruje na neaktuálny slug; používať aktuálnu URL.
+2. ESP32 produktový odkaz sa pred publikovaním berie priamo zo živého WooCommerce `permalink`; aktuálny permalink je uvedený nižšie.
 3. Neprezentovať približný dosah/uhol ako garantovaný výsledok v každej miestnosti.
 4. Doplniť, že PIR deteguje zmenu infračerveného žiarenia, nie „prítomnosť osoby“ ako takú.
 5. Aktuálny produkt HC-SR501 je vypredaný a skrytý; článok nesmie mať aktívny nákupný CTA.
@@ -126,7 +126,7 @@ Overte H/L jumper a časový trimr. Nepreberajte nastavenie z fotografie inej re
 
 ## KomArena prepojenie
 
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
 - ESP & ESPHome: https://komarena.sk/esp-esphome/
 - Senzory: https://komarena.sk/senzory/
 - Draft 003 — prvý ESPHome projekt
@@ -148,7 +148,7 @@ Overiť bezprostredne pred publikovaním:
 
 - [ ] zachovať existujúcu URL, ak nie je silný SEO dôvod na zmenu,
 - [ ] opraviť H/L režimy,
-- [ ] vymeniť starý ESP32 odkaz za aktuálny produktový slug,
+- [ ] načítať aktuálny ESP32 permalink zo živého WooCommerce produktu,
 - [ ] doplniť interné odkazy na ESPHome cluster,
 - [ ] nastaviť SEO title/meta/focus keyword,
 - [ ] doplniť tagy: HC-SR501, PIR, ESPHome, ESP32, Home Assistant,
