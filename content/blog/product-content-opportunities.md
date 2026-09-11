@@ -13,6 +13,7 @@
 3. Ceny sa do evergreen článkov hardcodujú iba pri zámerne časovo označenom cenovom obsahu.
 4. Pri generických moduloch sa nepredpokladá univerzálny pinout, napájanie ani limity.
 5. Každý produkt má smerovať minimálne na jeden užitočný návod alebo porovnanie a každý silný článok má mať prirodzený ďalší krok v katalógu.
+6. Produktový URL sa neodvodzuje z názvu. Pred publikovaním sa berie priamo zo živého WooCommerce poľa `permalink` konkrétneho produktu.
 
 ## P0 — produkty s okamžitou obsahovou hodnotou
 
@@ -27,7 +28,9 @@
 
 ## ESP32 DevKit V1 — hlavný Build Lab vstup
 
-**Produkt:** https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
+**Produkt:** https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
+
+Živý WooCommerce produkt ID 2159 je zdroj pravdy pre permalink; tento URL sa pred každou publikáciou načíta znova a neodvodzuje sa z názvu produktu.
 
 ### Obsahové cesty
 
@@ -207,7 +210,7 @@ Pred každým produktovým článkom overiť:
 - `catalog_visibility`,
 - `stock_status`, `stock_quantity`, `backorders`,
 - aktuálnu cenu iba ak ju článok potrebuje,
-- presnú URL,
+- `permalink` priamo zo živého WooCommerce produktu; URL nikdy neodvodzovať z názvu,
 - kompatibilitu s opisovaným projektom,
 - zdroje výrobcu / oficiálnu dokumentáciu,
 - maržový gate pri produktoch, kde je obchodná dostupnosť závislá od dodávateľa.
