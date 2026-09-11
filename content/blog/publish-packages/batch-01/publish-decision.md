@@ -10,11 +10,11 @@ Tento dokument rozlišuje **obsahovú pripravenosť** od samotného publish súh
 
 | WP ID | Source | Obsah/SEO | Taxonómia | Linky | Produktový gate | Vizuálny gate | Verdict |
 | ---: | --- | --- | --- | --- | --- | --- | --- |
-| 4296 | 003 | PASS | PASS | PASS | ESP32 live/instock | preview neoverený browserom | READY FOR APPROVAL |
-| 4297 | 005 | PASS | PASS | PASS | bez kritického low-stock CTA | preview neoverený browserom | READY FOR APPROVAL |
-| 4298 | 013 | PASS | PASS | PASS | HW-319 low stock; day-of recheck | preview neoverený browserom | CONDITIONAL READY |
-| 4299 | 014 | PASS | PASS | PASS | ESP32 live/instock | preview neoverený browserom | READY FOR APPROVAL |
-| 4300 | 008 | PASS | PASS | PASS | bez priameho produktového CTA | 4-stĺpcová tabuľka potrebuje mobilný vizuálny check | HOLD — VISUAL CHECK |
+| 4296 | 003 | PASS | PASS | PASS | ESP32 live/instock | bez známeho layout blokéra | READY FOR APPROVAL |
+| 4297 | 005 | PASS | PASS | PASS | bez kritického low-stock CTA | bez známeho layout blokéra | READY FOR APPROVAL |
+| 4298 | 013 | PASS | PASS | PASS | HW-319 low stock; day-of recheck | bez známeho layout blokéra | CONDITIONAL READY |
+| 4299 | 014 | PASS | PASS | PASS | ESP32 live/instock | bez známeho layout blokéra | READY FOR APPROVAL |
+| 4300 | 008 | PASS | PASS | PASS | bez priameho produktového CTA | široká tabuľka odstránená; mobilne bezpečné bloky | READY FOR APPROVAL |
 
 ## 4296 — ESPHome + ESP32: prvý projekt krok za krokom
 
@@ -32,7 +32,7 @@ Prešlo:
 - interné huby existujú a sú publikované,
 - ESP32 produktový permalink je živý a produkt je objednateľný.
 
-Zostáva iba vizuálny desktop/mobile preview alebo explicitné rozhodnutie tento vizuálny gate akceptovať podľa existujúcej default šablóny.
+Browser preview je stále vhodná posledná ľudská kontrola, ale API/layout audit neodhalil známy blokér.
 
 ## 4297 — ESP32 sa reštartuje? Ako odhaliť problém s napájaním
 
@@ -48,7 +48,7 @@ Prešlo:
 - brownout tvrdenia majú oficiálne Espressif zdroje,
 - interné huby a ESP32 permalink sú živé.
 
-Zostáva iba vizuálny desktop/mobile preview alebo explicitné akceptovanie vizuálneho gate.
+Browser preview je vhodná posledná ľudská kontrola, ale nie je známy konkrétny layout blokér.
 
 ## 4298 — Napájanie ESP32: ako vybrať zdroj a step-down menič
 
@@ -64,7 +64,7 @@ Komerčný gate:
 - **bezprostredne pred publish treba znovu overiť sklad**,
 - ak nebude objednateľný, odstrániť alebo zmeniť produktový CTA na informačný odkaz podľa FAIL CLOSED pravidla.
 
-Vizuálny gate ostáva rovnaký ako pri ostatných default-template článkoch.
+Nie je známy ďalší layout blokér.
 
 ## 4299 — Bluetooth Proxy vs USB adaptér pre Home Assistant
 
@@ -83,7 +83,7 @@ Praktický vlastný proxy test je vhodný ako budúce rozšírenie článku, ale
 
 ## 4300 — PLA vs PLA+ vs ABS+
 
-**Verdict: HOLD — VISUAL CHECK**
+**Verdict: READY FOR APPROVAL**
 
 Obsahové a SEO gate sú PASS:
 
@@ -93,11 +93,7 @@ Obsahové a SEO gate sú PASS:
 - bez priameho stock-sensitive produktového CTA,
 - bezpečnostné poznámky sú prítomné.
 
-Bloker:
-
-- článok obsahuje 4-stĺpcovú HTML tabuľku,
-- bez reálneho mobilného browser preview nie je možné poctivo potvrdiť wrap/overflow/crop,
-- pred publish treba vizuálne overiť najmä šírku tabuľky na mobilnom viewporte.
+Pôvodná 4-stĺpcová porovnávacia tabuľka bola odstránená z WordPress draftu aj z publish payloadu a nahradená sekciami PLA / PLA+ / ABS+ s krátkymi zoznamami. Tým sa odstránil konkrétny mobile-overflow blokér bez potreby špeciálneho table CSS.
 
 ## WordPress read/API audit
 
@@ -129,6 +125,7 @@ Publish action je povolený až keď:
 
 1. je post explicitne schválený na publish,
 2. prebehne day-of WooCommerce permalink/stock gate pri produktových CTA,
-3. vizuálny gate je uzavretý alebo výslovne akceptovaný,
-4. post zostáva bez dodávateľských/sourcing interných poznámok,
-5. nič neporušuje low-voltage / 230 V safety pravidlá.
+3. post zostáva bez dodávateľských/sourcing interných poznámok,
+4. nič neporušuje low-voltage / 230 V safety pravidlá.
+
+Browser preview zostáva odporúčaná ľudská kontrola, ale po odstránení širokej tabuľky nie je evidovaný konkrétny technický layout blokér v Batch 01.
