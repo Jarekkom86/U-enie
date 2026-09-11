@@ -1,314 +1,53 @@
 <!-- markdownlint-disable MD013 -->
 
-# KomArena blog — interné prelinkovanie v1
+# KomArena blog — interné prelinkovanie v2
 
-Tento dokument je pracovná mapa pre systém:
+Toto je jediný staging zdroj pravdy pre interné linkovanie blogu.
 
 **Produkt → článok / návod → modelový projekt → súvisiaci produkt → kategória → ďalší článok → sociálny obsah**
-
-Cieľom je, aby žiadny dôležitý článok nebol SEO ani obchodná slepá ulička.
 
 ## Záväzné pravidlá
 
 Každý publikovaný článok má mať podľa relevancie:
 
-- 1 hlavný odkaz na nadradenú obsahovú sekciu,
+- 1 nadradený obsahový hub,
 - 1 až 3 odkazy na reálne relevantné produkty,
-- minimálne 1 odkaz na súvisiaci článok alebo návod,
-- prirodzený návrat na kategóriu alebo ďalší krok používateľa,
-- žiadny odkaz na produkt, ktorý nie je publikovaný alebo ktorého kompatibilita nie je overená.
+- 1 až 3 odkazy na súvisiace články alebo návody,
+- aspoň jeden plánovaný inbound link z existujúcej produkčnej stránky,
+- žiadny aktívny nákupný CTA na nepublikovaný, skrytý alebo nevhodne vypredaný produkt,
+- žiadnu hardcoded cenu alebo sklad v evergreen texte,
+- žiadne dodávateľské, sourcing, nákupné ani interné SKU poznámky.
 
-Ceny a sklad sa v evergreen článkoch nemajú hardcodovať, pokiaľ to nie je zámerne časovo označený cenový článok.
+Pred publikovaním sa každý URL, sklad, visibility, backorder a kompatibilita overujú znova.
 
 ## Hlavné obsahové huby
 
-| Hub | URL | Úloha |
-| --- | --- | --- |
-| Blog | https://komarena.sk/blog/ | centrálny feed článkov |
-| Home Assistant | https://komarena.sk/home-assistant/ | nadradený hub pre HA obsah |
-| ESP & ESPHome | https://komarena.sk/esp-esphome/ | ESP32/ESP8266/ESPHome hub |
-| Senzory | https://komarena.sk/senzory/ | senzorové návody a produkty |
-| Napájanie | https://komarena.sk/napajanie/ | zdroje, meniče a stabilita |
-| Protokoly a integrácie | https://komarena.sk/protokoly-a-integracie/ | Zigbee, Matter, Thread, BLE a integrácie |
-| Značky a kompatibilita | https://komarena.sk/smart-znacky/ | kompatibilita a výber ekosystému |
-| 3D tlač | https://komarena.sk/3d-tlac/ | filamenty, príslušenstvo a 3D návody |
-| Návody | https://komarena.sk/navody/ | praktický Build Lab rozcestník |
-| ReSmart | https://komarena.sk/resmart/ | servisná cesta pri probléme namiesto DIY |
-| Produkty | https://komarena.sk/produkty/ | katalóg / obchodná cesta |
-
-## Draft 001 — BleBox wLightBox v3 + Home Assistant
-
-### Primárne inbound odkazy
-
-- Home Assistant hub
-- Protokoly a integrácie
-- budúci článok o lokálnom smart osvetlení
-- produktová stránka BleBox wLightBox v3
-
-### Primárne outbound odkazy
-
-- produkt BleBox wLightBox v3
-- Home Assistant hub
-- Protokoly a integrácie
-- budúci článok: Wi-Fi vs. Zigbee pre osvetlenie
-
-### Obchodný ďalší krok
-
-Používateľ má po článku vedieť rozhodnúť, či potrebuje LED ovládač, napájací zdroj a vhodný LED pás.
-
-## Draft 002 — Home Assistant Green
-
-### Primárne inbound odkazy
-
-- Home Assistant hub
-- článok o prvej Zigbee sieti
-- články pre začiatočníkov v Home Assistante
-
-### Primárne outbound odkazy
-
-- Home Assistant hub
-- Protokoly a integrácie
-- Draft 006 — prvá Zigbee sieť
-- Draft 009 — ZHA vs. Zigbee2MQTT
-- budúca produktová stránka Home Assistant Green iba po finalizácii produktu
-
-### Obchodný ďalší krok
-
-Green funguje ako nosný vstupný bod do ekosystému: Green → Zigbee/Thread adaptér → senzory → ESPHome → automatizácie.
-
-## Draft 003 — Prvý ESPHome projekt s ESP32
-
-### Primárne inbound odkazy
-
-- ESP & ESPHome hub
-- Home Assistant hub
-- produkt ESP32 DevKit V1
-
-### Primárne outbound odkazy
-
-- ESP32 DevKit V1
-- ESP & ESPHome hub
-- Draft 005 — stabilné napájanie ESP32
-- Draft 007 — Bluetooth Proxy
-- Draft 010 — ESP32 + PIR
-- Draft 011 — BME280 + ESPHome
-- Senzory
-
-### Obchodný ďalší krok
-
-ESP32 → USB kábel → breadboard / vodiče → prvý senzor → ďalší konkrétny projekt.
-
-## Draft 004 — eSUN PLA+ výber a tlač
-
-### Primárne inbound odkazy
-
-- 3D tlač hub
-- konkrétne PLA+ produkty
-- Draft 008 — PLA vs. PLA+ vs. ABS+
-
-### Primárne outbound odkazy
-
-- aktuálne objednateľné eSUN PLA+ varianty
-- 3D tlač hub
-- Draft 008
-- Draft 012 — skladovanie a sušenie filamentu
-
-### Obchodný ďalší krok
-
-PLA+ → vhodná farba → skladovanie/sušenie → príslušenstvo → ďalší filament podľa použitia.
-
-## Draft 005 — Stabilné napájanie ESP32
-
-### Primárne inbound odkazy
-
-- Napájanie hub
-- Draft 003 — prvý ESPHome projekt
-- Draft 007 — Bluetooth Proxy
-- Draft 010 — ESP32 + PIR
-- Draft 011 — BME280 + ESPHome
-- produktové stránky ESP32
-
-### Primárne outbound odkazy
-
-- Napájanie
-- ESP & ESPHome
-- Draft 003
-- konkrétne zdroje/meniče až po overení parametrov a skladu
-
-### Obchodný ďalší krok
-
-Diagnostika → vhodný zdroj / menič → kvalitný kábel → stabilný ESP32 projekt.
-
-## Draft 006 — Prvá Zigbee sieť v Home Assistante
-
-### Primárne inbound odkazy
-
-- Home Assistant hub
-- Protokoly a integrácie
-- Draft 002 — Home Assistant Green
-- Draft 009 — ZHA vs. Zigbee2MQTT
-
-### Primárne outbound odkazy
-
-- Home Assistant
-- Protokoly a integrácie
-- Značky a kompatibilita
-- Draft 002
-- Draft 009
-- konkrétny Zigbee koordinátor až po zalistovaní a overení
-
-### Obchodný ďalší krok
-
-Koordinátor → routery → senzory → automatizácie.
-
-### FAIL CLOSED
-
-Kým KomArena nemá publikovaný vhodný Zigbee koordinátor, článok nesmie obsahovať falošný produktový CTA.
-
-## Draft 007 — ESPHome Bluetooth Proxy
-
-### Primárne inbound odkazy
-
-- ESP & ESPHome hub
-- Home Assistant hub
-- Draft 003
-- budúce články o BLE senzoroch
-
-### Primárne outbound odkazy
-
-- ESP & ESPHome
-- Home Assistant
-- Draft 005 — stabilné napájanie ESP32
-- Draft 003 — prvý ESPHome projekt
-- konkrétna ESP32 doska až po overení čipu a Bluetooth podpory
-
-### Obchodný ďalší krok
-
-ESP32 s BLE → stabilné napájanie → proxy → podporované BLE zariadenia.
-
-## Draft 008 — PLA vs. PLA+ vs. ABS+
-
-### Primárne inbound odkazy
-
-- 3D tlač hub
-- PLA+ a ABS+ produktové stránky
-- Draft 004
-- Draft 012
-
-### Primárne outbound odkazy
-
-- Draft 004 — eSUN PLA+
-- Draft 012 — skladovanie a sušenie
-- 3D tlač hub
-- aktuálne objednateľné PLA+ produkty
-- ABS+ produkt iba ak prejde skladovým a maržovým gate
-
-### Obchodný ďalší krok
-
-Výber podľa použitia → materiál → farba → príslušenstvo → skladovanie / sušenie.
-
-## Draft 009 — ZHA vs. Zigbee2MQTT
-
-### Primárne inbound odkazy
-
-- Draft 006 — prvá Zigbee sieť
-- Home Assistant hub
-- Protokoly a integrácie
-- budúca stránka koordinátora
-
-### Primárne outbound odkazy
-
-- Draft 006
-- Draft 002 — Home Assistant Green
-- Home Assistant
-- Protokoly a integrácie
-- konkrétny koordinátor až po overení oboch stackov
-
-### Obchodný ďalší krok
-
-Rozhodnutie o stacku → výber kompatibilného koordinátora → routery → zariadenia.
-
-### FAIL CLOSED
-
-Žiadny koordinátor sa neodporúča iba podľa popularity; musí byť reálne v sortimente a overený pre zvolený stack.
-
-## Draft 010 — ESP32 + HC-SR501 + ESPHome
-
-### Primárne inbound odkazy
-
-- legacy PIR článok po oprave
-- Draft 003
-- Senzory hub
-- ESP & ESPHome hub
-
-### Primárne outbound odkazy
-
-- Draft 003
-- Draft 005
-- Home Assistant
-- Senzory
-- HC-SR501 produkt iba ako technická referencia, kým je vypredaný
-
-### Obchodný ďalší krok
-
-ESP32 → PIR → vodiče → krabička → ďalší senzor / automatizácia.
-
-### FAIL CLOSED
-
-HC-SR501 je aktuálne `outofstock` a katalógovo skrytý. Predajný CTA sa neaktivuje pred obnovením skladu.
-
-## Draft 011 — BME280 + ESPHome
-
-### Primárne inbound odkazy
-
-- Draft 003
-- Senzory hub
-- ESP & ESPHome hub
-- budúci článok BME280 vs. BMP280
-
-### Primárne outbound odkazy
-
-- Draft 003
-- Draft 005
-- Senzory
-- Home Assistant
-- BME280 produkt iba ako technická referencia, kým je vypredaný
-
-### Obchodný ďalší krok
-
-ESP32 → BME280 → vodiče → krabička → ďalšie environmentálne senzory.
-
-### FAIL CLOSED
-
-BME280 je aktuálne `outofstock` bez backorderu. Predajný CTA sa aktivuje až po skladovom gate.
-
-## Draft 012 — Ako skladovať a sušiť filament
-
-### Primárne inbound odkazy
-
-- 3D tlač hub
-- Draft 004
-- Draft 008
-- eSUN filamentové produktové stránky
-
-### Primárne outbound odkazy
-
-- Draft 004 — eSUN PLA+
-- Draft 008 — PLA vs. PLA+ vs. ABS+
-- 3D tlač hub
-- eBOX / eVacuum iba po aktuálnom skladovom a maržovom gate
-
-### Obchodný ďalší krok
-
-Filament → skladovanie → sušenie → dry box/vákuové príslušenstvo → konzistentná tlač.
-
-## Aktuálne produktové linky použiteľné v draftoch
-
-### ESP / ESPHome
+| Hub | URL |
+| --- | --- |
+| Blog | https://komarena.sk/blog/ |
+| Home Assistant | https://komarena.sk/home-assistant/ |
+| ESP & ESPHome | https://komarena.sk/esp-esphome/ |
+| Senzory | https://komarena.sk/senzory/ |
+| Napájanie | https://komarena.sk/napajanie/ |
+| Protokoly a integrácie | https://komarena.sk/protokoly-a-integracie/ |
+| Značky a kompatibilita | https://komarena.sk/smart-znacky/ |
+| 3D tlač | https://komarena.sk/3d-tlac/ |
+| Návody | https://komarena.sk/navody/ |
+| ReSmart | https://komarena.sk/resmart/ |
+| Produkty | https://komarena.sk/produkty/ |
+
+## Kanonické produktové URL používané v stagingu
+
+### ESP / senzory
 
 - ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
-- HC-SR501 produkt: https://komarena.sk/produkt/hc-sr501-pir-senzor/ — aktuálne outofstock/hidden
-- BME280 produkt: https://komarena.sk/produkt/bme280-senzor-teploty-vlhkosti-a-tlaku-vzduchu/ — aktuálne outofstock
+- HC-SR501: https://komarena.sk/produkt/hc-sr501-pir-senzor/ — aktuálne outofstock/hidden
+- BME280: https://komarena.sk/produkt/bme280-senzor-teploty-vlhkosti-a-tlaku-vzduchu/ — aktuálne outofstock
+- BMP280: https://komarena.sk/produkt/bmp280-senzor-teploty-a-tlaku-vzduchu/ — aktuálne outofstock
+- DHT22 / AM2302: https://komarena.sk/produkt/dht22-am2302-senzor-teploty-a-vlhkosti/
+- HC-SR04: https://komarena.sk/produkt/hc-sr04-ultrazvukovy-senzor-esphome/
+- OLED SSD1306: https://komarena.sk/produkt/oled-096-i2c-ssd1306-displej-128x64-pre-esphome-dashboard/
+- HW-319 LM2596: https://komarena.sk/produkt/hw-319-lm2596-step-down-menic-s-led-voltmetrom/
 
 ### Smart Home
 
@@ -327,63 +66,99 @@ Filament → skladovanie → sušenie → dry box/vákuové príslušenstvo → 
 - Grey: https://komarena.sk/produkt/esun-abs-plus-grey-175-mm-1-kg/
 - Orange: https://komarena.sk/produkt/esun-abs-plus-orange-175-mm-1-kg/
 
-ABS+ odkazy sú obsahovo použiteľné, ale obchodný CTA musí rešpektovať aktuálnu objednateľnosť a maržový gate.
+ABS+ CTA je vždy pod skladovým a maržovým gate.
 
-## Legacy články, ktoré treba zapojiť
+## Draft mapa 001–020
 
-### PIR senzor HC-SR501
+| Draft | Primárny inbound | Primárny outbound | Obchodný ďalší krok | Gate |
+| --- | --- | --- | --- | --- |
+| 001 BleBox + HA | HA hub, produkt BleBox, protokoly | BleBox, HA, protokoly | LED kontrolér → zdroj → LED pás | produkčný článok už existuje; nerepublikovať |
+| 002 Home Assistant Green | HA hub, beginner HA | HA, 006, 009 | Green → koordinátor → senzory → ESPHome | finálne zalistovanie Green + marža/CTA |
+| 003 Prvý ESPHome projekt | ESP hub, HA, ESP32 produkt | ESP32, 005, 007, 010, 011, 013 | ESP32 → kábel → prvý senzor | stock/source/link preflight |
+| 004 eSUN PLA+ | 3D hub, PLA+ produkty, 008 | PLA+ varianty, 008, 012 | materiál → farba → skladovanie | aktuálne varianty pred CTA |
+| 005 Stabilné napájanie ESP32 | Napájanie, 003, 007, 013 | Napájanie, ESP hub, 003, 013 | diagnostika → zdroj/kábel/menič | žiadne generické prúdové garancie |
+| 006 Prvá Zigbee sieť | HA, protokoly, 002, 009 | HA, protokoly, 009 | koordinátor → routery → senzory | bez koordinátora CTA do zalistovania |
+| 007 ESPHome Bluetooth Proxy | ESP, HA, 003, 014 | ESP32, 005, 013, 014 | ESP32 BLE → proxy → BLE zariadenia | konkrétny čip + aktuálne proxy limity |
+| 008 PLA vs PLA+ vs ABS+ | 3D, 004, 012, filamenty | 004, 012, 016 | použitie → materiál → skladovanie | ABS+ marža/sklad |
+| 009 ZHA vs Zigbee2MQTT | 006, HA, protokoly | 006, 002, HA | stack → kompatibilný koordinátor | konkrétny koordinátor overený pre stack |
+| 010 ESP32 + PIR | legacy 2426, 003, senzory | ESP32, 003, 005 | ESP32 → PIR → automatizácia | HC-SR501 outofstock/hidden |
+| 011 BME280 + ESPHome | 003, senzory, 015, 020 | ESP32, 005, 015, 017 | ESP32 → BME280 → HA | BME280 outofstock |
+| 012 Skladovanie filamentu | 3D, 004, 008 | 004, 008, 3D | filament → skladovanie/sušenie | eBOX/eVacuum marža/sklad |
+| 013 Výber napájania ESP32 | 003, 005, 007, ESP32, HW-319 | ESP32, HW-319, 005, 014 | vstup → zdroj/kábel → menič | HW-319 recheck, žiadny 230 V DIY |
+| 014 Proxy vs USB Bluetooth | 007, HA, ESP32 | 007, 013, ESP32 | lokálny USB + vzdialené BLE proxy | USB dongle iba podľa aktuálnej HA kompatibility |
+| 015 BME280 vs BMP280 | 011, senzory, 020 | 011, DHT22, senzory | vybrať podľa meraných veličín | BME280/BMP280 outofstock |
+| 016 ESP32 krabička PLA+/ABS+ | 004, 008, 012, 013 | ESP32, 004, 008, 012 | prostredie → materiál → návrh | ABS+ nie je automaticky outdoor |
+| 017 OLED dashboard | OLED, ESP32, 003, 019 | OLED, ESP32, 013, 019 | ESP32 → OLED → senzor → krabička | radič, I2C, napájanie a YAML test |
+| 018 HC-SR04 + ESP32 | HC-SR04, legacy 1971, ESP32 | HC-SR04, ESP32, 003, 013 | level shift → ESPHome → aplikácia | ECHO ~5 V nesmie priamo do 3,3 V GPIO |
+| 019 DHT22 + ESPHome | DHT22, ESP32, 003, 017 | DHT22, ESP32, 016, 017, 020 | ESP32 + DHT22 → HA → display | pinout + DATA pull-up konkrétneho modulu |
+| 020 DHT22 vs BME280 | 019, 011, 015, senzory | DHT22, 011, 015, 017 | vybrať podľa veličín a rozhrania | BME280 iba informačne počas vypredania |
 
-Má smerovať na:
+## Legacy články / rewrites
 
-- ESP32 / ESPHome,
-- Home Assistant,
-- Draft 003,
-- Draft 010 — ESP32 + PIR + ESPHome.
+### 2426 — PIR / HC-SR501
 
-Pred aktívnou propagáciou opraviť H/L trigger vysvetlenie podľa `legacy-post-audit.md`.
+Po oprave má smerovať na Draft 003, Draft 010, ESP & ESPHome a Senzory.
 
-### HC-SR04 s Arduinom
+Povinná oprava: H = retrigger/repeat, L = single/non-retrigger. HC-SR501 produkt je počas vypredania iba technická referencia.
 
-Má smerovať na:
+### 1971 — HC-SR04 + Arduino UNO
 
-- senzory,
-- vývojové dosky,
-- budúci článok HC-SR04 + ESP32 / ESPHome, ak vznikne technicky korektná verzia.
+Po oprave má smerovať na HC-SR04 produkt, Senzory a Draft 018.
 
-### Arduino UNO vs. ESP32
+Arduino UNO verzia pracuje v 5 V logike. ESP32 verzia musí riešiť ECHO približne 5 V → 3,3 V GPIO prispôsobenie.
 
-Má smerovať na:
+### 1964 — Arduino UNO vs ESP32
 
-- ESP & ESPHome,
-- Draft 003,
-- relevantné vývojové dosky,
-- budúci aktuálny UNO R4 WiFi vs. konkrétna ESP32 doska poradca.
+Po oprave má smerovať na ESP32 DevKit V1, Draft 003, 005, 013 a 014.
 
-## Chýbajúce mosty — ďalší P0 obsah
+Nepoužívať univerzálnu tabuľku pre všetky ESP32 rodiny; ESP32-S3 odlíšiť od klasickej ESP32 cesty.
 
-Hotové mosty:
+## Stock-backed obsahové balíčky
 
-- Draft 009 — ZHA vs. Zigbee2MQTT
-- Draft 010 — ESP32 + PIR + ESPHome
-- Draft 011 — BME280 + ESPHome
-- Draft 012 — skladovanie a sušenie filamentu
+### ESPHome Build Lab
 
-Ďalej prioritne vzniknú:
+ESP32 DevKit V1 → Draft 003 → Draft 005 → Draft 013 → Draft 014 → podľa projektu 017/018/019.
 
-1. Ako vybrať napájanie pre konkrétny ESP32 projekt.
-2. Home Assistant Green + Zigbee koordinátor — kompletný štartovací setup po zalistovaní koordinátora.
-3. Bluetooth Proxy vs. USB Bluetooth adaptér.
-4. 3D tlačená krabička pre ESP32 — PLA+ vs. ABS+ podľa prostredia.
-5. BME280 vs. BMP280 — čo reálne merajú.
-6. UNO R4 WiFi vs. konkrétna ESP32 doska.
+### Izbový senzor
+
+ESP32 DevKit V1 → DHT22/AM2302 → Draft 019 → voliteľne OLED Draft 017 → krabička Draft 016.
+
+### Ultrazvukový projekt
+
+ESP32 DevKit V1 → HC-SR04 → bezpečný level shift/delič → Draft 018.
+
+### 3D tlač
+
+Draft 008 → Draft 004 → Draft 012 → Draft 016 podľa použitia.
+
+## Produktové inbound úlohy po publikovaní
+
+- ESP32 DevKit V1 → Build Lab rozcestník s 003/005/013/014/017/018/019.
+- OLED SSD1306 → Draft 017.
+- HC-SR04 → Draft 018 + opravený legacy 1971.
+- DHT22/AM2302 → Draft 019 + 020.
+- BleBox wLightBox v3 → existujúci produkčný BleBox článok.
+- relevantné PLA+ varianty → Draft 004/008/012 podľa kontextu.
+
+Inbound odkazy sa pridávajú až po existencii finálneho permalinku článku.
 
 ## Publish gate pre interné linky
 
-Pred publikovaním článku:
+Pred každým publish approval:
 
-- všetky interné URL otvoriť a overiť HTTP stav,
-- odstrániť odkazy na nepublikované alebo vyradené produkty,
-- cenu a sklad nevkladať do anchor textu,
-- pri produkte s neistou dostupnosťou odkaz ponechať iba ako technický príklad alebo ho odstrániť,
-- aspoň jeden inbound link na nový článok doplniť z existujúcej relevantnej stránky / článku,
-- nevytvárať umelé prelinkovanie iba kvôli počtu odkazov.
+- [ ] všetky interné URL otvoriť a overiť,
+- [ ] staré slugs nahradiť kanonickými URL z tejto matice,
+- [ ] odstrániť odkazy na nepublikované alebo vyradené produkty,
+- [ ] overiť stock/visibility/backorder v deň schválenia,
+- [ ] cenu a sklad nedávať do evergreen anchor textu,
+- [ ] pri vypredanom produkte použiť iba informačný link, ak je to pre používateľa užitočné,
+- [ ] vložiť aspoň jeden inbound link z existujúcej produkčnej stránky,
+- [ ] nevytvárať umelé prelinkovanie iba kvôli počtu odkazov,
+- [ ] neuvádzať dodávateľa ani interné sourcing dáta.
+
+## Súvisiace staging dokumenty
+
+- `publish-readiness.md` — poradie a gate 20 draftov
+- `article-template.md` — WordPress/article/card/featured-image štandard
+- `legacy-post-audit.md` — pôvodné problémy legacy článkov
+- `product-content-opportunities.md` — produktovo-obsahové príležitosti
