@@ -124,7 +124,7 @@ Draft 020 porovná tieto dve cesty bez predstierania, že jedna je univerzálne 
 ## KomArena prepojenie
 
 - DHT22 / AM2302: https://komarena.sk/produkt/dht22-am2302-senzor-teploty-a-vlhkosti/
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
 - OLED SSD1306: https://komarena.sk/produkt/oled-096-i2c-ssd1306-displej-128x64-pre-esphome-dashboard/
 - Draft 003 — prvý ESPHome projekt
 - Draft 016 — krabička pre ESP32
