@@ -30,15 +30,52 @@ Tento súbor zaznamenáva reálne WordPress drafty vytvorené z `publish-package
 - Yoast SEO title, meta description and focus keyword applied,
 - schema applied as listed above,
 - featured image assigned from existing KomArena media library,
-- post template checked against production article 4289: both use the default post template and are not Elementor-controlled.
+- all five posts use the default WordPress post template and are not Elementor-controlled.
+
+## Final API audit — 2026-09-11
+
+### PASS
+
+- all five posts remain `draft`; none is scheduled or published,
+- body content does not contain a second H1; the post title supplies the page H1 and article sections begin at H2/H3,
+- prepared custom excerpts are stored correctly in the latest revisions:
+  - 4296 → revision 4301,
+  - 4297 → revision 4302,
+  - 4298 → revision 4303,
+  - 4299 → revision 4304,
+  - 4300 → revision 4305,
+- `post-get` renders an automatic excerpt preview even when the stored custom excerpt is correct; revision data is the reliable verification source,
+- all five posts use the same default non-Elementor template model as production article 4289,
+- Yoast metadata verified after write: SEO title, meta description and focus keyword are present,
+- robots verified: `noindex=false`, `nofollow=false`, `noimageindex=false`, `noarchive=false`, `nosnippet=false`,
+- canonical override is empty, so each article falls back to its own WordPress permalink,
+- schema verified: 003/005/013/014 = `WebPage / TechArticle`; 008 = `WebPage / Article`,
+- internal live hub targets resolve to published WordPress pages:
+  - ESP & ESPHome → page 2562,
+  - Home Assistant → page 2561,
+  - Senzory → page 2564,
+  - Napájanie → page 3668,
+  - 3D tlač → page 3977,
+- product link source of truth remains the live WooCommerce permalink; ESP32 ID 2159 and HW-319 ID 2997 were verified during Batch 01 preflight.
+
+### Remaining visual gate
+
+A true desktop/mobile browser preview was **not executed** because browser/computer-use handoff was declined. Do not mark the visual layer as PASS without that check.
+
+Specific remaining visual risk:
+
+- post 4300 contains a four-column comparison `<table>`; its actual mobile overflow/wrapping must be checked in a browser before publish.
+
+No automatic styling rewrite was applied to that table without a rendered preview, to avoid introducing an unverified visual regression.
 
 ## Publish gate
 
 Before any `post-publish` action:
 
 - recheck live product permalink and stock/CTA gates,
-- review desktop/mobile preview,
+- complete real desktop/mobile preview,
 - verify featured-image crop and alt text in context,
+- specifically verify mobile behavior of the comparison table in post 4300,
 - run final internal-link check after the first article permalinks exist,
 - keep HW-319 CTA under day-of stock gate,
 - keep ABS+ CTA under commercial/margin gate,
