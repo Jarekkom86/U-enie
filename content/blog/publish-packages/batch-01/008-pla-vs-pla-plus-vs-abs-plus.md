@@ -25,14 +25,32 @@ Dekoratívny model, krabička elektroniky a dielenský držiak majú rozdielne p
 
 ## Rýchle porovnanie
 
-| Vlastnosť | PLA | PLA+ | ABS+ |
-| --- | --- | --- | --- |
-| Jednoduchosť tlače | veľmi dobrá | dobrá až veľmi dobrá | náročnejšia |
-| Warping | nízky | zvyčajne nízky | vyššie riziko |
-| Funkčné diely | skôr ľahšie použitie | praktický univerzál | technickejšie použitie |
-| Vyššia teplota | obmedzené | stále obmedzené podľa formulácie | vhodnejší smer |
-| Uzavretá komora | bežne nie | bežne nie | odporúčaná pri eSUN ABS+ |
-| Vetranie | bežné pracovné podmienky | bežné pracovné podmienky | zvýšená pozornosť |
+### PLA
+
+- **Jednoduchosť tlače:** veľmi dobrá.
+- **Warping:** nízky.
+- **Funkčné diely:** skôr ľahšie použitie.
+- **Vyššia teplota:** obmedzené použitie.
+- **Uzavretá komora:** bežne nie.
+- **Vetranie:** bežné pracovné podmienky.
+
+### PLA+
+
+- **Jednoduchosť tlače:** dobrá až veľmi dobrá.
+- **Warping:** zvyčajne nízky.
+- **Funkčné diely:** praktický univerzál.
+- **Vyššia teplota:** stále obmedzená podľa konkrétnej formulácie.
+- **Uzavretá komora:** bežne nie.
+- **Vetranie:** bežné pracovné podmienky.
+
+### ABS+
+
+- **Jednoduchosť tlače:** náročnejšia.
+- **Warping:** vyššie riziko.
+- **Funkčné diely:** technickejšie použitie.
+- **Vyššia teplota:** vhodnejší smer než PLA/PLA+.
+- **Uzavretá komora:** pri eSUN ABS+ odporúčaná.
+- **Vetranie:** zvýšená pozornosť.
 
 Presné vlastnosti sa líšia podľa konkrétnej formulácie a výrobcu.
 
