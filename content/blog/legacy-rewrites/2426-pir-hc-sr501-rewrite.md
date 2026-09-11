@@ -126,7 +126,7 @@ Overte H/L jumper a časový trimr. Nepreberajte nastavenie z fotografie inej re
 
 ## KomArena prepojenie
 
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
 - ESP & ESPHome: https://komarena.sk/esp-esphome/
 - Senzory: https://komarena.sk/senzory/
 - Draft 003 — prvý ESPHome projekt
