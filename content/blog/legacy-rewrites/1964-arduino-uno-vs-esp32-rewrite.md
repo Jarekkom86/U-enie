@@ -122,7 +122,7 @@ Najčastejšia praktická chyba nie je „málo MHz“, ale zlé elektrické zap
 
 ## KomArena prepojenie
 
-- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/
+- ESP32 DevKit V1: https://komarena.sk/produkt/esp32-devkit-v1-wi-fi-bluetooth-iot-vyvojova-doska/
 - ESP32-S3 N16R8: https://komarena.sk/produkt/esp32-s3-n16r8-wifi-bluetooth-5-0-vyvojova-doska/
 - ESP & ESPHome: https://komarena.sk/esp-esphome/
 - Draft 003 — prvý ESPHome projekt
