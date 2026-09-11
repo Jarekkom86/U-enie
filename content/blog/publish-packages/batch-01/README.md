@@ -14,12 +14,26 @@ Tento adresár je WordPress-ready staging. **Nič v ňom sa samo nepublikuje.**
 4. 014 — Bluetooth Proxy vs USB adaptér
 5. 008 — PLA vs PLA+ vs ABS+
 
+## WordPress drafts vytvorené
+
+Batch 01 bol zapísaný na KomArena.sk ako **draft**, nie ako publish/pending/scheduled:
+
+| Source | WordPress ID | Slug |
+| --- | ---: | --- |
+| 003 | 4296 | `esphome-esp32-prvy-projekt-home-assistant` |
+| 005 | 4297 | `esp32-restart-brownout-napajanie` |
+| 013 | 4298 | `napajanie-esp32-vyber-zdroja` |
+| 014 | 4299 | `bluetooth-proxy-vs-usb-adapter-home-assistant` |
+| 008 | 4300 | `pla-vs-pla-plus-vs-abs-plus` |
+
+Detail konfigurácie a edit URL sú v `wordpress-drafts.md`.
+
 ## Live WordPress duplicate audit
 
-Read-only kontrola publikovaných a draft postov na KomArena.sk:
+Kontrola pred vytvorením draftov:
 
 - publikované články: 4,
-- drafty: 1 prázdny historický draft,
+- pôvodné drafty: 1 prázdny historický draft,
 - názvový konflikt s Batch 01: **0**,
 - zistený slug konflikt s Batch 01: **0**.
 
@@ -39,7 +53,7 @@ Overené kategórie:
 - `586` — Produkty, testy a porovnania (`produkty-testy-porovnania`)
 - `585` — 3D tlač (`3d-tlac`)
 
-Odporúčané priradenie:
+Priradenie v live draftoch:
 
 | Draft | Primárna kategória | Sekundárna kategória |
 | --- | --- | --- |
@@ -48,6 +62,8 @@ Odporúčané priradenie:
 | 013 | 583 | 322 |
 | 014 | 583 | 586 |
 | 008 | 585 | 586 |
+
+Default kategória `Nezaradené` bola po priradení cieľových kategórií odstránená.
 
 ## Fresh source check
 
@@ -84,15 +100,19 @@ Overené 2026-09-11:
 
 Aktuálny Yoast na KomArena povoľuje okrem iného `Article`, `BlogPosting` a `TechArticle`.
 
-Batch 01:
+Aplikované na live drafty:
 
 | Draft | Schema article type | SEO status |
 | --- | --- | --- |
-| 003 | TechArticle | ready for final preview |
-| 005 | TechArticle | ready for final preview |
-| 013 | TechArticle | HW-319 CTA day-of gate |
-| 014 | TechArticle | practical proxy test remains recommended before publish approval |
-| 008 | Article | ABS+ CTA remains commercial gate |
+| 003 | TechArticle | title/meta/focus applied |
+| 005 | TechArticle | title/meta/focus applied |
+| 013 | TechArticle | title/meta/focus applied; HW-319 CTA day-of gate |
+| 014 | TechArticle | title/meta/focus applied; practical proxy test remains recommended before publish approval |
+| 008 | Article | title/meta/focus applied; ABS+ CTA remains commercial gate |
+
+## Excerpts
+
+WordPress pri prvom vytvorení použil automatické excerpt-y z úvodu. Pripravené redakčné excerpt-y boli preto následne explicitne aplikované cez `post-update` na ID 4296–4300.
 
 ## Internal-link policy
 
@@ -103,17 +123,21 @@ Verejný payload používa iba:
 - žiadne interné Draft čísla v publikovanom texte,
 - žiadne skladové počty, interné gate, sourcing ani dodávateľské poznámky.
 
-## Featured image standard
+## Featured images
 
-Pre všetkých 5 článkov:
+Pre drafty boli priradené existujúce médiá z KomArena knižnice:
 
-- 1600 × 900 px, 16:9,
-- bez dodávateľských názvov a watermarkov,
-- bez ceny/skladu,
-- bez dlhého textu v obrázku,
-- produkt/komponent v centrálnej safe zone,
-- WebP cieľovo približne do 250 kB,
-- konkrétne briefy sú v `featured-images.md`.
+- 003 → media 3512 — ESP32 brand main,
+- 005 → media 2162 — ESP32 product view,
+- 013 → media 3510 — HW-319 brand main,
+- 014 → media 1989 — ESP32 detail,
+- 008 → media 4017 — 3D PLA+ application models.
+
+Pôvodné kreatívne briefy ostávajú v `featured-images.md` pre prípad neskoršieho vytvorenia samostatných editorial hero obrázkov.
+
+## Template check
+
+Produkčný článok 4289 aj nový draft 4296 používajú WordPress `default` post template, bez Elementor dát. Batch 01 preto zachováva rovnakú základnú renderovaciu cestu.
 
 ## Stav
 
@@ -121,5 +145,7 @@ Pre všetkých 5 článkov:
 - duplicate audit: **PASS**,
 - taxonomy check: **PASS**,
 - live product permalink check: **PASS** pre ESP32/HW-319,
+- WordPress draft creation: **EXECUTED — IDs 4296–4300**,
 - WordPress publish: **NOT EXECUTED**,
+- scheduling: **NOT EXECUTED**,
 - merge to `main`: **NOT EXECUTED**.
