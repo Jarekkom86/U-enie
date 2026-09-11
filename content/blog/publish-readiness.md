@@ -26,8 +26,6 @@ Každý draft sa hodnotí podľa štyroch oblastí:
 
 Read-only preflight bol vykonaný 11. 9. 2026 proti živému WooCommerce katalógu a aktuálnej primárnej dokumentácii.
 
-### Výsledok
-
 | Draft | Výsledok | Overené | Čo zostáva pred `approved-for-publish` |
 | --- | --- | --- | --- |
 | 003 — Prvý ESPHome projekt s ESP32 | **RFR** | živý ESP32 produkt ID 2159; publikovaný, visible, 19 ks, instock; živý `permalink`; aktuálny ESPHome workflow | featured image, finálny WordPress preview, day-of stock/link check |
@@ -111,6 +109,26 @@ Tento batch tvorí jeden súvislý beginner funnel:
 
 **čo je Home Assistant → local/cloud → protokoly → architektúra → sieť → naming → troubleshooting → backup/recovery → dashboard → automation basics → modelový projekt → ESPHome starter**
 
+## Preflight checkpoint — Maintenance / ReSmart 033–035
+
+Tretia vlna bola overená 11. 9. 2026 proti aktuálnej Home Assistant dokumentácii pre Connection errors, Repairs, System Monitor, updates a backups.
+
+| Draft | Výsledok | Overené | Čo zostáva pred `approved-for-publish` |
+| --- | --- | --- | --- |
+| 033 — Smart zariadenie offline | **RFR** | oficiálny connection-error postup: napájanie/dosiahnuteľnosť/sieť; Logs/Repairs; cloud vs local rozlíšenie | screenshot bez citlivých údajov; ReSmart CTA iba po service gate |
+| 034 — Bezpečný Home Assistant update | **RFR** | backup pred update; release notes/backward-incompatible changes; Repairs/Logs po update; restore ako kontrolovaná cesta späť | update UI recheck day-of; žiadny univerzálny CLI downgrade návod |
+| 035 — Maintenance dashboard | **RFR** | Repairs + System Monitor; diagnostic entity model; backup/update/unavailable organizačný rámec | vlastný anonymizovaný dashboard; overiť dostupné entity v testovacej HA bez custom hackov |
+
+### Tretí bezpečný review batch — Maintenance / ReSmart
+
+1. Draft 033 — Smart zariadenie offline
+2. Draft 035 — Maintenance dashboard
+3. Draft 034 — Bezpečný Home Assistant update
+
+Tento batch má servisný funnel:
+
+**bezpečná samodiagnostika → maintenance prehľad → bezpečný update workflow → backup/recovery → ReSmart až keď je služba reálne pripravená**
+
 ## Prvý bezpečný review batch
 
 Tieto články majú preflight **RFR**. Poradie je redakčné, nie automatické publikovanie:
@@ -187,8 +205,10 @@ Pred `ready-for-review` → `approved-for-publish`:
 - [ ] schema typ zodpovedá článku,
 - [ ] finálny preview desktop + mobil,
 - [ ] odstrániť všetky staging-only poznámky o internom sklade, obchodnom gate a dátume kontroly,
-- [ ] pri dynamických témach Matter/Thread/Home Assistant UI znovu overiť aktuálnu dokumentáciu v deň schválenia,
+- [ ] pri dynamických témach Matter/Thread/Home Assistant UI/update workflow znovu overiť aktuálnu dokumentáciu v deň schválenia,
 - [ ] pri backup/recovery obsahu nikdy nezverejniť emergency kit, key, token alebo recovery secret,
+- [ ] v support logoch odstrániť tokeny, interné adresy a iné citlivé údaje,
+- [ ] ReSmart CTA aktivovať iba ak existuje reálna služba a objednávkový proces,
 - [ ] explicitné schválenie publikácie.
 
 ## FAIL CLOSED
