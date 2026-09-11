@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD013 -->
 
-# KomArena blog — interné prelinkovanie v2
+# KomArena blog — interné prelinkovanie v3
 
 Toto je jediný staging zdroj pravdy pre interné linkovanie blogu.
 
@@ -83,7 +83,7 @@ ABS+ CTA je vždy pod skladovým a maržovým gate.
 | 007 ESPHome Bluetooth Proxy | ESP, HA, 003, 014 | ESP32, 005, 013, 014 | ESP32 BLE → proxy → BLE zariadenia | konkrétny čip + aktuálne proxy limity |
 | 008 PLA vs PLA+ vs ABS+ | 3D, 004, 012, filamenty | 004, 012, 016 | použitie → materiál → skladovanie | ABS+ marža/sklad |
 | 009 ZHA vs Zigbee2MQTT | 006, HA, protokoly | 006, 002, HA | stack → kompatibilný koordinátor | konkrétny koordinátor overený pre stack |
-| 010 ESP32 + PIR | legacy 2426, 003, senzory | ESP32, 003, 005 | ESP32 → PIR → automatizácia | HC-SR501 outofstock/hidden |
+| 010 ESP32 + PIR | legacy 2426, 003, senzory | ESP32, 003, 005, 029 | ESP32 → PIR → automatizácia | HC-SR501 outofstock/hidden |
 | 011 BME280 + ESPHome | 003, senzory, 015, 020 | ESP32, 005, 015, 017 | ESP32 → BME280 → HA | BME280 outofstock |
 | 012 Skladovanie filamentu | 3D, 004, 008 | 004, 008, 3D | filament → skladovanie/sušenie | eBOX/eVacuum marža/sklad |
 | 013 Výber napájania ESP32 | 003, 005, 007, ESP32, HW-319 | ESP32, HW-319, 005, 014 | vstup → zdroj/kábel → menič | HW-319 recheck, žiadny 230 V DIY |
@@ -95,11 +95,33 @@ ABS+ CTA je vždy pod skladovým a maržovým gate.
 | 019 DHT22 + ESPHome | DHT22, ESP32, 003, 017 | DHT22, ESP32, 016, 017, 020 | ESP32 + DHT22 → HA → display | pinout + DATA pull-up konkrétneho modulu |
 | 020 DHT22 vs BME280 | 019, 011, 015, senzory | DHT22, 011, 015, 017 | vybrať podľa veličín a rozhrania | BME280 iba informačne počas vypredania |
 
+## Draft mapa 021–029 — Home Assistant od nuly
+
+| Draft | Primárny inbound | Primárny outbound | Obchodný ďalší krok | Gate |
+| --- | --- | --- | --- | --- |
+| 021 Čo je Home Assistant | HA hub, Blog, beginner články | 022, 024, 026, HA hub | vysvetliť platformu → vybrať prvú integráciu | evergreen; final source/SEO review |
+| 022 Lokálna vs cloudová domácnosť | 021, HA hub, BleBox článok | 021, 025, BleBox | lokálna integrácia → konkrétny overený produkt | produkt iba ak je reálne lokálny a aktuálne kompatibilný |
+| 023 DHCP rezervácia vs statická IP | 021, 025, ReSmart | 024, 025, HA hub | stabilná sieť → menej servisných problémov | žiadne router-vendor špecifické návody bez overenia |
+| 024 Naming zariadení a entít | 021, 023, 026 | 025, 026, HA hub | poriadok → škálovateľné automatizácie | screenshoty/terminológia recheck day-of |
+| 025 Zariadenie sa neobjavilo | 021, 023, ReSmart | 022, 023, 024, ReSmart | diagnostika → integrácia → servis ak treba | žiadny slepý factory reset ako prvý krok |
+| 026 Prvá automatizácia | 021, 024, HA hub | 029, 024, Návody | trigger → condition → action → modelový projekt | aktuálny editor/YAML syntax recheck |
+| 027 Wi-Fi vs Zigbee vs Thread vs Matter | HA, protokoly, 021, 028 | 006, 009, 022, 028 | protokol → potrebné rádio/controller → produkt až po gate | Thread/Matter stav a ZBT-2 odporúčanie recheck pred publish |
+| 028 HA bez zbytočných hubov | 021, 022, 027, HA hub | 006, 009, 023, 027 | inventár → minimálna architektúra → konkrétny hardware až po gate | žiadny coordinator/border-router CTA bez zalistovania a kompatibility |
+| 029 Pohyb → podmienka → svetlo | 026, 024, legacy PIR, Návody | 026, 010, 024 | senzor + existujúce svetlo → automatizácia | produktovo nezávislé; YAML/editor preflight + žiadny vypredaný PIR CTA |
+
+## Beginner funnel — Home Assistant od nuly
+
+Odporúčané obsahové poradie:
+
+**021 čo je HA → 022 local/cloud → 027 protokoly → 028 architektúra bez hub chaosu → 023 stabilná IP → 024 naming → 025 discovery troubleshooting → 026 prvá automatizácia → 029 pohybové svetlo**
+
+Tento funnel je zámerne evergreen a nesmie byť blokovaný tým, že konkrétny senzor, coordinator alebo border router práve nie je skladom.
+
 ## Legacy články / rewrites
 
 ### 2426 — PIR / HC-SR501
 
-Po oprave má smerovať na Draft 003, Draft 010, ESP & ESPHome a Senzory.
+Po oprave má smerovať na Draft 003, Draft 010, Draft 029, ESP & ESPHome a Senzory.
 
 Povinná oprava: H = retrigger/repeat, L = single/non-retrigger. HC-SR501 produkt je počas vypredania iba technická referencia.
 
@@ -133,14 +155,19 @@ ESP32 DevKit V1 → HC-SR04 → bezpečný level shift/delič → Draft 018.
 
 Draft 008 → Draft 004 → Draft 012 → Draft 016 podľa použitia.
 
+### Home Assistant od nuly
+
+Draft 021 → 022 → 027 → 028 → 023 → 024 → 025 → 026 → 029.
+
 ## Produktové inbound úlohy po publikovaní
 
 - ESP32 DevKit V1 → Build Lab rozcestník s 003/005/013/014/017/018/019.
 - OLED SSD1306 → Draft 017.
 - HC-SR04 → Draft 018 + opravený legacy 1971.
 - DHT22/AM2302 → Draft 019 + 020.
-- BleBox wLightBox v3 → existujúci produkčný BleBox článok.
+- BleBox wLightBox v3 → existujúci produkčný BleBox článok + Draft 022 ako príklad local smart home.
 - relevantné PLA+ varianty → Draft 004/008/012 podľa kontextu.
+- Home Assistant hub/page → beginner funnel 021/022/027/028/023/024/025/026/029 podľa finálnych permalinkov.
 
 Inbound odkazy sa pridávajú až po existencii finálneho permalinku článku.
 
@@ -160,7 +187,7 @@ Pred každým publish approval:
 
 ## Súvisiace staging dokumenty
 
-- `publish-readiness.md` — poradie a gate 20 draftov
+- `publish-readiness.md` — readiness a gate pre všetky aktuálne drafty
 - `article-template.md` — WordPress/article/card/featured-image štandard
 - `legacy-post-audit.md` — pôvodné problémy legacy článkov
 - `product-content-opportunities.md` — produktovo-obsahové príležitosti
