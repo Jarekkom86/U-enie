@@ -2,7 +2,7 @@
 
 # Batch 01 — publish decision matrix
 
-Dátum posledného preflightu: 2026-09-11
+Dátum posledného preflightu: 2026-09-12 02:00 CEST
 
 Tento dokument rozlišuje **obsahovú pripravenosť** od samotného publish súhlasu. Žiadny post sa týmto dokumentom automaticky nepublikuje ani neplánuje.
 
@@ -12,7 +12,7 @@ Tento dokument rozlišuje **obsahovú pripravenosť** od samotného publish súh
 | ---: | --- | --- | --- | --- | --- | --- | --- |
 | 4296 | 003 | PASS | PASS | PASS | ESP32 live/instock | bez známeho layout blokéra | READY FOR APPROVAL |
 | 4297 | 005 | PASS | PASS | PASS | bez kritického low-stock CTA | bez známeho layout blokéra | READY FOR APPROVAL |
-| 4298 | 013 | PASS | PASS | PASS | HW-319 low stock; day-of recheck | bez známeho layout blokéra | CONDITIONAL READY |
+| 4298 | 013 | PASS | PASS | PASS | HW-319 day-of gate PASS; recheck pri samotnom publish | bez známeho layout blokéra | READY FOR APPROVAL — RECHECK AT PUBLISH |
 | 4299 | 014 | PASS | PASS | PASS | ESP32 live/instock | bez známeho layout blokéra | READY FOR APPROVAL |
 | 4300 | 008 | PASS | PASS | PASS | bez priameho produktového CTA | široká tabuľka odstránená; mobilne bezpečné bloky | READY FOR APPROVAL |
 
@@ -52,19 +52,21 @@ Browser preview je vhodná posledná ľudská kontrola, ale nie je známy konkr�
 
 ## 4298 — Napájanie ESP32: ako vybrať zdroj a step-down menič
 
-**Verdict: CONDITIONAL READY**
+**Verdict: READY FOR APPROVAL — RECHECK AT PUBLISH**
 
 Prešlo všetky obsahové, SEO, schema, interné-link a bezpečnostné kontroly.
 
-Komerčný gate:
+Day-of WooCommerce gate 2026-09-12 02:00 CEST:
 
-- HW-319 permalink je živý,
-- produkt bol pri poslednom live checku objednateľný,
-- ide o low-stock položku,
-- **bezprostredne pred publish treba znovu overiť sklad**,
-- ak nebude objednateľný, odstrániť alebo zmeniť produktový CTA na informačný odkaz podľa FAIL CLOSED pravidla.
+- HW-319 status `publish`,
+- catalog visibility `visible`,
+- `purchasable=true`,
+- `stock_status=instock`,
+- `stock_quantity=2`,
+- `backorders=no`,
+- permalink stále `https://komarena.sk/produkt/hw-319-lm2596-step-down-menic-s-led-voltmetrom/`.
 
-Nie je známy ďalší layout blokér.
+Preto je článok v tejto chvíli pripravený na schválenie. Keďže ide o low-stock produkt, **bezprostredne pred samotným publish sa gate vykoná ešte raz**. Ak produkt prestane byť objednateľný, CTA sa odstráni alebo zmení na informačný odkaz podľa FAIL CLOSED pravidla.
 
 ## 4299 — Bluetooth Proxy vs USB adaptér pre Home Assistant
 
@@ -109,23 +111,26 @@ Overené na draftoch 4296–4300:
 - nofollow=false,
 - canonical override je prázdny = použije sa vlastný permalink.
 
+Kontrola zoznamu WordPress draftov 2026-09-12 02:00 CEST potvrdila, že všetkých päť postov 4296–4300 zostáva v stave `draft` a nič sa samo nepublikovalo ani nenaplánovalo.
+
 ## Live link/product reality
 
-Posledný live check:
+Day-of live check 2026-09-12 02:00 CEST:
 
-- ESP32 DevKit V1: permalink živý, objednateľný, 19 ks skladom,
-- HW-319 LM2596: permalink živý, objednateľný, 2 ks skladom,
+- ESP32 DevKit V1: `publish`, `visible`, `purchasable=true`, `instock`, 19 ks, `backorders=no`; permalink nezmenený,
+- HW-319 LM2596: `publish`, `visible`, `purchasable=true`, `instock`, 2 ks, `backorders=no`; permalink nezmenený,
 - huby ESP & ESPHome, Home Assistant, Senzory, Napájanie a 3D tlač sú publikované.
 
-Tieto počty nie sú evergreen obsah a nesmú sa kopírovať do verejného článku. Pred publish sa stav produktu vždy overuje znovu.
+Tieto počty nie sú evergreen obsah a nesmú sa kopírovať do verejného článku. Pred publish sa stav low-stock CTA vždy overuje znovu.
 
 ## Publish policy
 
 Publish action je povolený až keď:
 
 1. je post explicitne schválený na publish,
-2. prebehne day-of WooCommerce permalink/stock gate pri produktových CTA,
+2. bezprostredne pred publish prebehne WooCommerce permalink/stock gate pri stock-sensitive CTA,
 3. post zostáva bez dodávateľských/sourcing interných poznámok,
-4. nič neporušuje low-voltage / 230 V safety pravidlá.
+4. nič neporušuje low-voltage / 230 V safety pravidlá,
+5. po publish sa overí verejný permalink, HTTP 200, featured image, kategórie, interné odkazy a základný SEO render.
 
 Browser preview zostáva odporúčaná ľudská kontrola, ale po odstránení širokej tabuľky nie je evidovaný konkrétny technický layout blokér v Batch 01.
