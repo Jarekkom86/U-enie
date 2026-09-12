@@ -3,6 +3,7 @@
 # Batch 01 — WordPress draft manifest
 
 Dátum vytvorenia draftov: 2026-09-11
+Posledný day-of prepublish check: 2026-09-12 02:00 CEST
 
 Tento súbor zaznamenáva reálne WordPress drafty vytvorené z `publish-packages/batch-01/`. Všetky ostávajú v stave `draft`; nič nebolo publikované ani naplánované.
 
@@ -26,57 +27,62 @@ Tento súbor zaznamenáva reálne WordPress drafty vytvorené z `publish-package
 
 - target categories assigned and default category `Nezaradené` removed,
 - tags assigned from the payloads; `PLA+` / `ABS+` use non-colliding WordPress tag names `PLA Plus` / `ABS Plus`,
-- prepared excerpts explicitly applied after WordPress initially generated automatic excerpts,
+- prepared excerpts explicitly applied and confirmed in revisions,
 - Yoast SEO title, meta description and focus keyword applied,
 - schema applied as listed above,
 - featured image assigned from existing KomArena media library,
-- all five posts use the default WordPress post template and are not Elementor-controlled.
+- all five posts use the default WordPress post template and are not Elementor-controlled,
+- post 4300 mobile-risk table removed and replaced with PLA / PLA+ / ABS+ sections and lists; revision 4306 confirms the update.
 
-## Final API audit — 2026-09-11
+## Final API audit
 
 ### PASS
 
 - all five posts remain `draft`; none is scheduled or published,
 - body content does not contain a second H1; the post title supplies the page H1 and article sections begin at H2/H3,
-- prepared custom excerpts are stored correctly in the latest revisions:
-  - 4296 → revision 4301,
-  - 4297 → revision 4302,
-  - 4298 → revision 4303,
-  - 4299 → revision 4304,
-  - 4300 → revision 4305,
-- `post-get` renders an automatic excerpt preview even when the stored custom excerpt is correct; revision data is the reliable verification source,
-- all five posts use the same default non-Elementor template model as production article 4289,
+- prepared custom excerpts are stored correctly in revisions,
 - Yoast metadata verified after write: SEO title, meta description and focus keyword are present,
 - robots verified: `noindex=false`, `nofollow=false`, `noimageindex=false`, `noarchive=false`, `nosnippet=false`,
 - canonical override is empty, so each article falls back to its own WordPress permalink,
 - schema verified: 003/005/013/014 = `WebPage / TechArticle`; 008 = `WebPage / Article`,
-- internal live hub targets resolve to published WordPress pages:
-  - ESP & ESPHome → page 2562,
-  - Home Assistant → page 2561,
-  - Senzory → page 2564,
-  - Napájanie → page 3668,
-  - 3D tlač → page 3977,
-- product link source of truth remains the live WooCommerce permalink; ESP32 ID 2159 and HW-319 ID 2997 were verified during Batch 01 preflight.
+- internal live hub targets resolve to published WordPress pages,
+- product link source of truth remains the live WooCommerce permalink.
 
-### Remaining visual gate
+Browser preview zostáva odporúčaná ľudská kontrola, ale po odstránení širokej tabuľky nie je evidovaný konkrétny technický layout blokér v Batch 01.
 
-A true desktop/mobile browser preview was **not executed** because browser/computer-use handoff was declined. Do not mark the visual layer as PASS without that check.
+## Day-of WooCommerce gate — 2026-09-12 02:00 CEST
 
-Specific remaining visual risk:
+ESP32 DevKit V1 ID 2159:
 
-- post 4300 contains a four-column comparison `<table>`; its actual mobile overflow/wrapping must be checked in a browser before publish.
+- `status=publish`,
+- `catalog_visibility=visible`,
+- `purchasable=true`,
+- `stock_quantity=19`,
+- `stock_status=instock`,
+- `backorders=no`,
+- permalink: `https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/`.
 
-No automatic styling rewrite was applied to that table without a rendered preview, to avoid introducing an unverified visual regression.
+HW-319 ID 2997:
+
+- `status=publish`,
+- `catalog_visibility=visible`,
+- `purchasable=true`,
+- `stock_quantity=2`,
+- `stock_status=instock`,
+- `backorders=no`,
+- permalink: `https://komarena.sk/produkt/hw-319-lm2596-step-down-menic-s-led-voltmetrom/`.
+
+HW-319 zostáva low-stock CTA, preto sa jeho stav načíta ešte raz bezprostredne pred samotným publish postu 4298.
 
 ## Publish gate
 
-Before any `post-publish` action:
+Pred akýmkoľvek `post-publish`:
 
-- recheck live product permalink and stock/CTA gates,
-- complete real desktop/mobile preview,
-- verify featured-image crop and alt text in context,
-- specifically verify mobile behavior of the comparison table in post 4300,
-- run final internal-link check after the first article permalinks exist,
-- keep HW-319 CTA under day-of stock gate,
-- keep ABS+ CTA under commercial/margin gate,
-- obtain explicit publish approval.
+- vyžadovať explicitný publish súhlas,
+- recheck živého WooCommerce permalink/stock gate pri produktových CTA,
+- verify featured-image assignment, taxonomy, Yoast/schema a robots,
+- zachovať verejnú kópiu bez dodávateľských/sourcing/purchase-price/internal SKU poznámok,
+- pri 4298 FAIL CLOSED, ak HW-319 prestane byť objednateľný,
+- po publish vykonať smoke test verejného permalink-u a pri kritickom probléme použiť `post-unpublish`.
+
+Presný operačný postup je v `publish-runbook.md`.
