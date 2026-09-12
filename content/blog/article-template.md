@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD013 -->
 
-# KomArena Blog — article/card template v1
+# KomArena Blog — article/card template v2
 
 Tento dokument definuje jednotný staging štandard pre blogové články. Nie je to hotový WordPress block pattern; pred nasadením sa má vizuálne overiť proti aktuálnej téme KomArena.
 
@@ -21,20 +21,60 @@ Každý článok musí mať na začiatku staging súboru:
 - Zdroje / dátum posledného technického overenia
 - Open points / publish gates
 
-## 2. Odporúčaná štruktúra článku
+## 2. Jazykový štandard — Slovak first
+
+Verejný text KomArena je predvolene po slovensky.
+
+- nadpisy, odseky, CTA, popisky obrázkov, alt texty a navigačné texty písať prirodzenou slovenčinou,
+- anglický výraz ponechať iba ak ide o oficiálny názov technológie, protokolu, produktu alebo ustálený technický termín,
+- pri menej známom anglickom termíne ho pri prvom použití vysvetliť po slovensky, napr. `znižujúci DC-DC menič (step-down)`, `krútenie a odlepovanie rohov (warping)`, `vláknovanie (stringing)`,
+- nepoužívať angličtinu iba preto, že je bežná v technických diskusiách; ak existuje prirodzený slovenský výraz, použiť ho,
+- oficiálne názvy ako Home Assistant, ESPHome, Wi‑Fi, Zigbee, Thread, Matter, Bluetooth Proxy, Arduino alebo ESP32 neprekladať,
+- `smart home` v bežnej vete preferenčne nahradiť výrazom `inteligentná domácnosť`,
+- `logs` → `záznamy`, `checklist` → `kontrolný zoznam`, `workflow` → `spôsob práce` alebo `postup`, ak to význam dovolí,
+- preklad nesmie byť mechanický; výsledná veta musí znieť prirodzene slovenskému používateľovi.
+
+## 3. Odporúčaná štruktúra článku
 
 1. **H1** — jasná odpoveď na otázku, nie marketingový slogan.
 2. **Úvod 2–4 odseky** — problém, pre koho je článok, čo používateľ na konci bude vedieť.
-3. **Rýchla odpoveď / decision box** — pri poradcoch a porovnaniach krátka odpoveď skôr než detail.
-4. **H2 obsahové bloky** — jeden problém alebo rozhodnutie na blok.
-5. **Tabuľka / schéma / YAML** — iba ak pomáha rozhodnúť alebo reálne vykonať krok.
-6. **Najčastejšie chyby** — praktická prevencia.
-7. **Bezpečnosť / limity** — priamo pri relevantnom kroku.
-8. **KomArena prepojenie** — 1–3 produkty + hub + súvisiaci článok, iba ak sú relevantné.
-9. **Záver** — čo spraviť ďalej, nie opakovanie celého článku.
-10. **Zdroje** — primárne/official zdroje a dátum overenia.
+3. **Relevantný obrázok v tele** — ideálne po úvode alebo pri prvom praktickom bloku.
+4. **Rýchla odpoveď / rozhodovací blok** — pri poradcoch a porovnaniach krátka odpoveď skôr než detail.
+5. **H2 obsahové bloky** — jeden problém alebo rozhodnutie na blok.
+6. **Tabuľka / schéma / YAML** — iba ak pomáha rozhodnúť alebo reálne vykonať krok; široké tabuľky na mobile radšej nahradiť porovnávacími blokmi.
+7. **Najčastejšie chyby** — praktická prevencia.
+8. **Bezpečnosť / limity** — priamo pri relevantnom kroku.
+9. **KomArena prepojenie** — produkty + hub + súvisiace články, iba ak sú relevantné.
+10. **Záver** — čo spraviť ďalej, nie opakovanie celého článku.
+11. **Zdroje** — primárne/oficiálne zdroje a dátum overenia.
 
-## 3. CTA pravidlá
+## 4. Obrázky v každom článku
+
+Každý publikovaný článok musí mať:
+
+- **1 featured image**,
+- **minimálne 1 relevantný obrázok v tele článku**,
+- pri dlhšom alebo praktickom článku preferovať **2–3 obrázky**, ak reálne pomáhajú pochopiť obsah.
+
+### Vizuálny smer
+
+- pomer strán primárne **16:9**,
+- tmavý prémiový technický vizuál, moderná inteligentná domácnosť, jemné tyrkysové svetelné prvky a čistá hierarchia,
+- vizuál má vysvetľovať tému, nie byť iba dekoráciou,
+- text priamo v grafike radšej nepoužívať; ak je potrebný, musí byť po slovensky a krátky,
+- žiadne cudzie watermarky, dodávateľské názvy, interné SKU, sourcing informácie alebo ceny,
+- pri produkte používať presnú fotografiu produktu, nie generickú podobizeň,
+- pri koncepčných témach možno použiť vlastnú ilustračnú grafiku KomArena.
+
+### Obrázky v tele
+
+- obrázok vložiť k odseku, ktorý vysvetľuje,
+- produktová fotografia môže byť klikateľná na produkt iba ak produkt prešiel publish gate,
+- vypredaný/skrytý produkt možno použiť ako informatívny obrázok, ale nie ako nákupné CTA,
+- každý obrázok má mať slovenský alt text a podľa potreby slovenský popis pod obrázkom,
+- neopakovať ten istý obrázok bez dôvodu viackrát v jednom článku.
+
+## 5. CTA pravidlá
 
 CTA nesmie byť univerzálny blok vložený nasilu.
 
@@ -62,18 +102,20 @@ Zakázané:
 
 ReSmart vložiť tam, kde DIY používateľ môže rozumne skončiť a požiadať o diagnostiku. Nie do každého článku.
 
-## 4. Interné linkovanie
+## 6. Interné linkovanie
 
 Na článok:
 
 - 1 nadradený hub,
-- 1 až 3 produktové odkazy podľa relevancie,
-- 1 až 3 súvisiace články,
-- minimálne jeden plánovaný inbound link z existujúcej produkčnej stránky.
+- 1 až 3 produktové odkazy podľa relevancie a živého product gate,
+- 2 až 5 súvisiacich článkov alebo návodov, ak už existujú,
+- minimálne jeden plánovaný inbound link z existujúcej produkčnej stránky alebo článku.
 
 Anchor text má hovoriť, čo používateľ otvorí. Nepoužívať opakovane „kliknite sem“.
 
-## 5. Featured image štandard
+Po publikovaní nového článku doplniť vhodné spätné odkazy aj do starších článkov, aby nevznikali izolované stránky.
+
+## 7. Featured image štandard
 
 ### Formát
 
@@ -94,11 +136,11 @@ Anchor text má hovoriť, čo používateľ otvorí. Nepoužívať opakovane „
 
 ### Text v obrázku
 
-Preferovať žiadny text alebo maximálne krátky 2–4 slovný label. Názov článku už zobrazuje karta/WordPress; netreba ho duplikovať do obrázka.
+Preferovať žiadny text. Ak text zlepšuje vysvetlenie, musí byť krátky, prirodzený a po slovensky. Názov článku už zobrazuje karta/WordPress; netreba ho duplikovať do obrázka.
 
 ### Alt text
 
-Alt text má opisovať viditeľný obsah, napríklad:
+Alt text má opisovať viditeľný obsah po slovensky, napríklad:
 
 `ESP32 DevKit V1 s OLED SSD1306 displejom na stole`
 
@@ -106,7 +148,7 @@ Nie:
 
 `najlepší ESP32 ESPHome Home Assistant lacno kúpiť KomArena`
 
-## 6. Blog card štandard
+## 8. Blog card štandard
 
 Karta má obsahovať:
 
@@ -115,7 +157,7 @@ Karta má obsahovať:
 - titulok článku,
 - excerpt približne 140–180 znakov,
 - dátum,
-- jasný text odkazu napr. „Čítať návod“ / „Pozrieť porovnanie“.
+- jasný slovenský text odkazu napr. „Čítať návod“ / „Pozrieť porovnanie“.
 
 Karta nemá zobrazovať:
 
@@ -124,7 +166,7 @@ Karta nemá zobrazovať:
 - ceny produktov, ak článok nie je cenové porovnanie,
 - viacero CTA tlačidiel súťažiacich o pozornosť.
 
-## 7. SEO / Yoast staging
+## 9. SEO / Yoast staging
 
 Pred publish pripraviť:
 
@@ -135,16 +177,16 @@ Pred publish pripraviť:
 - index/follow default pre originálny hodnotný článok,
 - schema typ Article/TechArticle/HowTo iba podľa reálneho obsahu a možností aktuálneho Yoast nastavenia.
 
-## 8. Kód, YAML a zapojenia
+## 10. Kód, YAML a zapojenia
 
 - kód musí byť kopírovateľný,
 - žiadne nevysvetlené placeholder piny,
-- pri generic boarde uviesť, že pinout sa môže líšiť,
+- pri všeobecnej doske uviesť, že rozloženie pinov sa môže líšiť,
 - 5 V vs 3,3 V rozhrania explicitne označiť,
 - YAML kontrolovať proti aktuálnej ESPHome dokumentácii,
 - bezpečnostný limit umiestniť pred rizikový krok.
 
-## 9. Technické zdroje
+## 11. Technické zdroje
 
 Poradie preferencie:
 
@@ -155,7 +197,7 @@ Poradie preferencie:
 
 Pri dynamickej technológii doplniť dátum overenia.
 
-## 10. Sociálny derivát
+## 12. Sociálny derivát
 
 Ku každému článku pripraviť krátky Facebook text:
 
@@ -166,7 +208,7 @@ Ku každému článku pripraviť krátky Facebook text:
 
 Instagram/social vizuál môže vychádzať z featured image, ale nemá byť podmienkou publikácie článku.
 
-## 11. Stavový flow
+## 13. Stavový flow
 
 `draft` → `ready-for-review` → `approved-for-publish` → `published`
 
