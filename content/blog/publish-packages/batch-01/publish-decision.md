@@ -2,135 +2,84 @@
 
 # Batch 01 — publish decision matrix
 
-Dátum posledného preflightu: 2026-09-12 02:00 CEST
+Preflight: 2026-09-12
+Publish executed: 2026-09-12 10:42–10:44 CEST
 
-Tento dokument rozlišuje **obsahovú pripravenosť** od samotného publish súhlasu. Žiadny post sa týmto dokumentom automaticky nepublikuje ani neplánuje.
+Batch 01 was published only after explicit user approval. This document now records the final publication outcome and retained rollback rules.
 
-## Súhrn
+## Final status
 
-| WP ID | Source | Obsah/SEO | Taxonómia | Linky | Produktový gate | Vizuálny gate | Verdict |
-| ---: | --- | --- | --- | --- | --- | --- | --- |
-| 4296 | 003 | PASS | PASS | PASS | ESP32 live/instock | bez známeho layout blokéra | READY FOR APPROVAL |
-| 4297 | 005 | PASS | PASS | PASS | bez kritického low-stock CTA | bez známeho layout blokéra | READY FOR APPROVAL |
-| 4298 | 013 | PASS | PASS | PASS | HW-319 day-of gate PASS; recheck pri samotnom publish | bez známeho layout blokéra | READY FOR APPROVAL — RECHECK AT PUBLISH |
-| 4299 | 014 | PASS | PASS | PASS | ESP32 live/instock | bez známeho layout blokéra | READY FOR APPROVAL |
-| 4300 | 008 | PASS | PASS | PASS | bez priameho produktového CTA | široká tabuľka odstránená; mobilne bezpečné bloky | READY FOR APPROVAL |
+| WP ID | Source | Preflight | Product gate | Publish smoke test | Final status |
+| ---: | --- | --- | --- | --- | --- |
+| 4296 | 003 | PASS | ESP32 PASS | PASS | PUBLISHED |
+| 4297 | 005 | PASS | no critical low-stock CTA | PASS | PUBLISHED |
+| 4299 | 014 | PASS | ESP32 PASS | PASS | PUBLISHED |
+| 4300 | 008 | PASS | no stock-sensitive CTA | PASS | PUBLISHED |
+| 4298 | 013 | PASS | HW-319 immediate gate PASS | PASS | PUBLISHED |
 
-## 4296 — ESPHome + ESP32: prvý projekt krok za krokom
+## Public URLs
 
-**Verdict: READY FOR APPROVAL**
+- 4296 — `https://komarena.sk/esphome-esp32-prvy-projekt-home-assistant/`
+- 4297 — `https://komarena.sk/esp32-restart-brownout-napajanie/`
+- 4299 — `https://komarena.sk/bluetooth-proxy-vs-usb-adapter-home-assistant/`
+- 4300 — `https://komarena.sk/pla-vs-pla-plus-vs-abs-plus/`
+- 4298 — `https://komarena.sk/napajanie-esp32-vyber-zdroja/`
 
-Prešlo:
+## Preflight gates that passed
 
-- čisté HTML bez duplicitného H1,
-- custom excerpt uložený v revízii,
-- kategórie 583 + 322,
-- Yoast title/meta/focus keyword,
-- `WebPage / TechArticle`,
-- robots index/follow,
-- default non-Elementor post template,
-- interné huby existujú a sú publikované,
-- ESP32 produktový permalink je živý a produkt je objednateľný.
+Across the batch:
 
-Browser preview je stále vhodná posledná ľudská kontrola, ale API/layout audit neodhalil známy blokér.
+- article body/SEO/taxonomy/internal-link audit passed,
+- no duplicate H1 in article bodies,
+- custom excerpts were confirmed in revisions before publish,
+- default non-Elementor post template retained,
+- Yoast SEO title/meta/focus keyword and schema were present,
+- robots were index/follow,
+- internal hub targets were live,
+- no supplier/sourcing/purchase-price/internal SKU notes were present,
+- low-voltage / 230 V safety boundaries were retained.
 
-## 4297 — ESP32 sa reštartuje? Ako odhaliť problém s napájaním
+Post 4300 had its original four-column comparison table removed before publication and replaced with mobile-safer PLA / PLA+ / ABS+ sections and lists.
 
-**Verdict: READY FOR APPROVAL**
+## Product gates used
 
-Prešlo:
+ESP32 DevKit V1 ID 2159 immediately before publication:
 
-- čistá H2/H3 štruktúra,
-- custom excerpt uložený v revízii,
-- kategórie 583 + 322,
-- TechArticle schema,
-- bezpečnostné low-voltage ohraničenie,
-- brownout tvrdenia majú oficiálne Espressif zdroje,
-- interné huby a ESP32 permalink sú živé.
+- `status=publish`,
+- `purchasable=true`,
+- `stock_status=instock`,
+- `stock_quantity=19`,
+- `backorders=no`,
+- permalink unchanged.
 
-Browser preview je vhodná posledná ľudská kontrola, ale nie je známy konkrétny layout blokér.
+HW-319 ID 2997 was rechecked again immediately before publishing post 4298:
 
-## 4298 — Napájanie ESP32: ako vybrať zdroj a step-down menič
-
-**Verdict: READY FOR APPROVAL — RECHECK AT PUBLISH**
-
-Prešlo všetky obsahové, SEO, schema, interné-link a bezpečnostné kontroly.
-
-Day-of WooCommerce gate 2026-09-12 02:00 CEST:
-
-- HW-319 status `publish`,
-- catalog visibility `visible`,
+- `status=publish`,
 - `purchasable=true`,
 - `stock_status=instock`,
 - `stock_quantity=2`,
 - `backorders=no`,
-- permalink stále `https://komarena.sk/produkt/hw-319-lm2596-step-down-menic-s-led-voltmetrom/`.
+- permalink unchanged.
 
-Preto je článok v tejto chvíli pripravený na schválenie. Keďže ide o low-stock produkt, **bezprostredne pred samotným publish sa gate vykoná ešte raz**. Ak produkt prestane byť objednateľný, CTA sa odstráni alebo zmení na informačný odkaz podľa FAIL CLOSED pravidla.
+Stock counts are not evergreen public copy and remain operational evidence only.
 
-## 4299 — Bluetooth Proxy vs USB adaptér pre Home Assistant
+## Post-publish smoke test
 
-**Verdict: READY FOR APPROVAL**
+Each post was published individually in the controlled order:
 
-Prešlo:
+`4296 → 4297 → 4299 → 4300 → 4298`
 
-- aktuálny ESPHome model connection slots,
-- BLE-only scope formulovaný správne,
-- žiadne tvrdenie o vlastnom fyzickom teste,
-- TechArticle schema,
-- HA / ESPHome / napájanie huby živé,
-- ESP32 produktový link živý.
+After each publish, WordPress `post-get` confirmed:
 
-Praktický vlastný proxy test je vhodný ako budúce rozšírenie článku, ale súčasný text ho nepredstiera a nie je na ňom technicky závislý.
+- `status=publish`,
+- expected public permalink,
+- expected categories/tags,
+- body content retained.
 
-## 4300 — PLA vs PLA+ vs ABS+
+The final `post-list-published` check returned all five new posts and 9 published posts total on the site at that checkpoint.
 
-**Verdict: READY FOR APPROVAL**
+No `post-unpublish` rollback was required.
 
-Obsahové a SEO gate sú PASS:
+## Remaining operational rule
 
-- eSUN parametre zosúladené s aktuálnymi podkladmi,
-- Article schema,
-- interný link na 3D tlač hub je živý,
-- bez priameho stock-sensitive produktového CTA,
-- bezpečnostné poznámky sú prítomné.
-
-Pôvodná 4-stĺpcová porovnávacia tabuľka bola odstránená z WordPress draftu aj z publish payloadu a nahradená sekciami PLA / PLA+ / ABS+ s krátkymi zoznamami. Tým sa odstránil konkrétny mobile-overflow blokér bez potreby špeciálneho table CSS.
-
-## WordPress read/API audit
-
-Overené na draftoch 4296–4300:
-
-- všetky ostávajú `draft`,
-- default WordPress post template,
-- Elementor layout sa nepoužíva,
-- pripravené custom excerpt-y sú potvrdené najnovšími revíziami,
-- Yoast SEO title/meta/focus keyword sú uložené,
-- schema: 4× TechArticle, 1× Article,
-- noindex=false,
-- nofollow=false,
-- canonical override je prázdny = použije sa vlastný permalink.
-
-Kontrola zoznamu WordPress draftov 2026-09-12 02:00 CEST potvrdila, že všetkých päť postov 4296–4300 zostáva v stave `draft` a nič sa samo nepublikovalo ani nenaplánovalo.
-
-## Live link/product reality
-
-Day-of live check 2026-09-12 02:00 CEST:
-
-- ESP32 DevKit V1: `publish`, `visible`, `purchasable=true`, `instock`, 19 ks, `backorders=no`; permalink nezmenený,
-- HW-319 LM2596: `publish`, `visible`, `purchasable=true`, `instock`, 2 ks, `backorders=no`; permalink nezmenený,
-- huby ESP & ESPHome, Home Assistant, Senzory, Napájanie a 3D tlač sú publikované.
-
-Tieto počty nie sú evergreen obsah a nesmú sa kopírovať do verejného článku. Pred publish sa stav low-stock CTA vždy overuje znovu.
-
-## Publish policy
-
-Publish action je povolený až keď:
-
-1. je post explicitne schválený na publish,
-2. bezprostredne pred publish prebehne WooCommerce permalink/stock gate pri stock-sensitive CTA,
-3. post zostáva bez dodávateľských/sourcing interných poznámok,
-4. nič neporušuje low-voltage / 230 V safety pravidlá,
-5. po publish sa overí verejný permalink, HTTP 200, featured image, kategórie, interné odkazy a základný SEO render.
-
-Browser preview zostáva odporúčaná ľudská kontrola, ale po odstránení širokej tabuľky nie je evidovaný konkrétny technický layout blokér v Batch 01.
+A browser/computer-use visual render check is still useful as a non-blocking post-publish QA step. If such a check finds a critical defect in an individual article, unpublish only that article, correct it as draft, and republish after verification.
