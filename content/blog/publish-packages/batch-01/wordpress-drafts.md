@@ -1,88 +1,71 @@
 <!-- markdownlint-disable MD013 -->
 
-# Batch 01 — WordPress draft manifest
+# Batch 01 — WordPress publication manifest
 
 Dátum vytvorenia draftov: 2026-09-11
-Posledný day-of prepublish check: 2026-09-12 02:00 CEST
+Dátum publikovania Batch 01: 2026-09-12
+Publikačné okno: 10:42–10:44 CEST
 
-Tento súbor zaznamenáva reálne WordPress drafty vytvorené z `publish-packages/batch-01/`. Všetky ostávajú v stave `draft`; nič nebolo publikované ani naplánované.
+Tento súbor zaznamenáva reálny stav Batch 01 na KomArena.sk po explicitnom publish súhlase. Všetkých päť postov bolo publikovaných jednotlivo podľa `publish-runbook.md` a po každom publish prešiel okamžitý WordPress smoke test.
 
-| Source | WordPress ID | Slug | Kategórie | Featured media | Schema |
-| --- | ---: | --- | --- | ---: | --- |
-| 003 | 4296 | `esphome-esp32-prvy-projekt-home-assistant` | 583 + 322 | 3512 | WebPage / TechArticle |
-| 005 | 4297 | `esp32-restart-brownout-napajanie` | 583 + 322 | 2162 | WebPage / TechArticle |
-| 013 | 4298 | `napajanie-esp32-vyber-zdroja` | 583 + 322 | 3510 | WebPage / TechArticle |
-| 014 | 4299 | `bluetooth-proxy-vs-usb-adapter-home-assistant` | 583 + 586 | 1989 | WebPage / TechArticle |
-| 008 | 4300 | `pla-vs-pla-plus-vs-abs-plus` | 585 + 586 | 4017 | WebPage / Article |
+| Source | WordPress ID | Status | Verejný permalink | Kategórie | Featured media | Schema | Publish time |
+| --- | ---: | --- | --- | --- | ---: | --- | --- |
+| 003 | 4296 | `publish` | `https://komarena.sk/esphome-esp32-prvy-projekt-home-assistant/` | 583 + 322 | 3512 | WebPage / TechArticle | 10:42:53 |
+| 005 | 4297 | `publish` | `https://komarena.sk/esp32-restart-brownout-napajanie/` | 583 + 322 | 2162 | WebPage / TechArticle | 10:43:35 |
+| 014 | 4299 | `publish` | `https://komarena.sk/bluetooth-proxy-vs-usb-adapter-home-assistant/` | 583 + 586 | 1989 | WebPage / TechArticle | 10:43:52 |
+| 008 | 4300 | `publish` | `https://komarena.sk/pla-vs-pla-plus-vs-abs-plus/` | 585 + 586 | 4017 | WebPage / Article | 10:44:07 |
+| 013 | 4298 | `publish` | `https://komarena.sk/napajanie-esp32-vyber-zdroja/` | 583 + 322 | 3510 | WebPage / TechArticle | 10:44:30 |
 
-## WordPress edit URLs
+## Publication result
 
-- 4296: `https://komarena.sk/wp-admin/post.php?post=4296&action=edit`
-- 4297: `https://komarena.sk/wp-admin/post.php?post=4297&action=edit`
-- 4298: `https://komarena.sk/wp-admin/post.php?post=4298&action=edit`
-- 4299: `https://komarena.sk/wp-admin/post.php?post=4299&action=edit`
-- 4300: `https://komarena.sk/wp-admin/post.php?post=4300&action=edit`
+PASS:
 
-## Applied configuration
+- all five posts report `status=publish` after publication,
+- all five expected public permalinks were returned by WordPress,
+- target categories and tags remained attached after publish,
+- default non-Elementor template remained unchanged,
+- prepared bodies remained intact,
+- post 4300 stayed on the mobile-safe PLA / PLA+ / ABS+ section layout with no wide comparison table,
+- WordPress `post-list-published` immediately after the batch returned all five new posts; the site reported 9 published posts total at that checkpoint,
+- no rollback via `post-unpublish` was required.
 
-- target categories assigned and default category `Nezaradené` removed,
-- tags assigned from the payloads; `PLA+` / `ABS+` use non-colliding WordPress tag names `PLA Plus` / `ABS Plus`,
-- prepared excerpts explicitly applied and confirmed in revisions,
-- Yoast SEO title, meta description and focus keyword applied,
-- schema applied as listed above,
-- featured image assigned from existing KomArena media library,
-- all five posts use the default WordPress post template and are not Elementor-controlled,
-- post 4300 mobile-risk table removed and replaced with PLA / PLA+ / ABS+ sections and lists; revision 4306 confirms the update.
+The smoke test was performed through the authoritative WordPress API/read path. A separate browser/computer-use visual HTTP/render test was not performed in this session.
 
-## Final API audit
+## Product gate used for publication
 
-### PASS
-
-- all five posts remain `draft`; none is scheduled or published,
-- body content does not contain a second H1; the post title supplies the page H1 and article sections begin at H2/H3,
-- prepared custom excerpts are stored correctly in revisions,
-- Yoast metadata verified after write: SEO title, meta description and focus keyword are present,
-- robots verified: `noindex=false`, `nofollow=false`, `noimageindex=false`, `noarchive=false`, `nosnippet=false`,
-- canonical override is empty, so each article falls back to its own WordPress permalink,
-- schema verified: 003/005/013/014 = `WebPage / TechArticle`; 008 = `WebPage / Article`,
-- internal live hub targets resolve to published WordPress pages,
-- product link source of truth remains the live WooCommerce permalink.
-
-Browser preview zostáva odporúčaná ľudská kontrola, ale po odstránení širokej tabuľky nie je evidovaný konkrétny technický layout blokér v Batch 01.
-
-## Day-of WooCommerce gate — 2026-09-12 02:00 CEST
+Immediately before the batch:
 
 ESP32 DevKit V1 ID 2159:
 
 - `status=publish`,
-- `catalog_visibility=visible`,
 - `purchasable=true`,
 - `stock_quantity=19`,
 - `stock_status=instock`,
 - `backorders=no`,
-- permalink: `https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/`.
+- permalink unchanged: `https://komarena.sk/produkt/esp32-devkit-v1-wifi-bluetooth-vyvojova-doska/`.
 
-HW-319 ID 2997:
+Immediately before publishing post 4298, HW-319 ID 2997 was rechecked again:
 
 - `status=publish`,
-- `catalog_visibility=visible`,
 - `purchasable=true`,
 - `stock_quantity=2`,
 - `stock_status=instock`,
 - `backorders=no`,
-- permalink: `https://komarena.sk/produkt/hw-319-lm2596-step-down-menic-s-led-voltmetrom/`.
+- permalink unchanged: `https://komarena.sk/produkt/hw-319-lm2596-step-down-menic-s-led-voltmetrom/`.
 
-HW-319 zostáva low-stock CTA, preto sa jeho stav načíta ešte raz bezprostredne pred samotným publish postu 4298.
+Stock counts are operational evidence only and are not copied into evergreen public article copy.
 
-## Publish gate
+## Applied configuration retained
 
-Pred akýmkoľvek `post-publish`:
+- target categories assigned; default `Nezaradené` removed,
+- tags retained; `PLA+` / `ABS+` use WordPress tag names `PLA Plus` / `ABS Plus`,
+- prepared excerpts confirmed in revisions before publish,
+- Yoast SEO title, meta description and focus keyword applied,
+- schema retained as listed above,
+- featured images retained from the KomArena media library,
+- public copy contains no supplier/sourcing/purchase-price/internal SKU notes,
+- low-voltage / 230 V safety boundaries remain in technical articles.
 
-- vyžadovať explicitný publish súhlas,
-- recheck živého WooCommerce permalink/stock gate pri produktových CTA,
-- verify featured-image assignment, taxonomy, Yoast/schema a robots,
-- zachovať verejnú kópiu bez dodávateľských/sourcing/purchase-price/internal SKU poznámok,
-- pri 4298 FAIL CLOSED, ak HW-319 prestane byť objednateľný,
-- po publish vykonať smoke test verejného permalink-u a pri kritickom probléme použiť `post-unpublish`.
+## Rollback rule
 
-Presný operačný postup je v `publish-runbook.md`.
+If a critical production defect is later confirmed in one of these posts, use `post-unpublish` on that individual post and correct it as a draft before republishing. Do not roll back the whole batch for an isolated article issue.
